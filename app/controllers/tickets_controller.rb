@@ -18,7 +18,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
 
     if @ticket.save
-      redirect_to [:admin, :tickets], notice: 'Ticket created!'
+      redirect_to [:tickets], notice: 'Ticket created!'
     else
       render :new
     end
@@ -32,6 +32,7 @@ class TicketsController < ApplicationController
   def ticket_params
     params.require(:ticket).permit(
       :user_id,
+      :reference,
       :technician_id,
       :contract_product_id,
       :ticket_priority_id,

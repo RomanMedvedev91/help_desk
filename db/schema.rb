@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220117020216) do
+ActiveRecord::Schema.define(version: 20220117192957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,9 +131,11 @@ ActiveRecord::Schema.define(version: 20220117020216) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.integer  "technician_id"
+    t.string   "reference"
   end
 
   add_index "tickets", ["contract_product_id"], name: "index_tickets_on_contract_product_id", using: :btree
+  add_index "tickets", ["reference"], name: "index_tickets_on_reference", using: :btree
   add_index "tickets", ["ticket_priority_id"], name: "index_tickets_on_ticket_priority_id", using: :btree
   add_index "tickets", ["ticket_status_code_id"], name: "index_tickets_on_ticket_status_code_id", using: :btree
   add_index "tickets", ["ticket_type_id"], name: "index_tickets_on_ticket_type_id", using: :btree
