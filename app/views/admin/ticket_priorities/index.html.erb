@@ -1,0 +1,28 @@
+<section class="admin-ticket_priorities-index">
+
+  <header class="page-header">
+    <h1>Admin &raquo; Ticket Priorities</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to '+ New Priority', [:new, :admin, :ticket_priority], class: 'btn btn-info' %>
+  </div>
+
+  <div class="panel panel-default ticket_priorities">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Priority</th>
+          <th>Description</th>
+          <th>Business Days</th>
+          <th>Business Hours</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @ticket_priorities %>
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -1,21 +1,36 @@
 Rails.application.routes.draw do
 
-  root to: 'products#index'
+  root to: 'tickets#index'
 
-  resources :products, only: [:index, :show]
-  resources :categories, only: [:show]
   resources :about, only: [:index]
-  resource :cart, only: [:show] do
-    post   :add_item
-    post   :remove_item
-  end
+  resources :contracts, only: [:index, :show, :new]
+  resources :tickets, only: [:index, :show, :new]
+  
+  # resources :categories, only: [:show]
 
-  resources :orders, only: [:create, :show]
+  # resource :cart, only: [:show] do
+  #   post   :add_item
+  #   post   :remove_item
+  # end
+
+  # resources :orders, only: [:create, :show]
 
   namespace :admin do
     root to: 'dashboard#show'
-    resources :products, except: [:edit, :update, :show]
+
     resources :categories, except: [:edit, :update, :show, :destroy]
+    resources :products, except: [:edit, :update, :show]
+
+    resources :service_level_agreements, except: [:edit, :update, :show, :destroy]
+
+    resources :ticket_priorities, except: [:edit, :update, :show, :destroy]
+    resources :ticket_status_codes, except: [:edit, :update, :show, :destroy]
+    resources :ticket_types, except: [:edit, :update, :show, :destroy]
+
+    resources :user_types, except: [:edit, :update, :show, :destroy]
+
+    resources :qa_categories, except: [:edit, :update, :show, :destroy]
+    resources :qas, except: [:edit, :update, :show, :destroy]
   end
 
   # these routes are for showing users a login form, logging them in, and logging them out.

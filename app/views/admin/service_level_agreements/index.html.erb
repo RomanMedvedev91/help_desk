@@ -1,0 +1,28 @@
+<section class="admin-service_level_agreement-index">
+
+  <header class="page-header">
+    <h1>Admin &raquo; Service Level Agreement</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to '+ New S.L.A', [:new, :admin, :service_level_agreement], class: 'btn btn-info' %>
+  </div>
+
+  <div class="panel panel-default service_level_agreements">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>SLA</th>
+          <th>Description</th>
+          <th>Business Days</th>
+          <th>Business Hours</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @service_level_agreements %>
+      </tbody>
+    </table>
+  </div>
+</section>

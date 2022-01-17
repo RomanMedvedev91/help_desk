@@ -1,0 +1,29 @@
+<section class="ticket-index">
+
+  <header class="page-header">
+    <h1>Tickets</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to '+ New Ticket', [:new, :ticket], class: 'btn btn-info' %>
+  </div>
+
+  <div class="panel panel-default tickets">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Technician</th>
+          <th>Product</th>
+          <th>Priority</th>
+          <th>Status Code</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @tickets %>
+      </tbody>
+    </table>
+  </div>
+</section>

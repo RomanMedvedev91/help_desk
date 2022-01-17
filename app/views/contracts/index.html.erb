@@ -1,0 +1,27 @@
+<section class="contract-index">
+
+  <header class="page-header">
+    <h1>Contracts</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to '+ New Contract', [:new, :contract], class: 'btn btn-info' %>
+  </div>
+
+  <div class="panel panel-default contracts">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Customer</th>
+          <th>S.L.A</th>
+          <th>SLA Valid Start</th>
+          <th>SLA Valid End</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @contracts %>
+      </tbody>
+    </table>
+  </div>
+</section>

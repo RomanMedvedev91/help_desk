@@ -1,0 +1,26 @@
+<section class="contract_product-index">
+
+  <header class="page-header">
+    <h1>Admin &raquo; Contract Product</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to '+ New QA', [:new, :admin, :contract_product], class: 'btn btn-info' %>
+  </div>
+
+  <div class="panel panel-default contract_products">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>contract</th>
+          <th>Product</th>
+          <th>Serial Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @contract_products %>
+      </tbody>
+    </table>
+  </div>
+</section>

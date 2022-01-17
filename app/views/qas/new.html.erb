@@ -1,0 +1,48 @@
+<section class="admin-qa-new">
+
+  <header class="page-header">
+    <h1>Admin &raquo; New QA</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to 'All QAs', [:admin, :qas], class: 'btn btn-info' %>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
+      <%= form_for [:admin, @qa] do |form| %>
+    
+        <% if form.object.errors.any? %>
+          <div class="alert alert-danger">
+            <strong>The following errors prevented saving:</strong>
+            <ul>
+              <% form.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.label :qa_category_id %>
+          <%= form.text_field :qa_category_id, class: 'form-control' %>
+          <%= form.label :problem %>
+          <%= form.text_field :problem, class: 'form-control' %>
+          <%= form.label :solution %>
+          <%= form.text_field :solu<tr>
+          <td>
+            <h4><%= qa.category_id %></h4>
+          </td>
+          <td>
+            <h4><%= qa.problem %></h4>
+          </td>
+          <td>
+            <h4><%= qa.solution %></h4>
+          </td>
+        </tr>
+        <%= form.submit 'Create Category', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,27 @@
+<section class="admin-notes-index">
+
+  <header class="page-header">
+    <h1>Admin &raquo; All Ticket Notes</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to '+ New Ticket Note', [:new, :admin, :note], class: 'btn btn-info' %>
+  </div>
+
+  <div class="panel panel-default notes">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Ticket</th>
+          <th>User</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @notes %>
+      </tbody>
+    </table>
+  </div>
+</section>

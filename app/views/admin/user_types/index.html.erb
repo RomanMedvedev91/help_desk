@@ -1,0 +1,26 @@
+<section class="admin-user_types-index">
+
+  <header class="page-header">
+    <h1>Admin &raquo; User Types</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to '+ New User Type', [:new, :admin, :user_type], class: 'btn btn-info' %>
+  </div>
+
+  <div class="panel panel-default user_types">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>User Type</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @user_types %>
+      </tbody>
+    </table>
+  </div>
+</section>

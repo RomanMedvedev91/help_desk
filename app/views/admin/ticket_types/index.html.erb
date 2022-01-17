@@ -1,0 +1,26 @@
+<section class="admin-ticket_types-index">
+
+  <header class="page-header">
+    <h1>Admin &raquo; Ticket Types</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to '+ New Ticket Type', [:new, :admin, :ticket_type], class: 'btn btn-info' %>
+  </div>
+
+  <div class="panel panel-default ticket_types">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Ticket Type</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @ticket_types %>
+      </tbody>
+    </table>
+  </div>
+</section>

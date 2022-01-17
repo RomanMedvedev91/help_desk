@@ -1,0 +1,26 @@
+<section class="admin-qa_categories-index">
+
+  <header class="page-header">
+    <h1>Admin &raquo; All QA Categories</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to '+ New QA Category', [:new, :admin, :qa_category], class: 'btn btn-info' %>
+  </div>
+
+  <div class="panel panel-default qa_categories">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @qa_categories %>
+      </tbody>
+    </table>
+  </div>
+</section>

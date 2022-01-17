@@ -1,0 +1,19 @@
+<!-- app/views/users/new.html.erb -->
+
+<h1>Signup!</h1>
+<%= form_for :user, url: '/users' do |f| %>
+  <% if @user && @user.errors.full_messages.any? %>
+    <% @user.errors.full_messages.each do |error_message| %>
+      <%= error_message %> <br />
+    <% end %>
+  <% end %>
+
+  <div>Name: </div><div><%= f.text_field :name %></div>
+  <div>Type: </div><div><%= f.text_field :user_type_id %></div>
+  <div>Mobile: </div><div><%= f.text_field :mobile %></div>
+  <div>Email: </div><div><%= f.text_field :email %></div>
+  <div>Password: </div><div><%= f.password_field :password %></div>
+  <div>Password Confirmation: </div><div><%= f.password_field :password_confirmation %></div>
+  <div><%= f.submit "Submit" %> <%= link_to 'Back', products_path %></div>
+
+<% end %>

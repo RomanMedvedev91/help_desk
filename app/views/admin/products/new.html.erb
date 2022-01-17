@@ -1,0 +1,49 @@
+<section class="admin-products-new">
+
+  <header class="page-header">
+    <h1>Admin &raquo; New Product</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to 'All Products', [:admin, :products], class: 'btn btn-info' %>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
+
+      <%= form_for [:admin, @product] do |form| %>
+
+        <% if form.object.errors.any? %>
+          <div class="alert alert-danger">
+            <strong>The following errors prevented saving:</strong>
+            <ul>
+              <% form.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+
+          <%= form.label :category_id %>
+          <% options = options_from_collection_for_select(@categories, 'id', 'code') %>
+          <%= form.select :category_id,  options %>
+          <div></div>
+
+          <%= form.label :code %>
+          <%= form.text_field :code, class: 'form-control' %>
+          
+          <%= form.label :model %>
+          <%= form.text_field :model, class: 'form-control' %>
+          
+          <%= form.label :description %>
+          <%= form.text_field :description, class: 'form-control' %>
+        </div>
+
+        <%= form.submit 'Create Category', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,27 @@
+<section class="admin-qa-index">
+
+  <header class="page-header">
+    <h1>Admin &raquo; QA</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to '+ New QA', [:new, :admin, :qa], class: 'btn btn-info' %>
+  </div>
+
+  <div class="panel panel-default qas">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>QA Category</th>
+          <th>Problem</th>
+          <th>Solution</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @qas %>
+      </tbody>
+    </table>
+  </div>
+</section>

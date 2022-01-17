@@ -1,0 +1,73 @@
+<section class="contracts-new">
+
+  <header class="page-header">
+    <h1>Admin &raquo; New Contract</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to 'All Tickets', [:tickets], class: 'btn btn-info' %>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
+      <%= form_for [@ticket] do |form| %>
+    
+        <% if form.object.errors.any? %>
+         <div class="alert alert-danger">
+            <strong>The following errors prevented saving:</strong>
+            <ul>
+              <% form.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+
+          <%= form.label :user_id %>
+          <%= form.text_field :user_id, class: 'form-control' %>
+
+          <%= form.label :technician_id %>
+          <%= form.text_field :technician_id, class: 'form-control' %>
+
+          <%= form.label :contract_product_id %>
+          <%= form.text_field :contract_product_id, class: 'form-control' %>
+
+          <%= form.label :ticket_property_id %>
+          <% options = options_from_collection_for_select(@ticket_priorities, 'id', 'code') %>
+          <%= form.select :ticket_priority_id,  options %>
+          <div></div>
+
+          <%= form.label :ticket_status_code_id %>
+          <% options = options_from_collection_for_select(@ticket_status_codes, 'id', 'code') %>
+          <%= form.select :ticket_status_code_id,  options %>
+          <div></div>
+
+          <%= form.label :ticket_type_id %>
+          <% options = options_from_collection_for_select(@ticket_types, 'id', 'code') %>
+          <%= form.select :ticket_type_id,  options %>
+          <div></div>
+
+          <%= form.label :problem_description %>
+          <%= form.text_field :problem_description, class: 'form-control' %>
+
+          <%= form.label :solution_description %>
+          <%= form.text_field :solution_description, class: 'form-control' %>
+
+          <%= form.label :assigned_at %>
+          <%= form.text_field :assigned_at, class: 'form-control' %>
+
+          <%= form.label :to_be_solved_at %>
+          <%= form.text_field :to_be_solved_at, class: 'form-control' %>
+
+          <%= form.label :closed_at %>
+          <%= form.text_field :closed_at, class: 'form-control' %>
+        </div>
+
+        <%= form.submit 'Create Contract', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+
+</section>

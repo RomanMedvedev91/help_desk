@@ -1,0 +1,26 @@
+<section class="admin-ticket_status_codes-index">
+
+  <header class="page-header">
+    <h1>Admin &raquo; Ticket Status</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to '+ New Ticket Status', [:new, :admin, :ticket_status_code], class: 'btn btn-info' %>
+  </div>
+
+  <div class="panel panel-default ticket_status_codes">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @ticket_status_codes %>
+      </tbody>
+    </table>
+  </div>
+</section>

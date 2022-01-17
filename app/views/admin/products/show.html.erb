@@ -1,0 +1,32 @@
+<section class="products-show">
+
+  <header class="page-header">
+    <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
+  </header>
+
+  <article class="product-detail">
+
+    <div class="row">
+
+      <div class="col-sm-4">
+        <%= image_tag @product.image.url, class: 'main-img' %>
+        <%= link_to 'Back', products_path %>
+      </div>
+
+      <div class="col-sm-8">
+        <dl class="dl-horizontal">
+          <dt>Category</dt>
+          <dd><%= @product.Category_id %></dd>
+          <dt>Code</dt>
+          <dd><%= @product.code %></dd>
+          <dt>Description</dt>
+          <dd><%= @product.description %></dd>
+          <dt>Model</dt>
+          <dd><%= @product.model %></dd>
+        </dl>
+      </div>
+    </div>
+
+  </article>
+
+</section>

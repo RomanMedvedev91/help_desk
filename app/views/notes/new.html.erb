@@ -1,0 +1,40 @@
+<section class="admin-qa-new">
+
+  <header class="page-header">
+    <h1>Admin &raquo; New Ticket Note</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to 'All QAs', [:admin, :notes], class: 'btn btn-info' %>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
+      <%= form_for [:admin, @note] do |form| %>
+    
+        <% if form.object.errors.any? %>
+          <div class="alert alert-danger">
+            <strong>The following errors prevented saving:</strong>
+            <ul>
+              <% form.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.label :ticket_id %>
+          <%= form.text_field :ticket_id, class: 'form-control' %>
+          <%= form.label :user_id %>
+          <%= form.text_field :user_id, class: 'form-control' %>
+          <%= form.label :description %>
+          <%= form.text_field :description, class: 'form-control' %>
+        </div>
+
+        <%= form.submit 'Create Ticket Note', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+
+</section>
