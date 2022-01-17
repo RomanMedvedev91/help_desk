@@ -1,16 +1,16 @@
 <section class="contracts-new">
 
   <header class="page-header">
-    <h1>Admin &raquo; New Contract</h1>
+    <h1>New Contract</h1>
   </header>
 
   <div class="well">
-    <%= link_to 'All Contract', [:admin, :contracts], class: 'btn btn-info' %>
+    <%= link_to 'All Contracts', [:contracts], class: 'btn btn-info' %>
   </div>
 
   <div class="row">
     <div class="col-sm-6 col-sm-offset-1">
-      <%= form_for [:admin, @contract] do |form| %>
+      <%= form_for [@contract] do |form| %>
     
         <% if form.object.errors.any? %>
          <div class="alert alert-danger">
@@ -26,12 +26,17 @@
         <div class="form-group">
           <%= form.label :user_id %>
           <%= form.text_field :user_id, class: 'form-control' %>
+
           <%= form.label :service_level_agreement_id %>
-          <%= form.text_field :service_level_agreement_id, class: 'form-control' %>
-          <%= form.label :sla_valid_start_date_id %>
-          <%= form.text_field :sla_valid_start_date_id, class: 'form-control' %>
-          <%= form.label :sla_valid_end_date_id %>
-          <%= form.text_field :sla_valid_end_date_id, class: 'form-control' %>
+          <% options = options_from_collection_for_select(@service_level_agreements, 'id', 'code') %>
+          <%= form.select :service_level_agreement_id,  options %>
+          <div></div>
+
+          <%= form.label :sla_valid_start_date %>
+          <%= form.text_field :sla_valid_start_date, class: 'form-control' %>
+
+          <%= form.label :sla_valid_end_date %>
+          <%= form.text_field :sla_valid_end_date, class: 'form-control' %>
         </div>
 
         <%= form.submit 'Create Contract', class: 'btn btn-primary' %>

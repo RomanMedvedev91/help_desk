@@ -11,4 +11,10 @@
   <td>
     <h4><%= contract.sla_valid_end_date %></h4>
   </td>
+  <td>
+    <%= link_to fa_icon('pencil-square-o'), contract, class: 'btn btn-default' do %>
+  </td>
+  <td>
+    <%= link_to fa_icon('trash'), [:admin, contract], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+  </td>
 </tr>

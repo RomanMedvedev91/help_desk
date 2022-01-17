@@ -101,17 +101,33 @@ rec1.code = "User"
 rec1.description = "User Is Customer"
 rec1.save
 
-rec1 = UserType.new
-rec1.code = "Technician"
-rec1.description = "Technician"
-rec1.save
+rec2 = UserType.new
+rec2.code = "Technician"
+rec2.description = "Technician"
+rec2.save
 
-rec1 = UserType.new
-rec1.code = "Admin"
-rec1.description = "Administrator"
-rec1.save
+rec3 = UserType.new
+rec3.code = "Admin"
+rec3.description = "Administrator"
+rec3.save
+
 
 #-----------------------------------------------------------------
+## User Type
+
+puts "Creating Users ..."
+User.destroy_all
+
+user1 = User.new
+user1.name = "Bob Dylan"
+user1.mobile = "613.888.8888"
+user1.email = "bdylan@email.com"
+user1.user_type_id = rec3.id
+user1.password_digest = "User Is Customer"
+user1.save
+
+
+#------------------------------------------------------------------
 ## QA Category
 
 puts "Creating QA Categories ..."
@@ -162,26 +178,26 @@ rec1.save
 puts "Creating Service Level Agreement ..."
 ServiceLevelAgreement.destroy_all
 
-rec1 = ServiceLevelAgreement.new
-rec1.code = "New Customer"
-rec1.description = "New Customer "
-rec1.business_days = 3
-rec1.business_hours = 0
-rec1.save
+sla1 = ServiceLevelAgreement.new
+sla1.code = "New Customer"
+sla1.description = "New Customer "
+sla1.business_days = 3
+sla1.business_hours = 0
+sla1.save
 
-rec1 = ServiceLevelAgreement.new
-rec1.code = "Repeat Customer"
-rec1.description = "Repeat Customer"
-rec1.business_days = 2
-rec1.business_hours = 0
-rec1.save
+sla2 = ServiceLevelAgreement.new
+sla2.code = "Repeat Customer"
+sla2.description = "Repeat Customer"
+sla2.business_days = 2
+sla2.business_hours = 0
+sla2.save
 
-rec1 = ServiceLevelAgreement.new
-rec1.code = "VIP"
-rec1.description = "VIP Customer"
-rec1.business_days = 0
-rec1.business_hours = 4
-rec1.save
+sla3 = ServiceLevelAgreement.new
+sla3.code = "VIP"
+sla3.description = "VIP Customer"
+sla3.business_days = 0
+sla3.business_hours = 4
+sla3.save
 
 #-----------------------------------------------------------------
 ## Category
@@ -298,5 +314,35 @@ cat3.products.create!({
   #quantity: 4
   #price: 64.99
 })
+
+
+#---------------------------------------------------------
+## Contract
+
+puts "Creating Contracts ..."
+Contract.destroy_all
+
+contract1 = Contract.new
+contract1.user_id = 2
+contract1.service_level_agreement_id = sla1.id
+contract1.sla_valid_start_date = -30.days.from_now
+contract1.sla_valid_end_date = 150.days.from_now
+contract1.save
+
+contract2 = ServiceLevelAgreement.new
+contract2.user_id = 2
+contract2.service_level_agreement_id = sla2.id
+contract2.sla_valid_start_date = -20.days.from_now
+contract2.sla_valid_end_date = 200.days.from_now
+contract2.save
+
+contract3 = ServiceLevelAgreement.new
+contract3.user_id = 2
+contract3.service_level_agreement_id = sla3.id
+contract3.sla_valid_start_date = -25.days.from_now
+contract3.sla_valid_end_date = 100.days.from_now
+contract3.save
+
+#-----------------------------------------------------------------
 
 puts "DONE!"
