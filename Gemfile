@@ -35,7 +35,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'stripe'
 gem 'faker'
-
+gem 'chartkick', '~> 2.2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

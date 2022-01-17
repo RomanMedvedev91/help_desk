@@ -4,9 +4,12 @@ class Admin::DashboardController < ApplicationController
       @category_count = Category.count
       @ticket_count = Ticket.count
       
-      @ticket_closed_count = Ticket.select(:assigned_at).count
-# => { 'Rome' => 5, 'Paris' => 3 }
+      @ticket_closed_count = Ticket.select(:closed_at).count
 
+      @category_new_count = Category.group(:code).count
+      @ticket_new_count = Ticket.group(:technician_id).count
+      
       
     end
+    
   end
