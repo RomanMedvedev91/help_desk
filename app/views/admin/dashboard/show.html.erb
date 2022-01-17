@@ -1,0 +1,31 @@
+<header class="page-header">
+    <h1>Dashboard</h1>
+  </header>
+
+  <table class="table table-bordered">
+  <thead>
+    <tr >
+      <th scope="col"></th>
+
+      <th scope="col" class="bg-info"> Product count</th>
+      <th scope="col" class="bg-info">Category count</th>
+      <th scope="col" class="bg-info"> Ticket count</th>
+      <th scope="col" class="bg-info"> Closed Ticket count</th>
+     
+
+    </tr>
+  </thead>
+  <tbody>
+
+
+    <tr class="bg-primary">
+      <th scope="row"></th>
+
+      <td class=" text-center status"><%= @product_count %></td>
+      <td class="text-center status"><%= @category_count %></td>
+      <td class="text-center status"><%= @ticket_count %></td>
+      <td class="text-center status"><%= @ticket_closed_count %></td>
+      <td class="text-center status"><%= @user_count %></td>
+    </tr>
+  </tbody>
+</table>
