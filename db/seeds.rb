@@ -20,103 +20,173 @@ unless Rails.env.development?
 end
 
 # Let's do this ...
+#------------------------------------------------------------------
+puts "Start Deleting All Records From Database"
+
+#Note.destroy.all
+Ticket.destroy_all
+
+ContractProduct.destroy_all
+Contract.destroy_all
+ServiceLevelAgreement.destroy_all
+
+User.destroy_all
+UserType.destroy_all
+
+Product.destroy_all
+Category.destroy_all
+
+Qa.destroy_all
+QaCategory.destroy_all
+
+TicketPriority.destroy_all
+TicketStatusCode.destroy_all
+TicketType.destroy_all
+
+puts "End Deleting All Records From Database"
 
 #------------------------------------------------------------------
 ## TICKET_PRIORITIES
 
 puts "Creating Ticket Priorities ..."
-TicketPriority.destroy_all
 
-rec1 = TicketPriority.new
-rec1.code = "Low"
-rec1.description = "Priority Low"
-rec1.business_days = 5
-rec1.business_hours = 0
-rec1.save
+priority1 = TicketPriority.new
+priority1.code = "Low"
+priority1.description = "Priority Low"
+priority1.business_days = 5
+priority1.business_hours = 0
+priority1.save
 
-rec1 = TicketPriority.new
-rec1.code = "Medium"
-rec1.description = "Priority Medium"
-rec1.business_days = 4
-rec1.business_hours = 0
-rec1.save
+priority2 = TicketPriority.new
+priority2.code = "Medium"
+priority2.description = "Priority Medium"
+priority2.business_days = 4
+priority2.business_hours = 0
+priority2.save
 
-rec1 = TicketPriority.new
-rec1.code = "High"
-rec1.description = "Priority High"
-rec1.business_days = 3
-rec1.business_hours = 0
-rec1.save
+priority3 = TicketPriority.new
+priority3.code = "High"
+priority3.description = "Priority High"
+priority3.business_days = 3
+priority3.business_hours = 0
+priority3.save
 
 #-----------------------------------------------------------------
 ## TICKET Status
 
 puts "Creating Ticket Status ..."
-TicketStatusCode.destroy_all
 
-rec1 = TicketStatusCode.new
-rec1.code = "Opened"
-rec1.description = "Status Opened"
-rec1.save
+status1 = TicketStatusCode.new
+status1.code = "Opened"
+status1.description = "Status Opened"
+status1.save
 
-rec1 = TicketStatusCode.new
-rec1.code = "Assigned"
-rec1.description = "Status Assigned"
-rec1.save
+status2 = TicketStatusCode.new
+status2.code = "Assigned"
+status2.description = "Status Assigned"
+status2.save
 
-rec1 = TicketStatusCode.new
-rec1.code = "Waiting"
-rec1.description = "Status Waiting"
-rec1.save
+status3 = TicketStatusCode.new
+status3.code = "Waiting"
+status3.description = "Status Waiting"
+status3.save
 
-rec1 = TicketStatusCode.new
-rec1.code = "Closed"
-rec1.description = "Status Closed"
-rec1.save
+status4 = TicketStatusCode.new
+status4.code = "Closed"
+status4.description = "Status Closed"
+status4.save
 
 #-----------------------------------------------------------------
 ## TICKET Type
 
 puts "Creating Ticket Types ..."
-TicketType.destroy_all
 
-rec1 = TicketType.new
-rec1.code = "Website"
-rec1.description = "Status Originated From WebSite"
-rec1.save
+type1 = TicketType.new
+type1.code = "Website"
+type1.description = "Status Originated From WebSite"
+type1.save
 
-rec1 = TicketType.new
-rec1.code = "Call"
-rec1.description = "Ticket Originated From A Call"
-rec1.save
+type2 = TicketType.new
+type2.code = "Call"
+type2.description = "Ticket Originated From A Call"
+type2.save
 
 #-----------------------------------------------------------------
 ## User Type
 
 puts "Creating User Types ..."
-UserType.destroy_all
 
-rec1 = UserType.new
-rec1.code = "User"
-rec1.description = "User Is Customer"
-rec1.save
+user_type1 = UserType.new
+user_type1.code = "User"
+user_type1.description = "User Is Customer"
+user_type1.save
 
-rec1 = UserType.new
-rec1.code = "Technician"
-rec1.description = "Technician"
-rec1.save
+user_type2 = UserType.new
+user_type2.code = "Technician"
+user_type2.description = "Technician"
+user_type2.save
 
-rec1 = UserType.new
-rec1.code = "Admin"
-rec1.description = "Administrator"
-rec1.save
+user_type3 = UserType.new
+user_type3.code = "Admin"
+user_type3.description = "Administrator"
+user_type3.save
+
 
 #-----------------------------------------------------------------
+## Users
+
+puts "Creating Users ..."
+
+user1 = User.new
+user1.name = "Bob Dylan"
+user1.mobile = "613.888.8888"
+user1.email = "bdylan@email.com"
+user1.user_type_id = user_type3.id
+user1.password = "123456"
+user1.password_confirmation = "123456"
+# user1.password_digest = "$2a$12$Fzzaxc57hUCpmPkYyK54KeShZujLX3LJfACeJIhm4/H0zY1/USb.i"
+user1.save
+
+user2 = User.new
+user2.name = "Eric Clapton"
+user2.mobile = "613.777.7777"
+user2.email = "eclapton@email.com"
+user2.user_type_id = user_type2.id
+user2.password = "123456"
+user2.password_confirmation = "123456"
+user2.save
+
+user3 = User.new
+user3.name = "Jimi Hendrix"
+user3.mobile = "613.555.5555"
+user3.email = "jhendrix@email.com"
+user3.user_type_id = user_type2.id
+user3.password = "123456"
+user3.password_confirmation = "123456"
+user3.save
+
+user4 = User.new
+user4.name = "Jimi Page"
+user4.mobile = "613.444.4444"
+user4.email = "jpage@email.com"
+user4.user_type_id = user_type1.id
+user4.password = "123456"
+user4.password_confirmation = "123456"
+user4.save
+
+user5 = User.new
+user5.name = "Alvin Lee"
+user5.mobile = "613.222.2222"
+user5.email = "alee@email.com"
+user5.user_type_id = user_type1.id
+user5.password = "123456"
+user5.password_confirmation = "123456"
+user5.save
+
+#------------------------------------------------------------------
 ## QA Category
 
 puts "Creating QA Categories ..."
-Qa.destroy_all
-QaCategory.destroy_all
 
 qa_category1 = QaCategory.new
 qa_category1.code = "Hardware"
@@ -136,7 +206,6 @@ qa_category3.save
 ## QAs
 
 puts "Creating QAs ..."
-#Qa.destroy_all
 
 rec1 = Qa.new
 rec1.qa_category_id = qa_category1.id
@@ -160,35 +229,32 @@ rec1.save
 ## SLA
 
 puts "Creating Service Level Agreement ..."
-ServiceLevelAgreement.destroy_all
 
-rec1 = ServiceLevelAgreement.new
-rec1.code = "New Customer"
-rec1.description = "New Customer "
-rec1.business_days = 3
-rec1.business_hours = 0
-rec1.save
+sla1 = ServiceLevelAgreement.new
+sla1.code = "New Customer"
+sla1.description = "New Customer "
+sla1.business_days = 3
+sla1.business_hours = 0
+sla1.save
 
-rec1 = ServiceLevelAgreement.new
-rec1.code = "Repeat Customer"
-rec1.description = "Repeat Customer"
-rec1.business_days = 2
-rec1.business_hours = 0
-rec1.save
+sla2 = ServiceLevelAgreement.new
+sla2.code = "Repeat Customer"
+sla2.description = "Repeat Customer"
+sla2.business_days = 2
+sla2.business_hours = 0
+sla2.save
 
-rec1 = ServiceLevelAgreement.new
-rec1.code = "VIP"
-rec1.description = "VIP Customer"
-rec1.business_days = 0
-rec1.business_hours = 4
-rec1.save
+sla3 = ServiceLevelAgreement.new
+sla3.code = "VIP"
+sla3.description = "VIP Customer"
+sla3.business_days = 0
+sla3.business_hours = 4
+sla3.save
 
 #-----------------------------------------------------------------
 ## Category
 
 puts "Creating Product Categories ..."
-Product.destroy_all
-Category.destroy_all
 
 cat1 = Category.new
 cat1.code = "Laptop"
@@ -209,94 +275,170 @@ cat3.save
 ## PRODUCTS
 
 puts "Creating Products ..."
-#Product.destroy_all
 
-# rec1 = Product.new
-# re1.category_id = 1
-# re1.code =  'Toshiba'
-# re1.model = 'SX100'
-# re1.description = "Description 1"
-# re1.quantity = 10
-# rec1.save
+product1 = Product.new
+product1.category_id = cat1.id
+product1.code =  'Toshiba'
+product1.model = 'SX100'
+product1.description = "Description 1"
+product1.save
 
-# rec1 = Product.new
-# rec1.code = "VIP"
-# rec1.description = "VIP Customer"
-# rec1.business_days = 0
-# rec1.business_hours = 4
-# rec1.save
+product2 = Product.new
+product2.category_id = cat1.id
+product2.code =  'HP'
+product2.model = 'MN09DL2'
+product2.description = "Description 2"
+product2.save
 
-cat1.products.create!({
-  code:  'Toshiba',
-  model: 'SX100',
-  description: "Description 1"
-  #image: open_asset('apparel1.jpg'),
-  #quantity: 10
-  #price: 64.99
-})
+product3 = Product.new
+product3.category_id = cat1.id
+product3.code =  'Dell'
+product3.model = 'AHR-0900'
+product3.description = "Description 3"
+product3.save
 
-cat1.products.create!({
-  code:  'HP',
-  model: 'LL100',
-  description: "Description 2"
-  #image: open_asset('apparel1.jpg'),
-  #quantity: 17
-  #price: 64.99
-})
+product4 = Product.new
+product4.category_id = cat2.id
+product4.code =  'Toshiba'
+product4.model = 'SX300'
+product4.description = "Description 4"
+product4.save
 
-cat1.products.create!({
-  code:  'DELL',
-  model: 'JZ100',
-  description: "Description 3"
-  #image: open_asset('apparel1.jpg'),
-  #quantity: 30
-  #price: 64.99
-})
+product5 = Product.new
+product5.category_id = cat2.id
+product5.code =  'HP'
+product5.model = 'LDKJP9JD'
+product5.description = "Description 5"
+product5.save
 
-cat2.products.create!({
-  code:  'Samsung',
-  model: 'CB100',
-  description: "Description 4"
-  #image: open_asset('apparel1.jpg'),
-  #quantity: 14
-  #price: 64.99
-})
+product6 = Product.new
+product6.category_id = cat2.id
+product6.code =  'Dell'
+product6.model = 'LKHIDKD'
+product6.description = "Description 6"
+product6.save
 
-cat2.products.create!({
-  code:  'HP',
-  model: 'ABC',
-  description: "Description 5"
-  #image: open_asset('apparel1.jpg'),
-  #quantity: 8
-  #price: 64.99
-})
+product7 = Product.new
+product7.category_id = cat3.id
+product7.code =  'Toshiba'
+product7.model = 'R2DKKDLL'
+product7.description = "Description 7"
+product7.save
 
+product8 = Product.new
+product8.category_id = cat3.id
+product8.code =  'HP'
+product8.model = 'BR2KDJDKK'
+product8.description = "Description 8"
+product8.save
 
-cat3.products.create!({
-  code:  'HP',
-  model: 'HP100',
-  description: "Description 6"
-  #image: open_asset('apparel1.jpg'),
-  #quantity: 7
-  #price: 64.99
-})
+product9 = Product.new
+product9.category_id = cat3.id
+product9.code =  'Dell'
+product9.model = 'JLLDKKDK9'
+product9.description = "Description 9"
+product9.save
 
-cat3.products.create!({
-  code:  'DELL',
-  model: 'XPN01',
-  description: "Description 7"
-  #image: open_asset('apparel1.jpg'),
-  #quantity: 3
-  #price: 64.99
-})
+#---------------------------------------------------------
+## Contract
 
-cat3.products.create!({
-  code:  'DELL',
-  model: 'RNG00',
-  description: "Description 8"
-  #image: open_asset('apparel1.jpg'),
-  #quantity: 4
-  #price: 64.99
-})
+puts "Creating Contracts ..."
+
+contract1 = Contract.new
+contract1.user_id = user4.id
+contract1.service_level_agreement_id = sla1.id
+contract1.sla_valid_start_date = -30.days.from_now
+contract1.sla_valid_end_date = 150.days.from_now
+contract1.save
+
+contract2 = Contract.new
+contract2.user_id = user4.id
+contract2.service_level_agreement_id = sla2.id
+contract2.sla_valid_start_date = -20.days.from_now
+contract2.sla_valid_end_date = 200.days.from_now
+contract2.save
+
+contract3 = Contract.new
+contract3.user_id = user5.id
+contract3.service_level_agreement_id = sla3.id
+contract3.sla_valid_start_date = -25.days.from_now
+contract3.sla_valid_end_date = 100.days.from_now
+contract3.save
+
+#-----------------------------------------------------------------
+## Contract_Products
+
+puts "Creating Contract Products ..."
+
+contract_product1 = ContractProduct.new
+contract_product1.contract_id = contract1.id
+contract_product1.product_id = product1.id
+contract_product1.serial_number = 'JKR00039872jdkd'
+contract_product1.save
+
+contract_product2 = ContractProduct.new
+contract_product2.contract_id = contract2.id
+contract_product2.product_id = product2.id
+contract_product2.serial_number = 'JKR00039872jdkd'
+contract_product2.save
+
+contract_product3 = ContractProduct.new
+contract_product3.contract_id = contract3.id
+contract_product3.product_id = product3.id
+contract_product3.serial_number = 'JKR00039872jdkd'
+contract_product3.save
+
+#-----------------------------------------------------------------
+
+## Tickets
+
+puts "Creating Tickets ..."
+
+ticket1 = Ticket.new
+ticket1.user_id = user4.id
+ticket1.reference = "AB100"
+ticket1.technician_id = user2.id
+ticket1.contract_product_id = contract_product1.id
+ticket1.ticket_type_id = type1.id
+ticket1.ticket_status_code_id = status1.id
+ticket1.ticket_priority_id = priority1.id
+ticket1.problem_description = "It is not working"
+ticket1.solution_description = ""
+ticket1.assigned_at = -1.days.from_now
+ticket1.closed_at = ''
+ticket1.to_be_solved_at = 1.days.from_now
+ticket1.save
+
+ticket2 = Ticket.new
+ticket2.user_id = user5.id
+ticket2.reference = "AB101"
+ticket2.technician_id = user3.id
+ticket2.contract_product_id = contract_product2.id
+ticket2.ticket_type_id = type2.id
+ticket2.ticket_status_code_id = status2.id
+ticket2.ticket_priority_id = priority2.id
+ticket2.problem_description = "It is not working at all"
+ticket2.solution_description = ""
+ticket2.assigned_at = -1.days.from_now
+ticket2.closed_at = ''
+ticket2.to_be_solved_at = 1.days.from_now
+ticket2.save
+
+ticket3 = Ticket.new
+ticket3.user_id = user5.id
+ticket3.reference = "AB105"
+ticket3.technician_id = user4.id
+ticket3.contract_product_id = contract_product2.id
+ticket3.ticket_type_id = type1.id
+ticket3.ticket_status_code_id = status3.id
+ticket3.ticket_priority_id = priority2.id
+ticket3.problem_description = "It is not working at all.No matter what I do"
+ticket3.solution_description = ""
+ticket3.assigned_at = -3.days.from_now
+ticket3.closed_at = ''
+ticket3.to_be_solved_at = 2.days.from_now
+ticket3.save
+
+#-----------------------------------------------------------------
 
 puts "DONE!"

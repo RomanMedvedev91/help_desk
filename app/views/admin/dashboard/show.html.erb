@@ -5,12 +5,13 @@
   <table class="table table-bordered">
   <thead>
     <tr >
-      <th scope="col"></th>
+      
 
       <th scope="col" class="bg-info"> Product count</th>
       <th scope="col" class="bg-info">Category count</th>
       <th scope="col" class="bg-info"> Ticket count</th>
-      <th scope="col" class="bg-info"> Closed Ticket count</th>
+      <th scope="col" class="bg-info"> Closed Tickets</th>
+      <th scope="col" class="bg-info"> category count</th>
      
 
     </tr>
@@ -19,13 +20,22 @@
 
 
     <tr class="bg-primary">
-      <th scope="row"></th>
+      
 
       <td class=" text-center status"><%= @product_count %></td>
       <td class="text-center status"><%= @category_count %></td>
       <td class="text-center status"><%= @ticket_count %></td>
       <td class="text-center status"><%= @ticket_closed_count %></td>
-      <td class="text-center status"><%= @user_count %></td>
+      <td class="text-center status"><%= @category_new_count %></td>
+    
     </tr>
   </tbody>
 </table>
+
+
+<% @category_new_count.each do |category| %>
+    Name: <br /> <%= category %><br />
+    <% end %>
+
+    
+    <div id="chart-container"></div>
