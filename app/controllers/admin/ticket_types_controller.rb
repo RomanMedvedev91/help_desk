@@ -25,6 +25,25 @@ module Admin
       @ticket_types = TicketType.find params[:id]
     end
 
+    def edit
+      @ticket_type = TicketType.find params[:id]
+    end
+  
+    def update
+      @ticket_type = TicketType.find(params[:id])
+      if @ticket_type.update(ticket_type_params)
+        redirect_to [:admin, :ticket_types], notice: "Ticket Type Updated"
+      else
+        render :edit
+      end
+    end
+  
+    def destroy
+      @ticket_type = TicketType.find params[:id]
+      @ticket_type.destroy
+      redirect_to [:admin, :ticket_types], notice: 'Ticket Type deleted!'
+    end
+
     private
     def ticket_type_params
       params.require(:ticket_type).permit(

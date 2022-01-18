@@ -10,7 +10,7 @@
 
   <div class="row">
     <div class="col-sm-6 col-sm-offset-1">
-      <%= form_for [:admin, @ticket_priorities] do |form| %>
+      <%= form_for [:admin, @ticket_priority] do |form| %>
     
         <% if form.object.errors.any? %>
           <div class="alert alert-danger">
@@ -29,9 +29,9 @@
           <%= form.label :description %>
           <%= form.text_field :description, class: 'form-control' %>
           <%= form.label :business_days %>
-          <%= form.text_field :business_days, class: 'form-control' %>
+          <%= form.number_field :business_days, class: 'form-control' %>
           <%= form.label :business_hours %>
-          <%= form.text_field :business_hours, class: 'form-control' %>
+          <%= form.number_field :business_hours, class: 'form-control' %>
         </div>
 
         <%= form.submit 'Create Priority', class: 'btn btn-primary' %>

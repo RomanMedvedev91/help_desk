@@ -1,7 +1,7 @@
-<section class="tickets-new">
+<section class="ticket-new">
 
   <header class="page-header">
-    <h1>New Ticket</h1>
+    <h1>Edit Ticket</h1>
   </header>
 
   <div class="well">
@@ -11,7 +11,7 @@
   <div class="row">
     <div class="col-sm-6 col-sm-offset-1">
       <%= form_for [@ticket] do |form| %>
-
+    
         <% if form.object.errors.any? %>
          <div class="alert alert-danger">
             <strong>The following errors prevented saving:</strong>
@@ -32,27 +32,27 @@
           <%= form.text_field :user_id, class: 'form-control' %>
 
           <%= form.label :technician_id %>
-          <% options = options_from_collection_for_select(@technicians, 'id', 'name') %>
+          <% options = options_from_collection_for_select(@technicians, 'id', 'name', @ticket.technician_id) %>
           <%= form.select :technician_id,  options %>
           <div></div>
 
           <%= form.label :contract_product_id %>
-          <% options = options_from_collection_for_select(@contract_products, 'id', 'serial_number') %>
+          <% options = options_from_collection_for_select(@contract_products, 'id', 'serial_number', @ticket.contract_product_id) %>
           <%= form.select :contract_product_id,  options %>
           <div></div>
 
           <%= form.label :ticket_property_id %>
-          <% options = options_from_collection_for_select(@ticket_priorities, 'id', 'code') %>
+          <% options = options_from_collection_for_select(@ticket_priorities, 'id', 'code', @ticket.ticket_priority_id) %>
           <%= form.select :ticket_priority_id,  options %>
           <div></div>
 
           <%= form.label :ticket_status_code_id %>
-          <% options = options_from_collection_for_select(@ticket_status_codes, 'id', 'code') %>
+          <% options = options_from_collection_for_select(@ticket_status_codes, 'id', 'code',  @ticket.ticket_status_code_id) %>
           <%= form.select :ticket_status_code_id,  options %>
           <div></div>
 
           <%= form.label :ticket_type_id %>
-          <% options = options_from_collection_for_select(@ticket_types, 'id', 'code') %>
+          <% options = options_from_collection_for_select(@ticket_types, 'id', 'code', @ticket.ticket_type_id) %>
           <%= form.select :ticket_type_id,  options %>
           <div></div>
 
@@ -63,16 +63,16 @@
           <%= form.text_field :solution_description, class: 'form-control' %>
 
           <%= form.label :assigned_at %>
-          <%= form.datetime_field :assigned_at, class: 'form-control' %>
+          <%= form.datetime_local_field  :assigned_at, class: 'form-control' %>
 
           <%= form.label :to_be_solved_at %>
-          <%= form.datetime_field :to_be_solved_at, class: 'form-control' %>
+          <%= form.datetime_local_field  :to_be_solved_at, class: 'form-control' %>
 
           <%= form.label :closed_at %>
-          <%= form.datetime_field :closed_at, class: 'form-control' %>
+          <%= form.datetime_local_field  :closed_at, class: 'form-control' %>
         </div>
 
-        <%= form.submit 'Create Ticket', class: 'btn btn-primary' %>
+        <%= form.submit 'Update Ticket', class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>

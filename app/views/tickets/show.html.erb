@@ -1,0 +1,59 @@
+<section class="tickets-show">
+
+  <header class="page-header">
+    <h1>Show Ticket</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to 'All Tickets', [:tickets], class: 'btn btn-info' %>
+  </div>
+
+  <article class="product-detail">
+
+    <div class="row">
+      <div class="col-sm-4">
+        <dl class="dl-horizontal">
+
+          <dt>Client</dt>
+          <dd><%= User.find(@ticket.user_id).name %></dd>
+
+          <dt>Technician</dt>
+          <dd><%= User.find(@ticket.technician_id).name %></dd>
+
+          <dt>Product</dt>
+          <dd><%= ContractProduct.find(@ticket.contract_product_id).serial_number %></dd>
+
+          <dt>Priority</dt>
+          <dd><%= TicketPriority.find(@ticket.ticket_priority_id).code %></dd>
+          <dt>Status</dt>
+          <dd><%= TicketStatusCode.find(@ticket.ticket_status_code_id).code %></dd>
+          <dt>Type</dt>
+          <dd><%= TicketType.find(@ticket.ticket_type_id).code %></dd>
+
+        </dl>
+      </div>
+
+      <div class="col-sm-8">
+        <dl class="dl-horizontal">
+
+          <dt>Problem</dt>
+          <dd><%= @ticket.problem_description %></dd>
+
+          <dt>Solution</dt>
+          <dd><%= @ticket.solution_description %></dd>
+
+          <dt>Assigned At</dt>
+          <dd><%= @ticket.assigned_at %></dd>
+
+          <dt>To Be Solved At</dt>
+          <dd><%= @ticket.to_be_solved_at %></dd>
+
+          <dt>Closed At</dt>
+          <dd><%= @ticket.closed_at %></dd>
+        </dl>
+      </div>
+    </div>
+
+  </article>
+
+</section>

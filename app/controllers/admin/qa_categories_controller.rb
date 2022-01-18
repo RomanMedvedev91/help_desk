@@ -8,11 +8,11 @@ module Admin
     end
 
     def new
-      @qa_categories = QaCategory.new
+      @qa_category = QaCategory.new
     end
   
     def create
-      @qa_category = QaCategory.new(qa_params)
+      @qa_category = QaCategory.new(qa_category_params)
   
       if @qa_category.save
         redirect_to [:admin, :qa_categories], notice: 'Q&A Category created!'
@@ -25,6 +25,26 @@ module Admin
       @qa_category = QaCategory.find params[:id]
     end
 
+    def edit
+      @qa_category = QaCategory.find params[:id]
+    end
+  
+    def update
+      @qa_category = QaCategory.find(params[:id])
+      if @qa_category.update(qa_category_params)
+        redirect_to [:admin, :qa_categories], notice: "QA Category Updated"
+      else
+        render :edit
+      end
+    end
+  
+    def destroy
+      @qa_category = QaCategory.find params[:id]
+      @qa_category.destroy
+      redirect_to [:admin, :qa_categories], notice: 'QA Category deleted!'
+    end
+  
+
     private
     def qa_category_params
       params.require(:qa_category).permit(
@@ -34,5 +54,3 @@ module Admin
     end
   end
 end
-
-

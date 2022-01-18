@@ -11,7 +11,7 @@ module Admin
       @qa = Qa.new
       @qa_categories = QaCategory.all.order(created_at: :desc)
     end
-  
+
     def create
       @qa = Qa.new(qa_params)
   
@@ -26,6 +26,26 @@ module Admin
       @qa = Qa.find params[:id]
     end
 
+    def edit
+      @qa = Qa.find params[:id]
+      @qa_categories = QaCategory.all  
+    end
+  
+    def update
+      @qa = Qa.find(params[:id])
+      if @qa.update(qa_params)
+        redirect_to [:admin, :qas], notice: "QA Updated"
+      else
+        render :edit
+      end
+    end
+  
+    def destroy
+      @qa = Qa.find params[:id]
+      @qa.destroy
+      redirect_to [:admin, :qas], notice: 'QA deleted!'
+    end
+  
     private
     def qa_params
       params.require(:qa).permit(

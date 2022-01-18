@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  belongs_to :user_type
+
   has_secure_password
 
   validates :name, presence: true

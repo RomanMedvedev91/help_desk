@@ -9,12 +9,13 @@ class ContractsController < ApplicationController
   def new
     @contract = Contract.new
     @service_level_agreements = ServiceLevelAgreement.all
+    @users = User.all
   end
 
   def create
     @contract = Contract.new(contract_params)
 
-    if @ticket.save
+    if @contract.save
       redirect_to [:contracts], notice: 'Contract created!'
     else
       render :new
@@ -24,6 +25,28 @@ class ContractsController < ApplicationController
   def show
     @contract = Contract.find params[:id]
   end
+
+  def edit
+    @contract = Contract.find params[:id]
+    @service_level_agreements = ServiceLevelAgreement.all
+    @users = User.all
+  end
+
+  def update
+    @contract = Contract.find(params[:id])
+    if @contract.update(contract_params)
+      redirect_to [:contracts], notice: "Contract Updated"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @contract = Contract.find params[:id]
+    @contract.destroy
+    redirect_to [:contracts], notice: 'Contract deleted!'
+  end
+
 
   private
   def contract_params

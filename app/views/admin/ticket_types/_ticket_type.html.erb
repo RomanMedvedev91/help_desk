@@ -5,4 +5,11 @@
   <td>
     <h4><%= ticket_type.description %></h4>
   </td>
+  <td>
+    <%= link_to fa_icon('edit'), edit_admin_ticket_type_path(ticket_type), class: 'btn btn-sm btn-primary' %>
+  </td>
+  <td>
+    <%= link_to fa_icon('trash'), [:admin, ticket_type], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+  </td>
+
 </tr>

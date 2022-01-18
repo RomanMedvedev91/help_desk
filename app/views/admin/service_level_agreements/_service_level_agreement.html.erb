@@ -11,4 +11,11 @@
   <td>
     <h4><%= service_level_agreement.business_hours %></h4>
   </td>
+  <td>
+    <%= link_to fa_icon('edit'), edit_admin_service_level_agreement_path(service_level_agreement), class: 'btn btn-sm btn-primary' %>
+  </td>
+  <td>
+    <%= link_to fa_icon('trash'), [:admin, service_level_agreement], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+  </td>
+
 </tr>

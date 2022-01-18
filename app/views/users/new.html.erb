@@ -10,8 +10,8 @@
 
   <div>Name: </div><div><%= f.text_field :name %></div>
   <div>Type: </div><div><%= f.text_field :user_type_id %></div>
-  <div>Mobile: </div><div><%= f.text_field :mobile %></div>
-  <div>Email: </div><div><%= f.text_field :email %></div>
+  <div>Mobile: </div><div><%= f.telephone_field :mobile %></div>
+  <div>Email: </div><div><%= f.email_field :email %></div>
   <div>Password: </div><div><%= f.password_field :password %></div>
   <div>Password Confirmation: </div><div><%= f.password_field :password_confirmation %></div>
   <div><%= f.submit "Submit" %> <%= link_to 'Back', tickets_path %></div>

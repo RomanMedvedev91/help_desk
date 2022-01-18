@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root to: 'tickets#index'
 
   resources :about, only: [:index]
-  resources :contracts, only: [:index, :show, :new]
-  resources :tickets, only: [:index, :show, :new]
+
+  resources :contracts, only: [:index, :show, :new, :edit, :update, :create, :destroy]
+  resources :tickets, only: [:index, :show, :new, :edit, :update, :create, :destroy]
+  resources :qas, only: [:index, :show, :new, :edit, :update, :create, :destroy]
   
   # resources :categories, only: [:show]
 
@@ -18,19 +20,19 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'dashboard#show'
 
-    resources :categories, except: [:edit, :update, :show, :destroy]
-    resources :products, except: [:edit, :update, :show]
+    resources :categories, only: [:index, :show, :new, :edit, :update, :create, :destroy]
+    resources :products, only: [:index, :show, :new, :edit, :update, :create, :destroy]
 
-    resources :service_level_agreements, except: [:edit, :update, :show, :destroy]
+    resources :service_level_agreements, only: [:index, :show, :new, :edit, :update, :create, :destroy]
 
-    resources :ticket_priorities, except: [:edit, :update, :show, :destroy]
-    resources :ticket_status_codes, except: [:edit, :update, :show, :destroy]
-    resources :ticket_types, except: [:edit, :update, :show, :destroy]
+    resources :ticket_priorities, only: [:index, :show, :new, :edit, :update, :create, :destroy]
+    resources :ticket_status_codes, only: [:index, :show, :new, :edit, :update, :create, :destroy]
+    resources :ticket_types, only: [:index, :show, :new, :edit, :update, :create, :destroy]
 
-    resources :user_types, except: [:edit, :update, :show, :destroy]
+    resources :user_types, only: [:index, :show, :new, :edit, :update, :create, :destroy]
 
-    resources :qa_categories, except: [:edit, :update, :show, :destroy]
-    resources :qas, except: [:edit, :update, :show, :destroy]
+    resources :qa_categories, only: [:index, :show, :new, :edit, :update, :create, :destroy]
+    resources :qas, only: [:index, :show, :new, :edit, :update, :create, :destroy]
   end
 
   # these routes are for showing users a login form, logging them in, and logging them out.

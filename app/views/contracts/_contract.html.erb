@@ -1,9 +1,9 @@
 <tr>
   <td>
-    <h4><%= contract.user_id %></h4>
+    <h4><%= User.find(contract.user_id).name %></h4>
   </td>
   <td>
-    <h4><%= contract.service_level_agreement_id %></h4>
+    <h4><%= ServiceLevelAgreement.find(contract.service_level_agreement_id).code %></h4>
   </td>
   <td>
     <h4><%= contract.sla_valid_start_date %></h4>
@@ -11,4 +11,11 @@
   <td>
     <h4><%= contract.sla_valid_end_date %></h4>
   </td>
+  <td>
+    <%= link_to fa_icon('edit'), edit_contract_path(contract), class: 'btn btn-sm btn-primary' %>
+  </td>
+  <td>
+    <%= link_to fa_icon('trash'), [contract], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+  </td>
+
 </tr>

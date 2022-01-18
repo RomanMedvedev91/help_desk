@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <h4><%= product.category_id %></h4>
+    <h4><%= Category.find(product.category_id).code %></h4>
   </td>
   <td>
     <h4><%= product.code %></h4>
@@ -11,4 +11,11 @@
   <td>
     <h4><%= product.model %></h4>
   </td>
+  <td>
+    <%= link_to fa_icon('edit'), edit_admin_product_path(product), class: 'btn btn-sm btn-primary' %>
+  </td>
+  <td>
+    <%= link_to fa_icon('trash'), [:admin, product], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+  </td>
+
 </tr>

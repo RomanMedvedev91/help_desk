@@ -26,6 +26,25 @@ module Admin
       @category = Category.find params[:id]
     end
 
+    def edit
+      @category = Category.find params[:id]
+    end
+  
+    def update
+      @category = Category.find(params[:id])
+      if @category.update(category_params)
+        redirect_to [:admin, :categories], notice: "Category Updated"
+      else
+        render :edit
+      end
+    end
+  
+    def destroy
+      @category = Category.find params[:id]
+      @category.destroy
+      redirect_to [:admin, :categories], notice: 'Category deleted!'
+    end
+  
     private
     def category_params
       params.require(:category).permit(
@@ -33,10 +52,5 @@ module Admin
         :description
       )
     end
-  
   end
 end
-
-
-  
-

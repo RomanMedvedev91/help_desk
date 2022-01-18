@@ -5,4 +5,11 @@
   <td>
     <h4><%= ticket_status_code.description %></h4>
   </td>
+  <td>
+    <%= link_to fa_icon('edit'), edit_admin_ticket_status_code_path(ticket_status_code), class: 'btn btn-sm btn-primary' %>
+  </td>
+  <td>
+    <%= link_to fa_icon('trash'), [:admin, ticket_status_code], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+  </td>
+
 </tr>

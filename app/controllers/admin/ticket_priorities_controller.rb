@@ -26,6 +26,25 @@ module Admin
       @ticket_priority = TicketPriority.find params[:id]
     end
 
+    def edit
+      @ticket_priority = TicketPriority.find params[:id]
+    end
+  
+    def update
+      @ticket_priority = TicketPriority.find(params[:id])
+      if @ticket_priority.update(ticket_priority_params)
+        redirect_to [:admin, :ticket_priorities], notice: "Ticket Priority Updated"
+      else
+        render :edit
+      end
+    end
+  
+    def destroy
+      @ticket_priority = TicketPriority.find params[:id]
+      @ticket_priority.destroy
+      redirect_to [:admin, :ticket_priorities], notice: 'Ticket Priority deleted!'
+    end
+  
     private
     def ticket_priority_params
       params.require(:ticket_priority).permit(

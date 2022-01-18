@@ -12,7 +12,7 @@ module Admin
     end
   
     def create
-      @cticket_status_code = TicketStatusCode.new(ticket_priority_params)
+      @ticket_status_code = TicketStatusCode.new(ticket_status_code_params)
   
       if @ticket_status_code.save
         redirect_to [:admin, :ticket_status_codes], notice: 'Ticket Status Code created!'
@@ -25,6 +25,25 @@ module Admin
       @ticket_status_code = TicketStatusCode.find params[:id]
     end
 
+    def edit
+      @ticket_status_code = TicketStatusCode.find params[:id]
+    end
+  
+    def update
+      @ticket_status_code = TicketStatusCode.find(params[:id])
+      if @ticket_status_code.update(ticket_status_code_params)
+        redirect_to [:admin, :ticket_status_codes], notice: "Ticket Status Updated"
+      else
+        render :edit
+      end
+    end
+  
+    def destroy
+      @ticket_status_code = TicketStatusCode.find params[:id]
+      @ticket_status_code.destroy
+      redirect_to [:admin, :ticket_status_codes], notice: 'Ticket Status deleted!'
+    end
+  
     private
     def ticket_status_code_params
       params.require(:ticket_status_code).permit(

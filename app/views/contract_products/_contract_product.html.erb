@@ -8,4 +8,11 @@
   <td>
     <h4><%= contract_product.serial_number %></h4>
   </td>
+  <td>
+    <%= link_to fa_icon('edit'), edit_contract_product_path(contract_product), class: 'btn btn-sm btn-primary' %>
+  </td>
+  <td>
+    <%= link_to fa_icon('trash'), [contract_product], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+  </td>
+
 </tr>

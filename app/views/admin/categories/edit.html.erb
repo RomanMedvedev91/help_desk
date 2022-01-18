@@ -1,19 +1,19 @@
-<section class="admin-ticket_types-new">
+<section class="product-new">
 
   <header class="page-header">
-    <h1>Admin &raquo; New Ticket Type Code</h1>
+    <h1>Edit Category</h1>
   </header>
 
   <div class="well">
-    <%= link_to 'All Ticket Type', [:admin, :ticket_types], class: 'btn btn-info' %>
+    <%= link_to 'All Categories', [:admin, :categories], class: 'btn btn-info' %>
   </div>
 
   <div class="row">
     <div class="col-sm-6 col-sm-offset-1">
-      <%= form_for [:admin, @ticket_type] do |form| %>
+      <%= form_for [:admin, @category] do |form| %>
     
         <% if form.object.errors.any? %>
-          <div class="alert alert-danger">
+         <div class="alert alert-danger">
             <strong>The following errors prevented saving:</strong>
             <ul>
               <% form.object.errors.full_messages.each do |error| %>
@@ -24,13 +24,15 @@
         <% end %>
 
         <div class="form-group">
+
           <%= form.label :code %>
           <%= form.text_field :code, class: 'form-control' %>
+
           <%= form.label :description %>
           <%= form.text_field :description, class: 'form-control' %>
         </div>
 
-        <%= form.submit 'Create Ticket Type', class: 'btn btn-primary' %>
+        <%= form.submit 'Update Category', class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>

@@ -12,6 +12,12 @@ class TicketsController < ApplicationController
     @ticket_types = TicketType.all
     @ticket_status_codes = TicketStatusCode.all
 
+    @type = UserType.find_by_code('Technician')
+    @technicians = @type.users
+
+    @contracts = Contract.find_by_user_id(27)  #(current_user.id)
+    @contract_products = @contracts.contract_products 
+    # @products = @contract_products.products
   end
 
   def create
@@ -28,6 +34,35 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find params[:id]
   end
 
+  def edit
+    @ticket = Ticket.find params[:id]
+    @ticket_priorities = TicketPriority.all
+    @ticket_types = TicketType.all
+    @ticket_status_codes = TicketStatusCode.all
+
+    @type = UserType.find_by_code('Technician')
+    @technicians = @type.users
+
+    @contracts = Contract.find_by_user_id(27)  #(current_user.id)
+    @contract_products = @contracts.contract_products 
+
+  end
+
+  def update
+    @ticket = Ticket.find(params[:id])
+    if @ticket.update(ticket_params)
+      redirect_to [:tickets], notice: "Ticket Updated"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @ticket = Ticket.find params[:id]
+    @ticket.destroy
+    redirect_to [:tickets], notice: 'Ticket deleted!'
+  end
+
   private
   def ticket_params
     params.require(:ticket).permit(
@@ -40,9 +75,9 @@ class TicketsController < ApplicationController
       :ticket_type_id,
       :problem_description,
       :solution_description,
-      assigned_at,
-      closed_at,
-      to_be_solved_at
+      :assigned_at,
+      :closed_at,
+      :to_be_solved_at
     )
   end
 end

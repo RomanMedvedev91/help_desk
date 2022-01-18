@@ -5,4 +5,10 @@
   <td>
     <h4><%= qa_category.description %></h4>
   </td>
+  <td>
+    <%= link_to fa_icon('edit'), edit_admin_qa_category_path(qa_category), class: 'btn btn-sm btn-primary' %>
+  </td>
+  <td>
+    <%= link_to fa_icon('trash'), [:admin, qa_category], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+  </td>
 </tr>

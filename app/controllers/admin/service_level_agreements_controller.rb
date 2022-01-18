@@ -25,6 +25,25 @@ module Admin
       @service_level_agreement = ServiceLevelAgreement.find params[:id]
     end
 
+    def edit
+      @service_level_agreement = ServiceLevelAgreement.find params[:id]
+    end
+  
+    def update
+      @service_level_agreement = ServiceLevelAgreement.find(params[:id])
+      if @service_level_agreement.update(service_level_agreement_params)
+        redirect_to [:admin, :service_level_agreements], notice: "SLA Updated"
+      else
+        render :edit
+      end
+    end
+  
+    def destroy
+      @service_level_agreement = ServiceLevelAgreement.find params[:id]
+      @service_level_agreement.destroy
+      redirect_to [:admin, :service_level_agreements], notice: 'SLA deleted!'
+    end
+  
     private
     def service_level_agreement_params
       params.require(:service_level_agreement).permit(

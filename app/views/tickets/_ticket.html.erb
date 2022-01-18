@@ -3,21 +3,27 @@
     <h4><%= ticket.reference %></h4>
   </td>
   <td>
-    <h4><%= ticket.user_id %></h4>
+    <h4><%= User.find(ticket.user_id).name %></h4> 
   </td>
   <td>
-    <h4><%= ticket.technician_id %></h4>
+    <h4><%= User.find(ticket.technician_id).name %></h4>
   </td>
   <td>
     <h4><%= ticket.problem_description %></h4>
   </td>
   <td>
-    <h4><%= ticket.ticket_priority_id %></h4>
+    <h4><%= TicketPriority.find(ticket.ticket_priority_id).code %></h4>
   </td>
   <td>
-    <h4><%= ticket.ticket_status_code_id %></h4>
+    <h4><%= TicketStatusCode.find(ticket.ticket_status_code_id).code %></h4>
   </td>
   <td>
-    <h4><%= ticket.ticket_type_id %></h4>
+    <h4><%= TicketType.find(ticket.ticket_type_id).code %></h4>
+  </td>
+  <td>
+    <%= link_to fa_icon('edit'), edit_ticket_path(ticket), class: 'btn btn-sm btn-primary' %>
+  </td>
+  <td>
+    <%= link_to fa_icon('trash'), [ticket], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
   </td>
 </tr>

@@ -1,11 +1,11 @@
-<section class="contracts-new">
+<section class="ticket-new">
 
   <header class="page-header">
-    <h1>New Contract</h1>
+    <h1>Edit Contract</h1>
   </header>
 
   <div class="well">
-    <%= link_to 'All Contracts', [:contracts], class: 'btn btn-info' %>
+    <%= link_to 'All Contracs', [:contracts], class: 'btn btn-info' %>
   </div>
 
   <div class="row">
@@ -30,7 +30,7 @@
           <div></div>
 
           <%= form.label :service_level_agreement_id %>
-          <% options = options_from_collection_for_select(@service_level_agreements, 'id', 'code') %>
+          <% options = options_from_collection_for_select(@service_level_agreements, 'id', 'code', @contract.service_level_agreement_id) %>
           <%= form.select :service_level_agreement_id,  options %>
           <div></div>
 
@@ -41,7 +41,7 @@
           <%= form.date_field :sla_valid_end_date, class: 'form-control' %>
         </div>
 
-        <%= form.submit 'Create Contract', class: 'btn btn-primary' %>
+        <%= form.submit 'Update SLA', class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>
