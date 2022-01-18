@@ -1,6 +1,7 @@
-# Preview all emails at http://localhost:3000/rails/mailers/user_mailer
+# Preview all emails at http://localhost:3000/rails/mailers/user
 class UserMailerPreview < ActionMailer::Preview
 
+  # default from: 'notifications@example.com'
  def new_user_email
   @user = User.new({
     first_name: "Roman", 
@@ -14,5 +15,3 @@ class UserMailerPreview < ActionMailer::Preview
   end
 
 end
-
-
