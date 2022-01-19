@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
     else
       # failure, render login form
       #redirect_to '/login'
+      flash.now[:error] = "Error! Try again"
       render :new
     end
 
