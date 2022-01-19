@@ -26,20 +26,16 @@
         <div class="form-group">
           <%= form.label :qa_category_id %>
           <%= form.text_field :qa_category_id, class: 'form-control' %>
+
           <%= form.label :problem %>
-          <%= form.text_field :problem, class: 'form-control' %>
+          <%= form.text_area :problem, :class => "tinymce", :rows => 15, :cols => 120 %>
+          <%= tinymce %>
+
           <%= form.label :solution %>
-          <%= form.text_field :solu<tr>
-          <td>
-            <h4><%= qa.category_id %></h4>
-          </td>
-          <td>
-            <h4><%= qa.problem %></h4>
-          </td>
-          <td>
-            <h4><%= qa.solution %></h4>
-          </td>
-        </tr>
+          <%= form.text_area :solution, :class => "tinymce", :rows => 15, :cols => 120 %>
+          <%= tinymce %>
+
+        </div>
         <%= form.submit 'Create Category', class: 'btn btn-primary' %>
       <% end %>
     </div>

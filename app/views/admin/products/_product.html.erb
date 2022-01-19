@@ -1,12 +1,12 @@
 <tr>
   <td>
-    <h4><%= Category.find(product.category_id).code %></h4>
+    <h4><%= Category.find_by_id(product.category_id).code %></h4>
   </td>
   <td>
     <h4><%= product.code %></h4>
   </td>
   <td>
-    <h4><%= product.description %></h4>
+    <h4><%= product.description.html_safe %></h4>
   </td>
   <td>
     <h4><%= product.model %></h4>

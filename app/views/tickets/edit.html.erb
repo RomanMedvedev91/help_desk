@@ -57,10 +57,12 @@
           <div></div>
 
           <%= form.label :problem_description %>
-          <%= form.text_field :problem_description, class: 'form-control' %>
+          <%= form.text_area :problem_description, :class => "tinymce", :rows => 15, :cols => 120 %>
+          <%= tinymce %>
 
           <%= form.label :solution_description %>
-          <%= form.text_field :solution_description, class: 'form-control' %>
+          <%= form.text_area :solution_description, :class => "tinymce", :rows => 15, :cols => 120 %>
+          <%= tinymce %>
 
           <%= form.label :assigned_at %>
           <%= form.datetime_local_field  :assigned_at, class: 'form-control' %>

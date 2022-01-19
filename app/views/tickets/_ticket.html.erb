@@ -3,22 +3,22 @@
     <h4><%= ticket.reference %></h4>
   </td>
   <td>
-    <h4><%= User.find(ticket.user_id).name %></h4> 
+    <h4><%= ticket.user_id && User.find_by_id(ticket.user_id).name %></h4> 
   </td>
   <td>
-    <h4><%= User.find(ticket.technician_id).name %></h4>
+    <h4><%= User.find_by_id(ticket.technician_id).name %></h4>
   </td>
   <td>
-    <h4><%= ticket.problem_description %></h4>
+    <h4><%= ticket.problem_description.html_safe %></h4>
   </td>
   <td>
-    <h4><%= TicketPriority.find(ticket.ticket_priority_id).code %></h4>
+    <h4><%= TicketPriority.find_by_id(ticket.ticket_priority_id).code %></h4>
   </td>
   <td>
-    <h4><%= TicketStatusCode.find(ticket.ticket_status_code_id).code %></h4>
+    <h4><%= TicketStatusCode.find_by_id(ticket.ticket_status_code_id).code %></h4>
   </td>
   <td>
-    <h4><%= TicketType.find(ticket.ticket_type_id).code %></h4>
+    <h4><%= TicketType.find_by_id(ticket.ticket_type_id).code %></h4>
   </td>
   <td>
     <%= link_to fa_icon('edit'), edit_ticket_path(ticket), class: 'btn btn-sm btn-primary' %>
