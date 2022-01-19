@@ -8,9 +8,6 @@ class SessionsController < ApplicationController
     if @user = User.authenticate_with_credentials(params[:email], params[:password])
       # success logic, log them in
       session[:user_id] = @user.id
-      #send mail for new user
-      UserMailer.welcome_email(@user).deliver_now
-      flash.now[:success] = "Email has been sent"
       redirect_to '/'
     else
       # failure, render login form

@@ -10,6 +10,11 @@ class UsersController < ApplicationController
     @user.email.downcase!
     
     if @user.save
+
+      #send mail for new user
+      UserMailer.welcome_email(@user).deliver_now
+      flash.now[:success] = "Email has been sent"
+      
       # If user saves in the db successfully:
       flash[:notice] = "Account created successfully!"
       redirect_to root_path
