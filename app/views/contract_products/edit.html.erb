@@ -24,6 +24,11 @@
         <% end %>
 
         <div class="form-group">
+        <%= form.label :contract_id %>
+        <%= form.text_field :contract_id, class: 'form-control' %>
+
+        <%= form.label :product_id %>
+        <%= form.text_field :product_id, class: 'form-control' %>
 
         <%= form.label :serial_number %>
           <%= form.text_field :serial_number, class: 'form-control' %>

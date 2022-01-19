@@ -1,12 +1,12 @@
 <tr>
   <td>
-    <h4><%= note.ticket_id %></h4>
+    <h4><%= Ticket.find_by_id(note.ticket_id).reference %></h4>
   </td>
   <td>
-    <h4><%= note.user_id %></h4>
+    <h4><%= User.find_by_id(note.user_id).name %></h4>
   </td>
   <td>
-    <h4><%= note.description %></h4>
+    <h4><%= note.description.html_safe %></h4>
   </td>
   <td>
     <%= link_to fa_icon('edit'), edit_note_path(note), class: 'btn btn-sm btn-primary' %>

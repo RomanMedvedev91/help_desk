@@ -349,6 +349,7 @@ contract1.user_id = user4.id
 contract1.service_level_agreement_id = sla1.id
 contract1.sla_valid_start_date = -30.days.from_now
 contract1.sla_valid_end_date = 150.days.from_now
+contract1.reference = 'Ref 100'
 contract1.save
 
 contract2 = Contract.new
@@ -356,6 +357,7 @@ contract2.user_id = user4.id
 contract2.service_level_agreement_id = sla2.id
 contract2.sla_valid_start_date = -20.days.from_now
 contract2.sla_valid_end_date = 200.days.from_now
+contract2.reference = 'Ref 101'
 contract2.save
 
 contract3 = Contract.new
@@ -363,6 +365,7 @@ contract3.user_id = user5.id
 contract3.service_level_agreement_id = sla3.id
 contract3.sla_valid_start_date = -25.days.from_now
 contract3.sla_valid_end_date = 100.days.from_now
+contract3.reference = 'Ref 102'
 contract3.save
 
 #-----------------------------------------------------------------

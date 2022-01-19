@@ -26,8 +26,10 @@
         <div class="form-group">
           <%= form.label :code %>
           <%= form.text_field :code, class: 'form-control' %>
+
           <%= form.label :description %>
-          <%= form.text_field :description, class: 'form-control' %>
+          <%= form.text_area :description, :class => "tinymce", :rows => 15, :cols => 120 %>
+          <%= tinymce %>
         </div>
 
         <%= form.submit 'Create Ticket Type', class: 'btn btn-primary' %>

@@ -1,12 +1,12 @@
 <tr>
   <td>
-    <h4><%= QaCategory.find(qa.qa_category_id).code %></h4>
+    <h4><%= QaCategory.find_by_id(qa.qa_category_id).code %></h4>
   </td>
   <td>
-    <h4><%= qa.problem %></h4>
+    <h4><%= qa.problem.html_safe %></h4>
   </td>
   <td>
-    <h4><%= qa.solution %></h4>
+    <h4><%= qa.solution.html_safe %></h4>
   </td>
   <td>
     <%= link_to fa_icon('edit'), edit_admin_qa_path(qa), class: 'btn btn-sm btn-primary' %>

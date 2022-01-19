@@ -31,10 +31,12 @@
           <div></div>
 
           <%= form.label :problem %>
-          <%= form.text_field :problem, class: 'form-control' %>
+          <%= form.text_area :problem, :class => "tinymce", :rows => 15, :cols => 120 %>
+          <%= tinymce %>
 
           <%= form.label :solution %>
-          <%= form.text_field :solution, class: 'form-control' %>
+          <%= form.text_area :solution, :class => "tinymce", :rows => 15, :cols => 120 %>
+          <%= tinymce %>
         </div>
 
         <%= form.submit 'Create Category', class: 'btn btn-primary' %>
