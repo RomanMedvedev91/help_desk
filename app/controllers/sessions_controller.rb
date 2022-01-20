@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+  include TwilioControls
+
   def new
     @user = User.new
   end
@@ -6,6 +9,9 @@ class SessionsController < ApplicationController
   def create
 
     if @user = User.authenticate_with_credentials(params[:email], params[:password])
+
+      send_sms('+16474469950', "hi")
+      
       # success logic, log them in
       session[:user_id] = @user.id
       redirect_to '/'
