@@ -25,7 +25,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'twilio-ruby' # sms notification
 gem 'puma'
 gem 'popper_js'  #new
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -46,6 +45,8 @@ group :development, :test do
   gem 'byebug'
   gem 'quiet_assets'
   gem 'dotenv-rails'
+  gem 'twilio-ruby' # sms notification
+
 end
 
 group :development do
