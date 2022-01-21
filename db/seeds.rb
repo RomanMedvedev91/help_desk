@@ -335,7 +335,7 @@ product8.save
 product9 = Product.new
 product9.category_id = cat3.id
 product9.code =  'Dell'
-product9.model = 'JLLDKKDK9'
+product9.model = 'AAAA1'
 product9.description = "Description 9"
 product9.save
 
@@ -410,6 +410,10 @@ ticket1.solution_description = ""
 ticket1.assigned_at = -1.days.from_now
 ticket1.closed_at = ''
 ticket1.to_be_solved_at = 1.days.from_now
+ticket1.category_id = cat1.id
+ticket1.product_id = product1.id
+ticket1.model = 'SX100'
+ticket1.serial_number = 'HGDJEK'
 ticket1.save
 
 ticket2 = Ticket.new
@@ -425,6 +429,10 @@ ticket2.solution_description = ""
 ticket2.assigned_at = -1.days.from_now
 ticket2.closed_at = ''
 ticket2.to_be_solved_at = 1.days.from_now
+ticket1.category_id = cat1.id
+ticket2.product_id = product3.id
+ticket2.model = 'AHR-0900'
+ticket2.serial_number = 'BPKDJ00D'
 ticket2.save
 
 ticket3 = Ticket.new
@@ -440,6 +448,11 @@ ticket3.solution_description = ""
 ticket3.assigned_at = -3.days.from_now
 ticket3.closed_at = ''
 ticket3.to_be_solved_at = 2.days.from_now
+ticket3.category_id = cat3.id
+ticket3.product_id = product9.id
+ticket3.model = 'AAA1'
+ticket3.serial_number = 'FKKKDJD088AL'
+
 ticket3.save
 
 #-----------------------------------------------------------------

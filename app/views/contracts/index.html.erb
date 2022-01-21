@@ -20,7 +20,9 @@
         </tr>
       </thead>
       <tbody>
-        <%= render @contracts %>
+        <% if @contracts %>
+          <%= render @contracts %>
+        <% end %>
       </tbody>
     </table>
   </div>

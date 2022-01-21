@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     
     # store all emails in lowercase to avoid duplicates and case-sensitive login errors:
     @user.email.downcase!
+    @user.user_type_id = UserType.find_by_code('User').id
     
     if @user.save
 

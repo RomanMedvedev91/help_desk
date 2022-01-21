@@ -1,11 +1,15 @@
 <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
 <%= javascript_include_tag "path/to/highcharts.js", "chartkick" %>
-<header class="page-header">
+<header class="page-header" style="background-color:white; font-weight: bold; text-align: center;">
 <%= yield :charts_js %>
-    <h1>Dashboard</h1>
+<div style="background-color:white; font-weight: bold; text-align: center;">
+    <h1 >Admin dashboard</h1>
   </header>
+  <body style="background-color:#FFFFCC;text-align:center">
+    welcome to my page
+    
 
-  <table class="table table-bordered">
+  <table class="table table-dark">
   <thead>
     <tr >
       
@@ -36,10 +40,10 @@
 </table>
 
 
+<br><br>
 
 
-
-    <table class="table table-striped table-bordered"" >
+    <table class="table table-striped table-bordered" style="background-color:white;" >
     <thead>
       <tr>
         
@@ -52,9 +56,6 @@
     <% @ticket_new_count.each do |category| %>
         
       <tr>
-      
-          
-        
         <td><%= category[0] %></td>
         <td><%= category[1] %></td>
         <% end %> 
@@ -63,6 +64,14 @@
     </tbody>
   </table>
 
+  <br>
+  <br>
 
- 
-  <%= line_chart Ticket.group(:technician_id).count %>
+  <br>
+  <br>
+  
+
+  <%= column_chart Ticket.group(:technician_id).count  , title: "Number of tickets per technecian" , library: {hAxis: {title: "Technecian ID"}, vAxis: {title: "Number of tickets assigned"}} , label: "id"%>
+  </div>
+
+  </body>

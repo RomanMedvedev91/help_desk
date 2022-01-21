@@ -21,7 +21,9 @@
         </tr>
       </thead>
       <tbody>
-        <%= render @service_level_agreements %>
+        <% if @service_level_agreements %>
+          <%= render @service_level_agreements %>
+        <% end %>
       </tbody>
     </table>
   </div>

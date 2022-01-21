@@ -3,7 +3,16 @@ class TicketsController < ApplicationController
   before_filter :authorize
 
   def index
-    @tickets = Ticket.all.order(created_at: :desc)
+    @userType = loggedAs
+    if @userType == 'Admin'
+      @tickets = Ticket.all.order(created_at: :desc)
+    end
+    if @userType == 'Technician'
+      @tickets = Ticket.find_by_technician_id(current_user.id)
+    end
+    if @userType == 'User'
+      @tickets = Ticket.find_by_user_id(current_user.id)
+    end
   end
 
   def new
@@ -15,13 +24,24 @@ class TicketsController < ApplicationController
     @type = UserType.find_by_code('Technician')
     @technicians = @type.users
 
-    @contracts = Contract.find_by_user_id(27)  #(current_user.id)
-    @contract_products = @contracts.contract_products 
+    # @contracts = Contract.find_by_user_id(current_user.id)
+    # @contracts && @contract_products = @contracts.contract_products 
     # @products = @contract_products.products
+    @categories = Category.all
+    @products = Product.all
+    @default_products = @products.select{|p| p.category_id == @categories.first.id}
+
+    @userType = loggedAs
   end
 
   def create
     @ticket = Ticket.new(ticket_params)
+
+    @ticket.user_id = current_user.id
+    @ticket.reference = get_random_string(6)
+    @ticket.ticket_status_code_id = TicketStatusCode.find_by_code('Opened').id
+    @ticket.ticket_priority_id = TicketPriority.find_by_code('Low').id
+    @ticket.ticket_type_id = TicketType.find_by_code('Website').id
 
     if @ticket.save
       redirect_to [:tickets], notice: 'Ticket created!'
@@ -43,9 +63,15 @@ class TicketsController < ApplicationController
     @type = UserType.find_by_code('Technician')
     @technicians = @type.users
 
-    @contracts = Contract.find_by_user_id(27)  #(current_user.id)
-    @contract_products = @contracts.contract_products 
+    # @contracts = Contract.find_by_user_id(current_user.id)
+    # @contracts && @contract_products = @contracts.contract_products
+    @categories = Category.all
+    @products = Product.all
+    @default_products = @products.select{|p| p.category_id == @ticket.category_id}
 
+    @userType = loggedAs
+
+    @user_created_by = User.find_by_id(@ticket.user_id)
   end
 
   def update
@@ -79,5 +105,16 @@ class TicketsController < ApplicationController
       :closed_at,
       :to_be_solved_at
     )
+  end
+
+  def loggedAs
+    UserType.find_by_id(current_user.user_type_id).code
+  end
+
+  def get_random_string(length=5)
+    source=("a".."z").to_a + ("A".."Z").to_a + (0..9).to_a + ["_","-","."]
+    key=""
+    length.times{ key += source[rand(source.size)].to_s }
+    return key
   end
 end

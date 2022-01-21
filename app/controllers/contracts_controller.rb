@@ -3,7 +3,12 @@ class ContractsController < ApplicationController
   before_filter :authorize
 
   def index
-    @contracts = Contract.all.order(created_at: :desc)
+    userType = loggedAs
+    if userType == 'Admin'
+      @contracts = Contract.all.order(created_at: :desc)
+    else
+      @contracts = Contract.find_by_user_id(current_user.id)
+    end
   end
 
   def new
@@ -47,7 +52,6 @@ class ContractsController < ApplicationController
     redirect_to [:contracts], notice: 'Contract deleted!'
   end
 
-
   private
   def contract_params
     params.require(:contract).permit(
@@ -57,5 +61,10 @@ class ContractsController < ApplicationController
       :sla_valid_end_date
     )
   end
+
+  def loggedAs
+    UserType.find_by_id(current_user.user_type_id).code
+  end
+
 
 end
