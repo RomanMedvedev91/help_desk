@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include TwilioControls
+
   def new
     @user = User.new
   end
@@ -15,6 +17,9 @@ class UsersController < ApplicationController
       UserMailer.welcome_email(@user).deliver_now
       flash.now[:success] = "Email has been sent"
       
+      # send sms
+      send_sms(@user.mobile, "Welcome to helpdesk #{@user.name}")
+
       # If user saves in the db successfully:
       flash[:notice] = "Account created successfully!"
       redirect_to root_path
@@ -30,6 +35,6 @@ private
   def user_params
     # strong parameters - whitelist of allowed fields #=> permit(:name, :email, ...)
     # that can be submitted by a form to the user model #=> require(:user)
-    params.require(:user).permit(:name, :mobie, :email, :user_type_id, :password, :password_confirmation)
+    params.require(:user).permit(:name, :mobile, :email, :user_type_id, :password, :password_confirmation)
   end
 end
