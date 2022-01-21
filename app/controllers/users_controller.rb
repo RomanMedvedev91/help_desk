@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  include TwilioControls
+  include TwilioControls   # sms module
 
   def new
     @user = User.new
