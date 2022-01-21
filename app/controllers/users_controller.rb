@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     
     # store all emails in lowercase to avoid duplicates and case-sensitive login errors:
     @user.email.downcase!
+    @user.user_type_id = UserType.find_by_code('User').id
     
     if @user.save
       # If user saves in the db successfully:
@@ -25,6 +26,6 @@ private
   def user_params
     # strong parameters - whitelist of allowed fields #=> permit(:name, :email, ...)
     # that can be submitted by a form to the user model #=> require(:user)
-    params.require(:user).permit(:name, :mobie, :email, :user_type_id, :password, :password_confirmation)
+    params.require(:user).permit(:name, :mobile, :email, :user_type_id, :password, :password_confirmation)
   end
 end

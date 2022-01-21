@@ -19,7 +19,9 @@
         </tr>
       </thead>
       <tbody>
-        <%= render @qa_categories %>
+        <% if @qa_categories %>
+          <%= render @qa_categories %>
+        <% end %>
       </tbody>
     </table>
   </div>

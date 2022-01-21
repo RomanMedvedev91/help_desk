@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220119040618) do
+ActiveRecord::Schema.define(version: 20220120185404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,9 +133,15 @@ ActiveRecord::Schema.define(version: 20220119040618) do
     t.datetime "updated_at",            null: false
     t.integer  "technician_id"
     t.string   "reference"
+    t.integer  "category_id"
+    t.integer  "product_id"
+    t.string   "model"
+    t.string   "serial_number"
   end
 
+  add_index "tickets", ["category_id"], name: "index_tickets_on_category_id", using: :btree
   add_index "tickets", ["contract_product_id"], name: "index_tickets_on_contract_product_id", using: :btree
+  add_index "tickets", ["product_id"], name: "index_tickets_on_product_id", using: :btree
   add_index "tickets", ["reference"], name: "index_tickets_on_reference", using: :btree
   add_index "tickets", ["ticket_priority_id"], name: "index_tickets_on_ticket_priority_id", using: :btree
   add_index "tickets", ["ticket_status_code_id"], name: "index_tickets_on_ticket_status_code_id", using: :btree

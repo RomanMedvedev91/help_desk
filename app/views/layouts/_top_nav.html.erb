@@ -18,9 +18,6 @@
           <%= link_to 'Tickets', tickets_path %>
         </li>
         <li>
-          <%= link_to 'Contracts', contracts_path %>
-        </li>
-        <li>
           <%= link_to 'F.A.Q', qas_path %>
         </li>
         <li>
@@ -29,24 +26,32 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-       <li class="dropdown">
-          <a href="#" class="dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <span class="text-danger"><%= fa_icon 'lock', text: 'Admin' %></span>
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <li class="dropdown-item"><%= link_to 'Dashboard', [:admin, :root] %></li>
-            <li><%= link_to 'Categories',  [:admin, :categories] %></li>
-            <li><%= link_to 'Products',  [:admin, :products] %></li>
-            <li><%= link_to 'Ticket_Priorities',  [:admin, :ticket_priorities] %></li>
-            <li><%= link_to 'Ticket_Status_Codes',  [:admin, :ticket_status_codes] %></li>
-            <li><%= link_to 'Ticket_Types',  [:admin, :ticket_types] %></li>
-            <li><%= link_to 'User_Types',  [:admin, :user_types] %></li>
-            <li><%= link_to 'Service_Level_Agreements',  [:admin, :service_level_agreements] %></li>
-            <li><%= link_to 'Qa_Categories',  [:admin, :qa_categories] %></li>
-            <li><%= link_to 'Qas',  [:admin, :qas] %></li>
-          </ul>
-        </li>
+
+        <% if current_user && UserType.find_by_id(current_user.user_type_id).code =='Admin'%>
+
+          <li class="dropdown">
+
+            <a href="#" class="dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <span class="text-danger"><%= fa_icon 'lock', text: 'Admin' %></span>
+              <span class="caret"></span>
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li class="dropdown-item"><%= link_to 'Dashboard', [:admin, :root] %></li>
+              <li><%= link_to 'Categories',  [:admin, :categories] %></li>
+              <li><%= link_to 'Products',  [:admin, :products] %></li>
+              <li><%= link_to 'Ticket_Priorities',  [:admin, :ticket_priorities] %></li>
+              <li><%= link_to 'Ticket_Status_Codes',  [:admin, :ticket_status_codes] %></li>
+              <li><%= link_to 'Ticket_Types',  [:admin, :ticket_types] %></li>
+              <li><%= link_to 'User_Types',  [:admin, :user_types] %></li>
+              <li><%= link_to 'Service_Level_Agreements',  [:admin, :service_level_agreements] %></li>
+              <li><%= link_to 'Qa_Categories',  [:admin, :qa_categories] %></li>
+              <li><%= link_to 'Qas',  [:admin, :qas] %></li>
+            </ul>
+          </li>
+
+        <% end %>
+
         <% if current_user %>
           <li style="margin-top:15px;margin-bottom:15px"> 
             Signed in as <%= current_user.name %> 
