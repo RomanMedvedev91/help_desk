@@ -6,7 +6,7 @@
     <h4><%= ticket.user_id && User.find_by_id(ticket.user_id).name %></h4> 
   </td>
   <td>
-    <h4><%= User.find_by_id(ticket.technician_id).name %></h4>
+    <h4><%= ticket.technician_id && User.find_by_id(ticket.technician_id).name %></h4>
   </td>
   <td>
     <h4><%= ticket.problem_description.html_safe %></h4>

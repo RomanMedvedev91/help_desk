@@ -21,7 +21,9 @@
         </tr>
       </thead>
       <tbody>
+      <% if @ticket_priorities %>
         <%= render @ticket_priorities %>
+      <% end %>
       </tbody>
     </table>
   </div>

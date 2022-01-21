@@ -20,7 +20,9 @@
         </tr>
       </thead>
       <tbody>
-        <%= render @notes %>
+        <% if @notes %>
+          <%= render @notes %>
+        <% end %>
       </tbody>
     </table>
   </div>

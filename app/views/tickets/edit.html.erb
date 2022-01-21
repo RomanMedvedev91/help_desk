@@ -11,7 +11,7 @@
   <div class="row">
     <div class="col-sm-6 col-sm-offset-1">
       <%= form_for [@ticket] do |form| %>
-    
+
         <% if form.object.errors.any? %>
          <div class="alert alert-danger">
             <strong>The following errors prevented saving:</strong>
@@ -25,58 +25,136 @@
 
         <div class="form-group">
 
-          <%= form.label :reference %>
-          <%= form.text_field :reference, class: 'form-control' %>
+          <%= form.hidden_field  :assigned_at, class: 'form-control' %>
+          <%= form.hidden_field  :to_be_solved_at, class: 'form-control' %>
+          <%= form.hidden_field  :closed_at, class: 'form-control' %>
+          <%= form.hidden_field :user_id, class: 'form-control' %>
+          <%= form.hidden_field :reference, class: 'form-control' %>
 
-          <%= form.label :user_id %>
-          <%= form.text_field :user_id, class: 'form-control' %>
+          <h3> Opened By : <%= @user_created_by.name %>
+          <h3> Email     : <%= @user_created_by.email %>
+          <h3> Mobile    : <%= @user_created_by.mobile %>
+          <hr />
 
-          <%= form.label :technician_id %>
-          <% options = options_from_collection_for_select(@technicians, 'id', 'name', @ticket.technician_id) %>
-          <%= form.select :technician_id,  options %>
+          <h3> Reference : <%= @ticket.reference %> </h3>
+          <hr />
+
+          <% if @userType != 'User' %>
+            <%= form.label :technician_id %>
+            <% options = options_from_collection_for_select(@technicians, 'id', 'name', @ticket.technician_id) %>
+            <%= form.select :technician_id,  options %>
+            <div></div>
+          <% else %>
+            <%= form.hidden_field :technician_id, class: 'form-control' %>          
+          <% end %>
+          <hr />
+
+          <%= form.label :category_id %>
+          <% options = options_from_collection_for_select(@categories, 'id', 'code', @ticket.category_id) %>
+          <%= form.select :category_id,  options%>
           <div></div>
 
-          <%= form.label :contract_product_id %>
-          <% options = options_from_collection_for_select(@contract_products, 'id', 'serial_number', @ticket.contract_product_id) %>
-          <%= form.select :contract_product_id,  options %>
+          <%= form.label :product_id %>
+          <% options = options_from_collection_for_select(@default_products, 'id', 'code', @ticket.product_id) %>
+          <%= form.select :product_id, options %>
           <div></div>
 
-          <%= form.label :ticket_property_id %>
-          <% options = options_from_collection_for_select(@ticket_priorities, 'id', 'code', @ticket.ticket_priority_id) %>
-          <%= form.select :ticket_priority_id,  options %>
-          <div></div>
+          <%= form.label :model %>
+          <%= form.text_field :model, class: 'form-control' %>
 
-          <%= form.label :ticket_status_code_id %>
-          <% options = options_from_collection_for_select(@ticket_status_codes, 'id', 'code',  @ticket.ticket_status_code_id) %>
-          <%= form.select :ticket_status_code_id,  options %>
-          <div></div>
+          <%= form.label :serial_number %>
+          <%= form.text_field :serial_number, class: 'form-control' %>
+          <hr />
 
-          <%= form.label :ticket_type_id %>
-          <% options = options_from_collection_for_select(@ticket_types, 'id', 'code', @ticket.ticket_type_id) %>
-          <%= form.select :ticket_type_id,  options %>
-          <div></div>
+          <% if @userType != 'User' %>
+            <%= form.label :ticket_property_id %>
+            <% options = options_from_collection_for_select(@ticket_priorities, 'id', 'code', @ticket.ticket_priority_id) %>
+            <%= form.select :ticket_priority_id,  options %>
+            <div></div>
 
-          <%= form.label :problem_description %>
-          <%= form.text_area :problem_description, :class => "tinymce", :rows => 15, :cols => 120 %>
-          <%= tinymce %>
+            <%= form.label :ticket_status_code_id %>
+            <% options = options_from_collection_for_select(@ticket_status_codes, 'id', 'code',  @ticket.ticket_status_code_id) %>
+            <%= form.select :ticket_status_code_id,  options %>
+            <div></div>
 
-          <%= form.label :solution_description %>
-          <%= form.text_area :solution_description, :class => "tinymce", :rows => 15, :cols => 120 %>
-          <%= tinymce %>
+            <%= form.label :ticket_type_id %>
+            <% options = options_from_collection_for_select(@ticket_types, 'id', 'code', @ticket.ticket_type_id) %>
+            <%= form.select :ticket_type_id,  options %>
+            <div></div>
+            <hr />
+          <% else %>
+            <%= form.hidden_field  :ticket_priority_id, class: 'form-control' %>
+            <%= form.hidden_field  :ticket_status_code_id, class: 'form-control' %>
+            <%= form.hidden_field  :ticket_type_id, class: 'form-control' %>
+            <hr />
+          <% end %>
 
-          <%= form.label :assigned_at %>
-          <%= form.datetime_local_field  :assigned_at, class: 'form-control' %>
+          <% if @userType == 'User' || @userType%>
+            <h3><%= form.label :problem_description %></h3>
+            <%= form.text_area :problem_description, :class => "tinymce", :rows => 15, :cols => 120 %>
+            <%= tinymce %>
+            <hr />
+          <% else %>
+            <hr />
+            <h3> Problem Description : </h3>
+            <%= @ticket.problem_description.html_safe %>
+            <%= form.hidden_field  :problem_description, class: 'form-control' %>
+            <hr />
+          <% end %>
 
-          <%= form.label :to_be_solved_at %>
-          <%= form.datetime_local_field  :to_be_solved_at, class: 'form-control' %>
+          <% if @userType != 'User' %>
+            <hr />
+            <h3> <%= form.label :solution_description %> </h3>
+            <%= form.text_area :solution_description, :class => "tinymce", :rows => 15, :cols => 120 %>
+            <%= tinymce %>
+          <% else %>
+            <hr />
+            <% if @ticket.solution_description %>
+              <h3> Solution Description : </h3>
+              <%= @ticket.solution_description.html_safe %>
+            <% end %>
+            <%= form.hidden_field :solution_description, class: 'form-control' %>
+            <hr />
+          <% end %>
 
-          <%= form.label :closed_at %>
-          <%= form.datetime_local_field  :closed_at, class: 'form-control' %>
+          <% if @ticket.assigned_at %>
+            <h3> Assigned At : <%= @ticket.assigned_at %> </hr>
+          <% end %>
+
+          <% if @ticket.to_be_solved_at %>
+            <h3> To Be Solved By : <%= @ticket.to_be_solved_at %> </hr>
+          <% end %>
+
+          <% if @ticket.closed_at %>
+            <h3> Closed At : <%= @ticket.closed_at %> </hr>
+          <% end %>
+
         </div>
 
+        <div id="hiddenElement" class='hidden' data-products=<%= @products.map{|p| [p.category_id, p.id, p.code]}.to_json %>></div> 
+
         <%= form.submit 'Update Ticket', class: 'btn btn-primary' %>
+        <br /><br /><br />
+
       <% end %>
     </div>
   </div>
 
 </section>
+<script>
+    $(document).ready(function() {
+        function handleMyChange(){
+          var category_id = $('#ticket_category_id').find(":selected").val();
+          var myElement = document.getElementById('hiddenElement'); 
+          var myVar = JSON.parse(myElement.dataset.products); 
+          const desired_products = myVar.filter(p => p[0] === parseInt(category_id));
+          console.log("prodssss", desired_products,)
+          $('#ticket_product_id').find('option').remove();
+          desired_products.map((p) => {
+            $('#ticket_product_id').append(`<option value=${p[1]}>${p[2]}</option>`);
+          });
+        }
+        $("#ticket_category_id").on("change", handleMyChange);
+  });
+
+</script>
