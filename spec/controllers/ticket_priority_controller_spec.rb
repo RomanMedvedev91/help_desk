@@ -1,5 +1,5 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe TicketPriorityController, type: :controller do
+# RSpec.describe TicketPriorityController, type: :controller do
 
-end
+# end
