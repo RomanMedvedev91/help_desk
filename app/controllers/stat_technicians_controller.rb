@@ -1,0 +1,2 @@
+class StatTechniciansController < ApplicationController
+end

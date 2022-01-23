@@ -1,5 +1,5 @@
 CREATE OR REPLACE FUNCTION ticket_insert_f() RETURNS trigger AS $ticket_insert$
-declare 
+declare
 	rec_technician record;
   rec_priority record;
 
@@ -22,7 +22,6 @@ declare
     LIMIT 1;
 
 begin
-  
   IF NEW.user_id IS NULL THEN
     RAISE EXCEPTION 'User Id cannot be null';
   END IF;
@@ -32,23 +31,25 @@ begin
     fetch cur_technician into rec_technician;
     exit when not found;             -- exit when no more row to fetch
     tech_id = rec_technician.technician_id;
-  end loop;  
+  end loop;
   close cur_technician;              -- close the cursor
 
-  SELECT code,business_days,business_hours 
-    INTO v_priority,bus_days, bus_hours 
-    FROM ticket_priorities 
+
+  SELECT code,business_days,business_hours
+    INTO v_priority,bus_days, bus_hours
+    FROM ticket_priorities
    WHERE id = NEW.ticket_priority_id;
 
-  SELECT code 
-    INTO v_status_code 
-    FROM ticket_status_codes 
+  SELECT code
+    INTO v_status_code
+    FROM ticket_status_codes
    WHERE id = NEW.ticket_status_code_id;
   
   SELECT code 
     INTO v_type 
     FROM ticket_types 
    WHERE id = NEW.ticket_type_id;
+
 
   NEW.technician_id = tech_id;
   NEW.assigned_at = now();
@@ -58,13 +59,13 @@ begin
                           VALUES(tech_id,NEW.id,'assigned',1,1);
 
   INSERT INTO user_notifications(user_id,ticket_id, notification_type,send_email,send_sms)
-                          VALUES(NEW.user_id,NEW.id,'new',1,1);
+                          VALUES(NEW.user_id, NEW.id,'new', 1, 1);
 
   UPDATE stat_tickets set no_of_tickets = no_of_tickets + 1
   WHERE code = v_priority and this_date = current_date;
   IF NOT FOUND THEN -- UPDATE didn't touch anything
     INSERT INTO stat_tickets (code, no_of_tickets,this_date,record_type)
-       VALUES (v_priority, 1, current_date, 1);
+                      VALUES (v_priority, 1, current_date, 1);
   END IF;
 
   UPDATE stat_tickets set no_of_tickets = no_of_tickets + 1
@@ -78,7 +79,7 @@ begin
   WHERE code = v_type and this_date = current_date;
   IF NOT FOUND THEN -- UPDATE didn't touch anything
     INSERT INTO stat_tickets (code, no_of_tickets,this_date,record_type)
-       VALUES (v_type, 3, current_date, 1);
+       VALUES (v_type, 1, current_date, 3);
   END IF;
 
   RETURN NEW;
@@ -100,21 +101,20 @@ declare
 	bus_days integer;
   bus_hours integer;
 
-  cur_priority cursor for
-		SELECT business_days, business_hours
-		FROM ticket_priorities
-    WHERE id = NEW.ticket_priority_id;
-
-  cur_status_code cursor for
-		SELECT id
-		FROM ticket_status_codes
-    WHERE code = 'Closed';
+  new_priority varchar;
+  old_priority varchar;
+  new_status varchar;
+  old_status varchar;
+  new_type varchar;
+  old_type varchar;
 
 begin
 
   IF NEW.user_id IS NULL THEN
     RAISE EXCEPTION 'User Id cannot be null';
   END IF;
+
+  select id into status_closed_id from ticket_status_codes where code = 'Closed';
 
   if OLD.technician_id <> NEW.technician_id THEN
     NEW.assigned_at = now();
@@ -129,16 +129,19 @@ begin
   END IF;
 
 
-  if OLD.ticket_status_code_id <> NEW.ticket_status_code_id THEN
-    open cur_status_code;                 -- open the cursor
-    loop
-      fetch cur_status_code into rec_status_code;
-      exit when not found;             -- exit when no more row to fetch
-      status_id = rec_status_code.id;
-    end loop;
-    close cur_priority;                -- close the cursor
 
-    if NEW.ticket_status_code_id == status_id THEN
+  if OLD.ticket_status_code_id <> NEW.ticket_status_code_id THEN
+    select code into new_status from ticket_status_codes where id = NEW.ticket_status_code_id;
+    select code into old_status from ticket_status_codes where id = OLD.ticket_status_code_id;
+
+    UPDATE stat_tickets set no_of_tickets = no_of_tickets + 1
+     WHERE code = new_status and this_date = current_date;
+    IF NOT FOUND THEN -- UPDATE didn't touch anything
+      INSERT INTO stat_tickets (code, no_of_tickets,this_date,record_type)
+                        VALUES (new_status, 1, current_date, 2);
+    END IF;
+
+    if NEW.ticket_status_code_id == status_closed_id THEN
       INSERT TO user_notifications(user_id,notification_type,send_email,send_sms)
                             VALUES(OLD.user_id,OLD.id,'closed',1,1);
 
@@ -151,17 +154,37 @@ begin
     bus_days = 0;
     bus_hours = 0;
 
-    open cur_priority;                 -- open the cursor
-    loop
-      fetch cur_priority into rec_priority;
-      exit when not found;             -- exit when no more row to fetch
-      bus_days = rec_priority.business_days;
-      bus_hours = rec_priority.business_days;
-    end loop;  
-    close cur_priority;                -- close the cursor
+    select code, business_days, business_hours 
+    into new_priority, bus_days, bus_hours
+    from ticket_priorities
+    where id = NEW.ticket_priority_id;
+
+    select code
+      into old_priority 
+      from ticket_priorities 
+     where id = OLD.ticket_priority_id;
+
+    UPDATE stat_tickets set no_of_tickets = no_of_tickets + 1
+     WHERE code = new_priority and this_date = current_date;
+    IF NOT FOUND THEN -- UPDATE didn't touch anything
+      INSERT INTO stat_tickets (code, no_of_tickets,this_date,record_type)
+                        VALUES (new_priority, 1, current_date, 1);
+    END IF;
 
     NEW.to_be_solved_at = OLD.created_at +  bus_days * INTERVAL '1 day' + bus_hours * INTERVAL ' 1 hour';
   END IF;
+
+  if OLD.ticket_type_id <> NEW.ticket_type_id THEN
+    select code into new_type from ticket_types where id = NEW.ticket_type_id;
+    select code into old_type from ticket_types where id = OLD.ticket_type_id;
+
+    UPDATE stat_tickets set no_of_tickets = no_of_tickets + 1
+     WHERE code = new_type and this_date = current_date;
+    IF NOT FOUND THEN -- UPDATE didn't touch anything
+      INSERT INTO stat_tickets (code, no_of_tickets,this_date,record_type)
+                        VALUES (new_type, 1, current_date, 2);
+    END IF;
+  END;
 
   RETURN NEW;
 END; 
