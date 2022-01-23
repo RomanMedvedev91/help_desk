@@ -1,3 +1,62 @@
 .home_description-helpdesk {
+  z-index: 3;
   display: flex;
+  margin-top: 5.5rem;
+
+  .home_open_ticket {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .home_open_ticket-virtual-helpdesk {
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 3.5rem;
+    margin-bottom: 2rem;
+
+    .home_open_ticket-virtual-text {
+      color: #458ff6;
+    }
+  }
+
+  .home_open_ticket-description {
+    line-height: 2rem;
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
+  .home_open_ticket-button-openticket {
+    margin-bottom: 2rem;
+    .btn-primary {
+      background-color: #458ff6;
+      border-color: #458ff6;
+    }
+  }
+
+  .home-dashboard-pic {
+    position: relative;
+    z-index: 4;
+  }
+  .home_blob-main-big {
+    position: absolute;
+    top: 3rem;
+    left: 25rem;
+  }
+  .home_dot-laptop-top {
+    position: absolute;
+    top: 6rem;
+    left: 71rem;
+  }
+  .home_dot-laptop-botton {
+    position: absolute;
+    top: 32rem;
+    left: 31rem;
+  }
+  .home_dot-left-halfhidden {
+    position: absolute;
+    top: 10rem;
+    left: -3rem;
+  }
 }

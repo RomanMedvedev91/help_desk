@@ -1,14 +1,36 @@
 <section class="home_description-helpdesk">
-  <div class="home-open_ticket">
-    <p>
+  <div class="home_open_ticket">
+    <div class ="home_open_ticket-virtual-helpdesk">
+      <p>
+        Virtual <span class="home_open_ticket-virtual-text">HelpDesk</span> for you
+      </p>
+    </div>
+    <div class="home_open_ticket-description">
     HelpDesk provides progressive, and affordable 
 services, accessible on mobile and online 
 for everyone
     </p>
+    </div>
+    <div class="home_open_ticket-button-openticket">
+      <%= link_to 'Open new Ticket', [:new, :ticket], class: 'btn btn-primary' %>
+    </div>
   </div>
   <div class="home-dashboard-pic">
   <div>
       <%= image_tag("MainImageBig.png", alt: "main image img", class: "home_main-image" ) %>
   </div>
+  </div>
+
+  <div class="home_blob-main-big">
+  <%= image_tag("BlobsMainBig.svg", alt: " BlobsMainBig img", class: "home_blob-big-image") %>
+  </div>
+  <div class="home_dot-laptop-top">
+  <%= image_tag("Dots.svg", alt: " DotsMainBig img", class: "home_dots-image") %>
+  </div>
+  <div class="home_dot-laptop-botton">
+  <%= image_tag("Dots.svg", alt: " DotsMainBig img", class: "home_dots-image") %>
+  </div>
+  <div class="home_dot-left-halfhidden">
+  <%= image_tag("Dots.svg", alt: " DotsMainBig img", class: "home_dots-image") %>
   </div>
 </section>
