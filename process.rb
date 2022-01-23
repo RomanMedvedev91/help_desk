@@ -4,10 +4,13 @@ def process_notifications
 
   @notifications.each {|notification|
     @user = User.find(notification.user_id)
-
+    if notification.ticket_id != 0
+      @ticket = Ticket.find(notification.ticket_id)
+    end
+    
     if notification.type == 'welcome'
       UserMailer.welcome_email(@user).deliver_now
-      
+
     elsif notification.type == 'new'
       UserMailer.opened_ticket(@user).deliver_now
 

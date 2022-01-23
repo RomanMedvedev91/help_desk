@@ -1,7 +1,6 @@
 CREATE OR REPLACE FUNCTION ticket_insert_f() RETURNS trigger AS $ticket_insert$
 declare
 	rec_technician record;
-  rec_priority record;
 
   tech_id integer;
 	bus_days integer;
@@ -72,7 +71,7 @@ begin
   WHERE code = v_status_code and this_date = current_date;
   IF NOT FOUND THEN -- UPDATE didn't touch anything
     INSERT INTO stat_tickets (code, no_of_tickets,this_date,record_type)
-       VALUES (v_status_code, 2, current_date, 1);
+       VALUES (v_status_code, 1, current_date, 2);
   END IF;
 
   UPDATE stat_tickets set no_of_tickets = no_of_tickets + 1
@@ -80,6 +79,13 @@ begin
   IF NOT FOUND THEN -- UPDATE didn't touch anything
     INSERT INTO stat_tickets (code, no_of_tickets,this_date,record_type)
        VALUES (v_type, 1, current_date, 3);
+  END IF;
+
+  UPDATE stat_technicians set assigned = assigned + 1
+  WHERE name = v_name and this_date = current_date;
+  IF NOT FOUND THEN -- UPDATE didn't touch anything
+    INSERT INTO stat_technicians (name,   this_date   , assigned, solved, transferred)
+                          VALUES (v_name, current_date, 1, 0, 0);
   END IF;
 
   RETURN NEW;
@@ -94,12 +100,12 @@ $ticket_insert$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION ticket_update_f() RETURNS trigger AS $ticket_update$
 declare
-	rec_status_code record;
-  rec_priority record;
-
   status_id integer;
 	bus_days integer;
   bus_hours integer;
+
+  new_technician varchar;
+  old_technician varchar;
 
   new_priority varchar;
   old_priority varchar;
@@ -108,6 +114,7 @@ declare
   new_type varchar;
   old_type varchar;
 
+  status_closed_id integer;
 begin
 
   IF NEW.user_id IS NULL THEN
@@ -119,13 +126,32 @@ begin
   if OLD.technician_id <> NEW.technician_id THEN
     NEW.assigned_at = now();
 
+    select name into new_technician from users where id = NEW.technician_id;
+    select name into old_technician from users where id = OLD.technician_id;
+
     DELETE FROM user_notifications 
     WHERE user_id = OLD.technician_id
       AND ticket_id = OLD.id
-      AND (send_email = 1 OR send_sms = 1)
+      AND (send_email = 1 OR send_sms = 1);
 
-    INSERT TO user_notifications(user_id,notification_type,send_email,send_sms)
+    INSERT INTO user_notifications(user_id,ticket_id, notification_type,send_email,send_sms)
                           VALUES(NEW.technician_id,OLD.id,'assigned',1,1);
+
+    UPDATE stat_technicians set assigned = assigned + 1
+    WHERE name = new_technician and this_date = current_date;
+    IF NOT FOUND THEN -- UPDATE didn't touch anything
+      INSERT INTO stat_technicians (name,   this_date   , assigned, solved, transferred)
+                            VALUES (new_technician, current_date, 1, 0, 0);
+    END IF;
+    
+    UPDATE stat_technicians set transferred = transferred + 1
+    WHERE name = old_technician and this_date = current_date;
+    IF NOT FOUND THEN -- UPDATE didn't touch anything
+      INSERT INTO stat_technicians (name,   this_date   , assigned, solved, transferred)
+                            VALUES (old_technician, current_date, 0, 0, 1);
+
+    END IF;
+
   END IF;
 
 
@@ -142,7 +168,7 @@ begin
     END IF;
 
     if NEW.ticket_status_code_id == status_closed_id THEN
-      INSERT TO user_notifications(user_id,notification_type,send_email,send_sms)
+      INSERT INTO user_notifications(user_id,ticket_id,notification_type,send_email,send_sms)
                             VALUES(OLD.user_id,OLD.id,'closed',1,1);
 
       NEW.closed_at = now();
@@ -182,9 +208,9 @@ begin
      WHERE code = new_type and this_date = current_date;
     IF NOT FOUND THEN -- UPDATE didn't touch anything
       INSERT INTO stat_tickets (code, no_of_tickets,this_date,record_type)
-                        VALUES (new_type, 1, current_date, 2);
+                        VALUES (new_type, 1, current_date, 3);
     END IF;
-  END;
+  END IF;
 
   RETURN NEW;
 END; 
