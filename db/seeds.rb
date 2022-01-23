@@ -139,7 +139,7 @@ puts "Creating Users ..."
 
 user1 = User.new
 user1.name = "Bob Dylan"
-user1.mobile = "613.888.8888"
+user1.mobile = "6138888888"
 user1.email = "bdylan@email.com"
 user1.user_type_id = user_type3.id
 user1.password = "123456"
@@ -149,7 +149,7 @@ user1.save
 
 user2 = User.new
 user2.name = "Eric Clapton"
-user2.mobile = "613.777.7777"
+user2.mobile = "6137777777"
 user2.email = "eclapton@email.com"
 user2.user_type_id = user_type2.id
 user2.password = "123456"
@@ -158,7 +158,7 @@ user2.save
 
 user3 = User.new
 user3.name = "Jimi Hendrix"
-user3.mobile = "613.555.5555"
+user3.mobile = "6135555555"
 user3.email = "jhendrix@email.com"
 user3.user_type_id = user_type2.id
 user3.password = "123456"
@@ -167,7 +167,7 @@ user3.save
 
 user4 = User.new
 user4.name = "Jimi Page"
-user4.mobile = "613.444.4444"
+user4.mobile = "6134444444"
 user4.email = "jpage@email.com"
 user4.user_type_id = user_type1.id
 user4.password = "123456"
@@ -176,7 +176,7 @@ user4.save
 
 user5 = User.new
 user5.name = "Alvin Lee"
-user5.mobile = "613.222.2222"
+user5.mobile = "6132222222"
 user5.email = "alee@email.com"
 user5.user_type_id = user_type1.id
 user5.password = "123456"

@@ -4,8 +4,23 @@ class TicketsController < ApplicationController
 
   def index
     @userType = loggedAs
+    sort_by = ''
+    params['sort'] && sort_by = params['sort']
+    
     if @userType == 'Admin'
-      @tickets = Ticket.all.order(created_at: :desc)
+      if sort_by == 'user_id'
+        @tickets = Ticket.joins(:user).includes(:user).select("tickets.*, users.name").order("users.name")
+      elsif sort_by == 'ticket_priority_id'  
+        @tickets = Ticket.joins(:ticket_priority).includes(:ticket_priority).select("tickets.*, ticket_priorities.code").order("ticket_priorities.code")
+      elsif sort_by == 'technician_id'
+        @tickets = Ticket.all.order(technician_id: :desc)
+      elsif sort_by == 'status_code_id'
+        @tickets = Ticket.joins(:ticket_status_code).includes(:ticket_status_code).select("tickets.*, ticket_status_codes.code").order("ticket_status_codes.code")
+      elsif sort_by == 'ticket_type_id'
+        @tickets = Ticket.joins(:ticket_type).includes(:ticket_type).select("tickets.*, ticket_types.code").order("ticket_types.code")
+      else
+        @tickets = Ticket.all.order(created_at: :desc)
+      end
     end
     if @userType == 'Technician'
       @tickets = Ticket.find_by_technician_id(current_user.id)
@@ -103,7 +118,11 @@ class TicketsController < ApplicationController
       :solution_description,
       :assigned_at,
       :closed_at,
-      :to_be_solved_at
+      :to_be_solved_at,
+      :category_id,
+      :product_id,
+      :serial_number,
+      :model
     )
   end
 
