@@ -53,6 +53,7 @@ for everyone
   </div>
 
   <div class="home_ourservises-cards">
+
     <div class="home_ourservises-card">
       <div>
       <%= image_tag("detailsIcon.svg", alt: " detailsicon img", class: "home_detailsinfo-image") %>
@@ -93,16 +94,18 @@ for everyone
     </div>
   </div>
 
+ <div class="home_dot-servises">
+    <%= image_tag("Dots.svg", alt: " DotsMainBig img", class: "home_dots-image") %>
+    </div>
+ 
+    <div class="home_blob-main-servises">
+    <%= image_tag("BlobServices.svg", alt: " BlobServices img", class: "home_blob-blobServices-image") %>
+    </div>
+    
   <div class="home_open_ticket-button-openticket">
       <%= link_to 'Learn more', [:new, :ticket], class: 'btn btn-outline-primary' %>
   </div>
 
-  <div class="home_blob-main-servises">
-  <%= image_tag("BlobServices.svg", alt: " BlobServices img", class: "home_blob-blobServices-image") %>
-  </div>
 
-  <div class="home_dot-servises">
-  <%= image_tag("Dots.svg", alt: " DotsMainBig img", class: "home_dots-image") %>
-  </div>
 
 </section>

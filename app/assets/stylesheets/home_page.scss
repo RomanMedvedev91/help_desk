@@ -1,11 +1,11 @@
 .home_description-helpdesk {
-  z-index: 3;
+  // z-index: 3;
   display: flex;
   margin-top: 5.5rem;
 
   .home_open_ticket {
     position: relative;
-    z-index: 4;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,7 +37,7 @@
 
   .home-dashboard-pic {
     position: relative;
-    z-index: 4;
+    z-index: 1;
   }
   .home_blob-main-big {
     position: absolute;
@@ -65,8 +65,8 @@
   margin-top: 8.5rem;
 
   .home_ourservises-description {
-    z-index: 6;
-    position: relative;
+    // z-index: 6;
+    // position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -87,11 +87,12 @@
       text-align: center;
       font-size: 1.125rem;
       margin-bottom: 5rem;
+      z-index: 1;
     }
   }
 
   .home_ourservises-cards {
-    z-index: 7;
+    z-index: 2;
     position: relative;
     display: flex;
     justify-content: space-evenly;
@@ -105,6 +106,7 @@
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
       padding: 3.4rem 2.8rem 4.6rem 2.5rem;
+      background-color: #ffffff;
 
       .home_ourservises-card-title {
         font-weight: 700;
@@ -136,6 +138,7 @@
   .home_dot-servises {
     position: absolute;
     top: 80rem;
-    left: 75rem;
+    left: 73rem;
+    z-index: 1;
   }
 }
