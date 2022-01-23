@@ -46,17 +46,96 @@
   }
   .home_dot-laptop-top {
     position: absolute;
-    top: 6rem;
-    left: 71rem;
+    top: 7rem;
+    left: 74rem;
   }
   .home_dot-laptop-botton {
     position: absolute;
-    top: 32rem;
-    left: 31rem;
+    top: 31rem;
+    left: 33rem;
   }
   .home_dot-left-halfhidden {
     position: absolute;
     top: 10rem;
     left: -3rem;
+  }
+}
+
+.home_ourservises {
+  margin-top: 8.5rem;
+
+  .home_ourservises-description {
+    z-index: 6;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .home_ourservises-description-title {
+      font-weight: 700;
+      font-size: 2.25rem;
+      margin-bottom: 2rem;
+
+      .home_ourservises-description-title-border {
+        display: flex;
+        justify-content: center;
+        padding-top: 1.2rem;
+      }
+    }
+
+    .home_ourservises-description-body {
+      text-align: center;
+      font-size: 1.125rem;
+      margin-bottom: 5rem;
+    }
+  }
+
+  .home_ourservises-cards {
+    z-index: 7;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+
+    .home_ourservises-card {
+      font-size: 1.125rem;
+      max-width: 22rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      padding: 3.4rem 2.8rem 4.6rem 2.5rem;
+
+      .home_ourservises-card-title {
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+      }
+      .home_ourservises-card-text {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .home_open_ticket-button-openticket {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+
+    .btn-outline-primary {
+      border: 1px solid #458ff6;
+    }
+  }
+
+  .home_blob-main-servises {
+    position: absolute;
+    top: 50rem;
+    left: 52rem;
+  }
+
+  .home_dot-servises {
+    position: absolute;
+    top: 80rem;
+    left: 75rem;
   }
 }
