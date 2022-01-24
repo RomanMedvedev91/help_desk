@@ -1,3 +1,4 @@
+require 'date'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -42,6 +43,9 @@ QaCategory.destroy_all
 TicketPriority.destroy_all
 TicketStatusCode.destroy_all
 TicketType.destroy_all
+
+StatTechnician.destroy_all
+StatTicket.destroy_all
 
 puts "End Deleting All Records From Database"
 
@@ -169,7 +173,7 @@ user4 = User.new
 user4.name = "Jimi Page"
 user4.mobile = "6134444444"
 user4.email = "jpage@email.com"
-user4.user_type_id = user_type1.id
+user4.user_type_id = user_type2.id
 user4.password = "123456"
 user4.password_confirmation = "123456"
 user4.save
@@ -178,10 +182,19 @@ user5 = User.new
 user5.name = "Alvin Lee"
 user5.mobile = "6132222222"
 user5.email = "alee@email.com"
-user5.user_type_id = user_type1.id
+user5.user_type_id = user_type2.id
 user5.password = "123456"
 user5.password_confirmation = "123456"
 user5.save
+
+user6 = User.new
+user6.name = "Richie Blackmore"
+user6.mobile = "6130000001"
+user6.email = "rblackmore@email.com"
+user6.user_type_id = user_type2.id
+user6.password = "123456"
+user6.password_confirmation = "123456"
+user6.save
 
 #------------------------------------------------------------------
 ## QA Category
@@ -452,9 +465,897 @@ ticket3.category_id = cat3.id
 ticket3.product_id = product9.id
 ticket3.model = 'AAA1'
 ticket3.serial_number = 'FKKKDJD088AL'
-
 ticket3.save
 
+ticket4 = Ticket.new
+ticket4.user_id = user1.id
+ticket4.reference = "AX205"
+ticket4.technician_id = user4.id
+ticket4.contract_product_id = contract_product2.id
+ticket4.ticket_type_id = type1.id
+ticket4.ticket_status_code_id = status1.id
+ticket4.ticket_priority_id = priority1.id
+ticket4.problem_description = "Big Problem"
+ticket4.solution_description = ""
+ticket4.assigned_at = -1.days.from_now
+ticket4.closed_at = ''
+ticket4.to_be_solved_at = 2.days.from_now
+ticket4.category_id = cat1.id
+ticket4.product_id = product1.id
+ticket4.model = 'AAA3'
+ticket4.serial_number = 'X0000Z29L'
+ticket4.save
+
 #-----------------------------------------------------------------
+## stat_technicians
+
+puts "Technician Statistics ..."
+
+stat_technician = StatTechnician.new
+stat_technician.name = user1.name
+stat_technician.this_date = Date.today
+stat_technician.assigned = 5
+stat_technician.solved = 7
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user1.name
+stat_technician.this_date = Date.today - 1
+stat_technician.assigned = 4
+stat_technician.solved = 9
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user1.name
+stat_technician.this_date = Date.today - 2
+stat_technician.assigned = 7
+stat_technician.solved = 5
+stat_technician.transferred = 0
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user1.name
+stat_technician.this_date = Date.today - 3
+stat_technician.assigned = 6
+stat_technician.solved = 9
+stat_technician.transferred = 3
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user1.name
+stat_technician.this_date = Date.today - 4
+stat_technician.assigned = 10
+stat_technician.solved = 3
+stat_technician.transferred = 0
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user1.name
+stat_technician.this_date = Date.today - 5
+stat_technician.assigned = 2
+stat_technician.solved = 2
+stat_technician.transferred = 7
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user1.name
+stat_technician.this_date = Date.today - 6
+stat_technician.assigned = 8
+stat_technician.solved = 1
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user1.name
+stat_technician.this_date = Date.today - 7
+stat_technician.assigned = 3
+stat_technician.solved = 12
+stat_technician.transferred = 0
+stat_technician.save
+
+#----------------
+
+stat_technician = StatTechnician.new
+stat_technician.name = user2.name
+stat_technician.this_date = Date.today
+stat_technician.assigned = 4
+stat_technician.solved = 9
+stat_technician.transferred = 0
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user2.name
+stat_technician.this_date = Date.today - 1
+stat_technician.assigned = 5
+stat_technician.solved = 1
+stat_technician.transferred = 4
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user2.name
+stat_technician.this_date = Date.today - 2
+stat_technician.assigned = 3
+stat_technician.solved = 2
+stat_technician.transferred = 0
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user2.name
+stat_technician.this_date = Date.today - 3
+stat_technician.assigned = 3
+stat_technician.solved = 8
+stat_technician.transferred = 0
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user2.name
+stat_technician.this_date = Date.today - 4
+stat_technician.assigned = 12
+stat_technician.solved = 5
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user2.name
+stat_technician.this_date = Date.today - 5
+stat_technician.assigned = 4
+stat_technician.solved = 7
+stat_technician.transferred = 3
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user2.name
+stat_technician.this_date = Date.today - 6
+stat_technician.assigned = 13
+stat_technician.solved = 5
+stat_technician.transferred = 3
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user2.name
+stat_technician.this_date = Date.today - 7
+stat_technician.assigned = 8
+stat_technician.solved = 8
+stat_technician.transferred = 0
+stat_technician.save
+
+#----------------
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today
+stat_technician.assigned = 3
+stat_technician.solved = 7
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today - 1
+stat_technician.assigned = 2
+stat_technician.solved = 1
+stat_technician.transferred = 7
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today - 2
+stat_technician.assigned = 5
+stat_technician.solved = 5
+stat_technician.transferred = 0
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today - 3
+stat_technician.assigned = 11
+stat_technician.solved = 4
+stat_technician.transferred = 0
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today - 4
+stat_technician.assigned = 9
+stat_technician.solved = 3
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today - 5
+stat_technician.assigned = 6
+stat_technician.solved = 7
+stat_technician.transferred = 3
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today - 6
+stat_technician.assigned = 11
+stat_technician.solved = 4
+stat_technician.transferred = 2
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today - 7
+stat_technician.assigned = 5
+stat_technician.solved = 8
+stat_technician.transferred = 3
+stat_technician.save
+
+#----------------
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today
+stat_technician.assigned = 11
+stat_technician.solved = 8
+stat_technician.transferred = 0
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today - 1
+stat_technician.assigned = 12
+stat_technician.solved = 9
+stat_technician.transferred = 4
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today - 2
+stat_technician.assigned = 7
+stat_technician.solved = 7
+stat_technician.transferred = 0
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today - 3
+stat_technician.assigned = 7
+stat_technician.solved = 10
+stat_technician.transferred = 0
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today - 4
+stat_technician.assigned = 4
+stat_technician.solved = 10
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today - 5
+stat_technician.assigned = 11
+stat_technician.solved = 17
+stat_technician.transferred = 3
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today - 6
+stat_technician.assigned = 13
+stat_technician.solved = 8
+stat_technician.transferred = 3
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today - 7
+stat_technician.assigned = 8
+stat_technician.solved = 11
+stat_technician.transferred = 0
+stat_technician.save
+
+#----------------
+
+stat_technician = StatTechnician.new
+stat_technician.name = user4.name
+stat_technician.this_date = Date.today
+stat_technician.assigned = 6
+stat_technician.solved = 7
+stat_technician.transferred = 3
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user4.name
+stat_technician.this_date = Date.today - 1
+stat_technician.assigned = 9
+stat_technician.solved = 11
+stat_technician.transferred = 0
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user4.name
+stat_technician.this_date = Date.today - 2
+stat_technician.assigned = 7
+stat_technician.solved = 6
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user4.name
+stat_technician.this_date = Date.today - 3
+stat_technician.assigned = 5
+stat_technician.solved = 9
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user4.name
+stat_technician.this_date = Date.today - 4
+stat_technician.assigned = 13
+stat_technician.solved = 7
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user4.name
+stat_technician.this_date = Date.today - 5
+stat_technician.assigned = 11
+stat_technician.solved = 8
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user4.name
+stat_technician.this_date = Date.today - 6
+stat_technician.assigned = 13
+stat_technician.solved = 4
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user4.name
+stat_technician.this_date = Date.today - 7
+stat_technician.assigned = 6
+stat_technician.solved = 11
+stat_technician.transferred = 2
+stat_technician.save
+
+
+#----------------
+
+stat_technician = StatTechnician.new
+stat_technician.name = user5.name
+stat_technician.this_date = Date.today
+stat_technician.assigned = 9
+stat_technician.solved = 9
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user5.name
+stat_technician.this_date = Date.today - 1
+stat_technician.assigned = 7
+stat_technician.solved = 9
+stat_technician.transferred = 3
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user5.name
+stat_technician.this_date = Date.today - 2
+stat_technician.assigned = 7
+stat_technician.solved = 3
+stat_technician.transferred = 0
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user5.name
+stat_technician.this_date = Date.today - 3
+stat_technician.assigned = 8
+stat_technician.solved = 8
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user5.name
+stat_technician.this_date = Date.today - 4
+stat_technician.assigned = 10
+stat_technician.solved = 6
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user5.name
+stat_technician.this_date = Date.today - 5
+stat_technician.assigned = 5
+stat_technician.solved = 9
+stat_technician.transferred = 2
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user5.name
+stat_technician.this_date = Date.today - 6
+stat_technician.assigned = 13
+stat_technician.solved = 2
+stat_technician.transferred = 0
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user5.name
+stat_technician.this_date = Date.today - 7
+stat_technician.assigned = 7
+stat_technician.solved = 6
+stat_technician.transferred = 1
+stat_technician.save
+
+#------------
+
+## stat_tickets
+
+puts "Tickets Statistics ..."
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority1.code
+stat_ticket.this_date = Date.today
+stat_ticket.no_of_tickets = 18
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority1.code
+stat_ticket.this_date = Date.today -1
+stat_ticket.no_of_tickets = 21
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority1.code
+stat_ticket.this_date = Date.today -2
+stat_ticket.no_of_tickets = 15
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority1.code
+stat_ticket.this_date = Date.today -3
+stat_ticket.no_of_tickets = 29
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority1.code
+stat_ticket.this_date = Date.today -4
+stat_ticket.no_of_tickets = 11
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority1.code
+stat_ticket.this_date = Date.today -5
+stat_ticket.no_of_tickets = 14
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority1.code
+stat_ticket.this_date = Date.today -6
+stat_ticket.no_of_tickets = 18
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority1.code
+stat_ticket.this_date = Date.today -7
+stat_ticket.no_of_tickets = 22
+stat_ticket.record_type = 1
+stat_ticket.save
+
+#------
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority2.code
+stat_ticket.this_date = Date.today
+stat_ticket.no_of_tickets = 11
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority2.code
+stat_ticket.this_date = Date.today -1
+stat_ticket.no_of_tickets = 12
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority2.code
+stat_ticket.this_date = Date.today -2
+stat_ticket.no_of_tickets = 15
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority2.code
+stat_ticket.this_date = Date.today -3
+stat_ticket.no_of_tickets = 14
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority2.code
+stat_ticket.this_date = Date.today -4
+stat_ticket.no_of_tickets = 12
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority2.code
+stat_ticket.this_date = Date.today -5
+stat_ticket.no_of_tickets = 17
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority2.code
+stat_ticket.this_date = Date.today -6
+stat_ticket.no_of_tickets = 9
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority2.code
+stat_ticket.this_date = Date.today -7
+stat_ticket.no_of_tickets = 3
+stat_ticket.record_type = 1
+stat_ticket.save
+
+#------
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority3.code
+stat_ticket.this_date = Date.today
+stat_ticket.no_of_tickets = 11
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority3.code
+stat_ticket.this_date = Date.today -1
+stat_ticket.no_of_tickets = 11
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority3.code
+stat_ticket.this_date = Date.today -2
+stat_ticket.no_of_tickets = 15
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority3.code
+stat_ticket.this_date = Date.today -3
+stat_ticket.no_of_tickets = 17
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority3.code
+stat_ticket.this_date = Date.today -4
+stat_ticket.no_of_tickets = 10
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority3.code
+stat_ticket.this_date = Date.today -5
+stat_ticket.no_of_tickets = 14
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority3.code
+stat_ticket.this_date = Date.today -6
+stat_ticket.no_of_tickets = 13
+stat_ticket.record_type = 1
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = priority3.code
+stat_ticket.this_date = Date.today -7
+stat_ticket.no_of_tickets = 10
+stat_ticket.record_type = 1
+stat_ticket.save
+
+#------
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type1.code
+stat_ticket.this_date = Date.today
+stat_ticket.no_of_tickets = 20
+stat_ticket.record_type = 3
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type1.code
+stat_ticket.this_date = Date.today -1
+stat_ticket.no_of_tickets = 25
+stat_ticket.record_type = 3
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type1.code
+stat_ticket.this_date = Date.today -2
+stat_ticket.no_of_tickets = 22
+stat_ticket.record_type = 3
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type1.code
+stat_ticket.this_date = Date.today -3
+stat_ticket.no_of_tickets = 30
+stat_ticket.record_type = 3
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type1.code
+stat_ticket.this_date = Date.today -4
+stat_ticket.no_of_tickets = 19
+stat_ticket.record_type = 3
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type1.code
+stat_ticket.this_date = Date.today -5
+stat_ticket.no_of_tickets = 26
+stat_ticket.record_type = 3
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type1.code
+stat_ticket.this_date = Date.today -6
+stat_ticket.no_of_tickets = 19
+stat_ticket.record_type = 3
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type1.code
+stat_ticket.this_date = Date.today -7
+stat_ticket.no_of_tickets = 24
+stat_ticket.record_type = 3
+stat_ticket.save
+
+#------
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type2.code
+stat_ticket.this_date = Date.today
+stat_ticket.no_of_tickets = 25
+stat_ticket.record_type = 3
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type2.code
+stat_ticket.this_date = Date.today -1
+stat_ticket.no_of_tickets = 22
+stat_ticket.record_type = 3
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type2.code
+stat_ticket.this_date = Date.today -2
+stat_ticket.no_of_tickets = 22
+stat_ticket.record_type = 3
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type2.code
+stat_ticket.this_date = Date.today -3
+stat_ticket.no_of_tickets = 30
+stat_ticket.record_type = 3
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type2.code
+stat_ticket.this_date = Date.today -4
+stat_ticket.no_of_tickets = 27
+stat_ticket.record_type = 3
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type2.code
+stat_ticket.this_date = Date.today -5
+stat_ticket.no_of_tickets = 22
+stat_ticket.record_type = 3
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type2.code
+stat_ticket.this_date = Date.today -6
+stat_ticket.no_of_tickets = 25
+stat_ticket.record_type = 3
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = type2.code
+stat_ticket.this_date = Date.today -7
+stat_ticket.no_of_tickets = 24
+stat_ticket.record_type = 3
+stat_ticket.save
+
+#------
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status1.code
+stat_ticket.this_date = Date.today
+stat_ticket.no_of_tickets = 21
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status1.code
+stat_ticket.this_date = Date.today -1
+stat_ticket.no_of_tickets = 27
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status1.code
+stat_ticket.this_date = Date.today -2
+stat_ticket.no_of_tickets = 23
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status1.code
+stat_ticket.this_date = Date.today -3
+stat_ticket.no_of_tickets = 18
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status1.code
+stat_ticket.this_date = Date.today -4
+stat_ticket.no_of_tickets = 22
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status1.code
+stat_ticket.this_date = Date.today -5
+stat_ticket.no_of_tickets = 24
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status1.code
+stat_ticket.this_date = Date.today -6
+stat_ticket.no_of_tickets = 19
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status1.code
+stat_ticket.this_date = Date.today -7
+stat_ticket.no_of_tickets = 15
+stat_ticket.record_type = 2
+stat_ticket.save
+
+#------
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status2.code
+stat_ticket.this_date = Date.today
+stat_ticket.no_of_tickets = 14
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status2.code
+stat_ticket.this_date = Date.today -1
+stat_ticket.no_of_tickets = 17
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status2.code
+stat_ticket.this_date = Date.today -2
+stat_ticket.no_of_tickets = 13
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status2.code
+stat_ticket.this_date = Date.today -3
+stat_ticket.no_of_tickets = 28
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status2.code
+stat_ticket.this_date = Date.today -4
+stat_ticket.no_of_tickets = 12
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status2.code
+stat_ticket.this_date = Date.today -5
+stat_ticket.no_of_tickets = 14
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status2.code
+stat_ticket.this_date = Date.today -6
+stat_ticket.no_of_tickets = 29
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status2.code
+stat_ticket.this_date = Date.today -7
+stat_ticket.no_of_tickets = 25
+stat_ticket.record_type = 2
+stat_ticket.save
+
+#------
+
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status3.code
+stat_ticket.this_date = Date.today
+stat_ticket.no_of_tickets = 25
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status3.code
+stat_ticket.this_date = Date.today -1
+stat_ticket.no_of_tickets = 30
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status3.code
+stat_ticket.this_date = Date.today -2
+stat_ticket.no_of_tickets = 20
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status3.code
+stat_ticket.this_date = Date.today -3
+stat_ticket.no_of_tickets = 20
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status3.code
+stat_ticket.this_date = Date.today -4
+stat_ticket.no_of_tickets = 20
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status3.code
+stat_ticket.this_date = Date.today -5
+stat_ticket.no_of_tickets = 25
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status3.code
+stat_ticket.this_date = Date.today -6
+stat_ticket.no_of_tickets = 22
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status3.code
+stat_ticket.this_date = Date.today -7
+stat_ticket.no_of_tickets = 17
+stat_ticket.record_type = 2
+stat_ticket.save
+
+#------
+
 
 puts "DONE!"

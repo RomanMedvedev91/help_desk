@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220120185404) do
+ActiveRecord::Schema.define(version: 20220123152201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,25 @@ ActiveRecord::Schema.define(version: 20220120185404) do
     t.datetime "updated_at",     null: false
   end
 
+  create_table "stat_technicians", force: :cascade do |t|
+    t.string   "name"
+    t.date     "this_date"
+    t.integer  "assigned"
+    t.integer  "solved"
+    t.integer  "transferred"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "stat_tickets", force: :cascade do |t|
+    t.string   "code"
+    t.integer  "no_of_tickets"
+    t.string   "record_type"
+    t.date     "this_date"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "ticket_priorities", force: :cascade do |t|
     t.string   "code",           null: false
     t.text     "description"
@@ -147,6 +166,18 @@ ActiveRecord::Schema.define(version: 20220120185404) do
   add_index "tickets", ["ticket_status_code_id"], name: "index_tickets_on_ticket_status_code_id", using: :btree
   add_index "tickets", ["ticket_type_id"], name: "index_tickets_on_ticket_type_id", using: :btree
   add_index "tickets", ["user_id"], name: "index_tickets_on_user_id", using: :btree
+
+  create_table "user_notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "ticket_id"
+    t.string   "notification_type"
+    t.integer  "send_email"
+    t.integer  "send_sms"
+    t.datetime "email_sent_at"
+    t.datetime "sms_sent_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
 
   create_table "user_types", force: :cascade do |t|
     t.string   "code",        null: false
