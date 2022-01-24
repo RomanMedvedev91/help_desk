@@ -122,7 +122,6 @@
   .home_open_ticket-button-openticket {
     display: flex;
     justify-content: center;
-    margin-top: 4rem;
 
     .btn-outline-primary {
       border: 1px solid #458ff6;
@@ -140,5 +139,64 @@
     top: 80rem;
     left: 73rem;
     z-index: 1;
+  }
+}
+
+.home_work-efficiently {
+  display: flex;
+  margin-top: 18rem;
+  position: relative;
+
+  .home-work-small-pic {
+    position: relative;
+    z-index: 1;
+    margin-left: 4rem;
+    margin-right: 6.5rem;
+  }
+
+  .home_work-efficitently-description {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .home_work-efficitently-description-title {
+      font-weight: 700;
+      font-size: 2.25rem;
+      margin-bottom: 2rem;
+    }
+    .home_work-efficitently-description-text {
+      z-index: 1;
+      line-height: 2rem;
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+    }
+    .home_work-efficitently-description-btn {
+      display: flex;
+      justify-content: center;
+      margin-top: 4rem;
+
+      .btn-outline-primary {
+        border: 1px solid #458ff6;
+      }
+    }
+  }
+
+  .home_blob-main-small {
+    position: absolute;
+    top: -10rem;
+    left: -10rem;
+  }
+  .home_dot-3block {
+    position: absolute;
+    top: 14rem;
+    left: 0rem;
+    z-index: 0;
+  }
+  .home_dot-laptop-3block-right {
+    position: absolute;
+    top: 10rem;
+    left: 73rem;
   }
 }

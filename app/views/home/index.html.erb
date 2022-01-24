@@ -6,19 +6,20 @@
       </p>
     </div>
     <div class="home_open_ticket-description">
-    HelpDesk provides progressive, and affordable 
-services, accessible on mobile and online 
-for everyone
-    </p>
+      <p>
+      HelpDesk provides progressive, and affordable 
+      services, accessible on mobile and online 
+      for everyone
+      </p>
     </div>
     <div class="home_open_ticket-button-openticket">
       <%= link_to 'Open new Ticket', [:new, :ticket], class: 'btn btn-primary' %>
     </div>
   </div>
   <div class="home-dashboard-pic">
-  <div>
+    <div>
       <%= image_tag("MainImageBig.png", alt: "main image img", class: "home_main-image" ) %>
-  </div>
+    </div>
   </div>
 
   <div class="home_blob-main-big">
@@ -101,11 +102,46 @@ for everyone
     <div class="home_blob-main-servises">
     <%= image_tag("BlobServices.svg", alt: " BlobServices img", class: "home_blob-blobServices-image") %>
     </div>
-    
+
   <div class="home_open_ticket-button-openticket">
-      <%= link_to 'Learn more', [:new, :ticket], class: 'btn btn-outline-primary' %>
+      <%= link_to 'Learn more', [:new, :ticket], class: 'btn btn-lg btn-outline-primary' %>
   </div>
 
 
 
+</section>
+
+<section class="home_work-efficiently">
+  <div class="home-work-small-pic">
+    <div>
+      <%= image_tag("MainImageSmall.png", alt: " MainImageSmall img", class: "home_main-image-small" ) %>
+    </div>
+  </div>
+ 
+  <div class="home_work-efficitently-description">
+    <div class ="home_work-efficitently-description-title">
+      <p>
+        Work more efficiently and save time
+      </p>
+    </div>
+    <div class="home_work-efficitently-description-text">
+      <p>
+      HelpDesk provides progressive, and affordable services, accessible on mobile and online for everyone. To us, it’s not just work. We take pride in the solutions we deliver
+      </p>
+    </div>
+    <div class="home_work-efficitently-description-btn">
+      <%= link_to 'Learn more', [:new, :ticket], class: 'btn btn-outline-primary' %>
+    </div>
+  </div>
+
+  <div class="home_blob-main-small">
+  <%= image_tag("Blob3block.svg", alt: " Blob3block img", class: "home_blob-3block-image") %>
+  </div>
+  <div class="home_dot-3block">
+  <%= image_tag("Dots.svg", alt: " DotsMainBig img", class: "home_dots-image") %>
+  </div>
+  <div class="home_dot-laptop-3block-right">
+  <%= image_tag("Dots.svg", alt: " DotsMainBig img", class: "home_dots-image") %>
+  </div>
+  
 </section>
