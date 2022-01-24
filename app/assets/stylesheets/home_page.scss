@@ -28,7 +28,7 @@
     margin-bottom: 2rem;
   }
   .home_open_ticket-button-openticket {
-    margin-bottom: 2rem;
+    margin-top: 2rem;
     .btn-primary {
       background-color: #458ff6;
       border-color: #458ff6;
@@ -119,11 +119,12 @@
     }
   }
 
-  .home_open_ticket-button-openticket {
+  .home_ourservises-button-learmore {
     display: flex;
     justify-content: center;
+    margin-top: 4rem;
 
-    .btn-outline-primary {
+    .btn.btn-outline-primary {
       border: 1px solid #458ff6;
     }
   }

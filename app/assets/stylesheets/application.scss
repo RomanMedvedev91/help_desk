@@ -7,6 +7,7 @@
 // App
 @import "products";
 @import "home_page";
+@import "footer";
 
 // Global
 html {
@@ -32,11 +33,3 @@ form.button_to {
 .nav.navbar-nav.navbar-right {
   font-weight: 700;
 }
-
-// .container {
-//   z-index: 1;
-// }
-
-// main {
-//   z-index: 2;
-// }
