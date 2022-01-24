@@ -35,3 +35,14 @@ form.button_to {
 .nav.navbar-nav.navbar-right {
   font-weight: 700;
 }
+
+.btn-primary {
+  background-color: #458ff6;
+  border-color: #458ff6;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}

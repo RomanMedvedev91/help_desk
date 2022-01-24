@@ -9,7 +9,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-1">
+    <div class="col-sm-6 col-sm-offset-1 new_ticket-form-wraper">
       <%= form_for [@ticket] do |form| %>
 
         <% if form.object.errors.any? %>
@@ -23,75 +23,86 @@
           </div>
         <% end %>
 
-        <div class="form-group">
-          <h4>Name    : <%= current_user.name %></h4>
-          <h4>Email   : <%= current_user.email %></h4>
-          <h4>Mobile : <%= current_user.mobile %></h4>
-          <hr />
-
+        <div class="form-group new_ticket">
+          <div class="form_current-user">
+            <h4><span class="form_current-user-title">Name    :</span> <%= current_user.name %></h4>
+            <h4><span class="form_current-user-title">Email   :</span> <%= current_user.email %></h4>
+            <h4><span class="form_current-user-title">Mobile :</span> <%= current_user.mobile %></h4>
+          </div>
+          
           <%= form.hidden_field :reference, class: 'form-control' %>
           <%= form.hidden_field :user_id, class: 'form-control' %>
           <%= form.hidden_field :technician_id, class: 'form-control' %>
-          <hr />
+          <!-- <hr /> -->
 
           <%= form.hidden_field :assigned_at, class: 'form-control' %>
           <%= form.hidden_field :to_be_solved_at, class: 'form-control' %>
           <%= form.hidden_field :closed_at, class: 'form-control' %>
-          <hr />
+          <!-- <hr /> -->
 
-
-          <%= form.label :category_id %>
-          <% options = options_from_collection_for_select(@categories, 'id', 'code') %>
-          <%= form.select :category_id,  options%>
-          <div></div>
-
-          <%= form.label :product_id %>
-          <% options = options_from_collection_for_select(@default_products, 'id', 'code') %>
-          <%= form.select :product_id, options %>
-          <div></div>
+          <div class="new_ticket-select-products">
+            <div class="new_ticket-selector col-2">
+              <%= form.label :category_id %>   
+              <% options = options_from_collection_for_select(@categories, 'id', 'code') %>
+              <%= form.select :category_id, options, {}, { class: 'form-control' } %>
+            </div>
+          
+            <div class="new_ticket-selector col-2">
+              <%= form.label :product_id %>
+            <% options = options_from_collection_for_select(@default_products, 'id', 'code') %>
+            <%= form.select :product_id, options, {}, { class: 'form-control' } %>
+            </div>
+          </div>
 
           <%= form.label :model %>
           <%= form.text_field :model, class: 'form-control' %>
 
           <%= form.label :serial_number %>
           <%= form.text_field :serial_number, class: 'form-control' %>
-          <hr />
-
 
           <% if @userType != 'User' %>
-            <%= form.label :ticket_property_id %>
-            <% options = options_from_collection_for_select(@ticket_priorities, 'id', 'code') %>
-            <%= form.select :ticket_priority_id,  options %>
-            <div></div>
+            <div class="new_ticket-select-products">
+              <div class="new_ticket-selector">
+                <%= form.label :ticket_property_id %>
+                <% options = options_from_collection_for_select(@ticket_priorities, 'id', 'code') %>
+                <%= form.select :ticket_priority_id,  options, {}, { class: 'form-control' } %>
+              </div>
 
-            <%= form.label :ticket_status_code_id %>
-            <% options = options_from_collection_for_select(@ticket_status_codes, 'id', 'code') %>
-            <%= form.select :ticket_status_code_id,  options %>
-            <div></div>
+              <div class="new_ticket-selector">
+                <%= form.label :ticket_status_code_id %>
+                <% options = options_from_collection_for_select(@ticket_status_codes, 'id', 'code') %>
+                <%= form.select :ticket_status_code_id,  options, {}, { class: 'form-control' } %>
+              </div>
 
-            <%= form.label :ticket_type_id %>
-            <% options = options_from_collection_for_select(@ticket_types, 'id', 'code') %>
-            <%= form.select :ticket_type_id,  options %>
-            <div></div>
+              <div class="new_ticket-selector">
+                <%= form.label :ticket_type_id %>
+                <% options = options_from_collection_for_select(@ticket_types, 'id', 'code') %>
+                <%= form.select :ticket_type_id,  options, {}, { class: 'form-control' } %>
+              </div>
+            </div>
           <% else %>
             <%= form.hidden_field :ticket_priority_id, class: 'form-control' %>
             <%= form.hidden_field :ticket_status_code_id, class: 'form-control' %>
             <%= form.hidden_field :ticket_type_id, class: 'form-control' %>
           <% end %>
           <hr />
+          <div class="new_ticket-text-area">
+            <div class="new_ticket-text-area-problem">
+              <h3><%= form.label :problem_description %></h3>
+              <%= form.text_area :problem_description, :class => "tinymce", :rows => 15, :cols => 120 %>
+              <%= tinymce %>
+              <hr />
+            </div>
 
-          <h3><%= form.label :problem_description %></h3>
-          <%= form.text_area :problem_description, :class => "tinymce", :rows => 15, :cols => 120 %>
-          <%= tinymce %>
-          <hr />
-
-          <% if @userType != 'User' %> 
-            <h3><%= form.label :solution_description %><h3>
-            <%= form.text_area :solution_description, :class => "tinymce", :rows => 15, :cols => 120 %>
-            <%= tinymce %>
-            <hr />
-
-          <% end %> 
+            <% if @userType != 'User' %> 
+            <div class="new_ticket-text-area-solution">
+              <h3><%= form.label :solution_description %><h3>
+              <%= form.text_area :solution_description, :class => "tinymce", :rows => 15, :cols => 120 %>
+              <%= tinymce %>
+              <hr />
+            </div>
+            <% end %> 
+          </div>
         </div>
 
         <div id="hiddenElement" class='hidden' data-products=<%= @products.map{|p| [p.category_id, p.id, p.code]}.to_json %>></div> 

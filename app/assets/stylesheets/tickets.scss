@@ -10,3 +10,34 @@
 .table_head > tr > th > a:hover {
   color: #333;
 }
+
+.col-sm-6.col-sm-offset-1.new_ticket-form-wraper {
+  margin-left: 0;
+  position: relative;
+}
+.form-group.new_ticket {
+  // position: relative;
+  input {
+    margin-bottom: 1rem;
+  }
+  .form_current-user {
+    position: absolute;
+    left: 58rem;
+    min-width: 14rem;
+
+    .form_current-user-title {
+      font-weight: 700;
+    }
+  }
+  .new_ticket-select-products {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    .new_ticket-selector {
+      min-width: 10rem;
+    }
+    .new_ticket-selector.col-2 {
+      min-width: 16rem;
+    }
+  }
+}
