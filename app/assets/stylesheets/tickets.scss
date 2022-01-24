@@ -1,0 +1,12 @@
+.table_head {
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.table_head > tr > th > a {
+  text-decoration: none;
+  color: #458ff6;
+}
+.table_head > tr > th > a:hover {
+  color: #333;
+}

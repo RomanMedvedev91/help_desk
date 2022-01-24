@@ -11,15 +11,15 @@
   <div class="panel panel-default tickets">
 
     <table class="table table-bordered">
-      <thead>
+      <thead class="table_head">
         <tr>
           <th>Reference</th>
-          <th><%= link_to 'User', sort: 'user_id' %></th>
-          <th><%= link_to 'Technician', sort: 'technician_id' %></th>
+          <th><%= link_to fa_icon('filter', text: "User"), sort: 'user_id' %></th>
+          <th><%= link_to fa_icon('filter', text: "Technician"), sort: 'technician_id' %></th>
           <th>Problem Description</th>
-          <th><%= link_to 'Priority', sort: 'ticket_priority_id' %></th>
-          <th><%= link_to 'Status Code', sort: 'ticket_status_code_id' %></th>
-          <th><%= link_to 'Type', sort: 'ticket_type_id' %></th>
+          <th><%= link_to fa_icon('filter', text: "Priority"), sort: 'ticket_priority_id' %></th>
+          <th><%= link_to link_to fa_icon('filter', text: "Status Code"), sort: 'ticket_status_code_id' %></th>
+          <th><%= link_to link_to fa_icon('filter', text: "Type"), sort: 'ticket_type_id' %></th>
         </tr>
       </thead>
       <tbody>
