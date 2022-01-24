@@ -12,10 +12,7 @@
   <table class="table table-dark">
   <thead>
     <tr >
-      
-
-      <th scope="col" class="bg-info"> Product count</th>
-      <th scope="col" class="bg-info">Category count</th>
+    
      
       <th scope="col" class="bg-info"> Closed Tickets</th>
       <th scope="col" class="bg-info"> Assigned Tickets</th>
@@ -31,10 +28,7 @@
 
 
     <tr class="bg-primary">
-      
-
-      <td class=" text-center status"><%= @product_count %></td>
-      <td class="text-center status"><%= @category_count %></td>
+  
       
       <td class="text-center status"><%= @ticket_closed_count  %></td>
       <td class="text-center status"><%= @assigned_tickets %></td>
@@ -51,38 +45,30 @@
 <br>
 <br>
 
-  <%= column_chart StatTechnician.group(:name).count  , title: "Number of tickets per technecian", library: {hAxis: {title: "Technecian name"}, vAxis: {title: "Number of tickets assigned"}} , label: "id"%>
+<h2>Ticket Statistics</h2>
 
+
+
+
+<%= pie_chart StatTechnician.group(:name).count  , title: "Number of tickets per technecian", library: {hAxis: {title: "Technecian name"}, vAxis: {title: "Number of tickets assigned"}} , label: "id"%>
+<%= pie_chart StatTicket.group(:code).where(code: ["Medium","Low","High"]).count  , title: "Number of tickets per priority", library: {hAxis: {title: "Priority"}, vAxis: {title: "Number of tickets"}} , label: "id"%>
+
+<%= pie_chart StatTicket.group(:code).where(code: ["Opened","Waiting","Assigned"]).count  , title: "Number of tickets per status", library: {hAxis: {title: "Status"}, vAxis: {title: "Number of tickets"}} , label: "id"%>
+
+<%= pie_chart StatTicket.group(:code).where(code: ["Call","Website"]).count  , title: "Number of tickets per category", library: {hAxis: {title: "Category name"}, vAxis: {title: "Number of tickets"}} , label: "id"
+column_chart StatTechnician.group(:name).count  , title: "Number of tickets per type", library: {hAxis: {title: "Type"}, vAxis: {title: "Number of tickets"}} , label: "id"
+%>
+
+
+  <%=%>
 
 
 
 <br>
 <br>
 
-  <table class="table table-striped table-bordered" style="background-color:white;" >
-  <thead>
-    <tr>
-      
-      <th scope="col">Technecian name</th>
-      <th scope="col">Number of tickets assigned</th>
-      <th scope="col">Number of tickets solved</th>
-     
-      
-    </tr>
-  </thead>
-  <tbody>
-  <% @t_all.each do |statTechnician| %>
-      
-    <tr>
-      <td><%= statTechnician[:name] %></td>
-      <td><%= statTechnician[:assigned] %></td>
-      <td><%= statTechnician[:solved] %></td>
-    
-      <% end %> 
-    </tr>
-    
-  </tbody>
-</table>
+<br>
+
 
   </div>
 
