@@ -17,7 +17,9 @@ To run the application, follow the following steps
         rake db:migrate
 
 4.  seed the database
+
         rake db:seed
+
 5.  run the app
 
         bin/rails s -b 0.0.0.0
