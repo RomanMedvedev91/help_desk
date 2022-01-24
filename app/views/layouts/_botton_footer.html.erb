@@ -20,16 +20,16 @@
     </div>
     <ul class="ul footer_links">
       <li>
-      <a>About</a>
+      <%= link_to 'About', :about_index %>
       </li>
       <li>
-      <a>Tickets</a>
+         <%= link_to 'Tickets', tickets_path %>
       </li>
       <li>
-      <a>FAQ</a>
+          <%= link_to 'F.A.Q', qas_path %>
       </li>
       <li>
-      <a>Contacts</a>
+      <%= link_to 'Contacts', :about_index %>
       </li>
     </ul>
   </div>
@@ -41,16 +41,16 @@
 
     <ul class="footer_links">
         <li>
-        <a>Help center</a>
+         <%= link_to 'Help center', :about_index %>
         </li>
         <li>
-        <a>Contact support</a>
+        <%= link_to 'Contact support', :about_index %>
         </li>
         <li>
-        <a>Instructions</a>
+        <%= link_to 'Instructions', :root %>        
         </li>
         <li>
-        <a>How it works</a>
+        <%= link_to 'How it works', :root %>
         </li>
     </ul>
   </div>
