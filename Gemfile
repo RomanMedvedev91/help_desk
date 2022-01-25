@@ -39,6 +39,8 @@ gem 'chartkick', '~> 2.2.0'
 # gem 'capistrano-rails', group: :development
 gem 'tinymce-rails'
 
+gem 'whenever', require: false
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'rspec-rails', '~> 3.5'
