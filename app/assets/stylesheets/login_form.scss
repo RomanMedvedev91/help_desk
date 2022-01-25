@@ -1,0 +1,79 @@
+.login-form {
+  z-index: 1;
+  margin: 6rem 20rem 0rem 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.125rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #ffffff;
+  position: relative;
+
+  .login-form-header {
+    margin-bottom: 2rem;
+  }
+
+  .form-horizontal {
+    margin-bottom: 1rem;
+  }
+  .form-group.login {
+    display: flex;
+    float: none;
+
+    input {
+      width: 15rem;
+      margin-right: 3rem;
+    }
+
+    .form-login-label {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: start;
+    }
+    .form-login-lg-btn {
+      margin-left: 5.5rem;
+
+      input {
+        width: 12rem;
+        margin-right: 0rem;
+      }
+    }
+    .form-login-sm-btn {
+      text-decoration: none;
+      color: #458ff6;
+      margin-left: 1rem;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      a:hover {
+        text-decoration: none;
+      }
+    }
+    .form-login-sm-btn:hover {
+      color: #333;
+      font-weight: 700;
+    }
+  }
+  .btn.btn-primary {
+    width: 5rem;
+  }
+}
+
+.home_blob-main-big.login {
+  position: absolute;
+  top: 4rem;
+  left: 28rem;
+}
+.home_dot-left-halfhidden.login {
+  position: absolute;
+  top: 8rem;
+  left: -1rem;
+}
+.home_dot-laptop-botton.login {
+  position: absolute;
+  top: 24rem;
+  left: 56rem;
+}

@@ -1,14 +1,54 @@
-<h1>Login</h1>
+<div class="login-form">
+  <h1 class="login-form-header">Login</h1>
 
-<%= form_tag '/login' do %>
-  <% if @user && @user.errors.full_messages.any? %>
-    <% @user.errors.full_messages.each do |error_message| %>
-      <%= error_message %> <br />
+  <%= form_tag '/login', class: "form-horizontal" do %>
+    <% if @user && @user.errors.full_messages.any? %>
+      <% @user.errors.full_messages.each do |error_message| %>
+        <%= error_message %> <br />
+      <% end %>
     <% end %>
+
+    <div class="form-group login">
+      <div class="form-login-label">
+        <label for="inputEmail3" class="control-label">Email</label>
+      </div>
+      <div class="col-sm-10">
+        <%= email_field_tag :email, nil , placeholder: 'jane.doe@example.com', class: "form-control" %>
+      </div>
+    </div>
+
+
+    <div class="form-group login">
+      <div class="form-login-label">
+        <label for="inputPassword3" class="control-label">Password</label>
+      </div>
+        <div class="col-sm-10">
+          <%= password_field_tag :password, nil, placeholder: "password", class: "form-control" %>
+        </div>
+    </div>
+        
+    <div class="form-group login">
+        <div class="form-login-lg-btn">
+          <%= submit_tag "Sign in", class: "btn btn-primary" %>
+        </div>
+        
+        <div class="form-login-sm-btn">
+          <%= link_to 'Back', tickets_path %>
+        </div>
+    </div>
   <% end %>
 
-  <div>Email: </div><div><%= text_field_tag :email %></div>
-  <div>Password: </div><div><%= password_field_tag :password %></div>
-  <%= submit_tag "Submit" %>   <%= link_to 'Back', tickets_path %>
-<% end %>
+</div>
+
+  <div class="home_blob-main-big login">
+    <%= image_tag("BlobsMainBig.svg", alt: " BlobsMainBig img", class: "home_blob-big-image") %>
+  </div>
+  <div class="home_dot-left-halfhidden login">
+  <%= image_tag("Dots.svg", alt: " DotsMainBig img", class: "home_dots-image") %>
+  </div>
+  <div class="home_dot-laptop-botton login">
+    <%= image_tag("Dots.svg", alt: " DotsMainBig img", class: "home_dots-image") %>
+  </div>
+
+
 
