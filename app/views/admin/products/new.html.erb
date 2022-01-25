@@ -26,20 +26,26 @@
 
         <div class="form-group">
 
+          <div class="new_ticket-selector col-2">
           <%= form.label :category_id %>
           <% options = options_from_collection_for_select(@categories, 'id', 'code') %>
-          <%= form.select :category_id,  options %>
-          <div></div>
+          <%= form.select :category_id,  options, {}, { class: 'form-control' } %>
+          <!--<div></div>-->
+          </div>
 
+          <div class="form-selector">
           <%= form.label :code %>
           <%= form.text_field :code, class: 'form-control' %>
+          </div>
           
           <%= form.label :model %>
           <%= form.text_field :model, class: 'form-control' %>
           
-          <%= form.label :description %>
-          <%= form.text_area :description, :class => "tinymce", :rows => 15, :cols => 120 %>
-          <%= tinymce %>
+          <div class="new_ticket-text-area">
+            <%= form.label :description %>
+            <%= form.text_area :description, :class => "tinymce", :rows => 15, :cols => 120 %>
+            <%= tinymce %>
+          </div>
         </div>
 
         <%= form.submit 'Create Category', class: 'btn btn-primary' %>

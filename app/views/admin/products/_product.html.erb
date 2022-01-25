@@ -1,15 +1,15 @@
 <tr>
   <td>
-    <h4><%= Category.find_by_id(product.category_id).code %></h4>
+  <%= Category.find_by_id(product.category_id).code %>
   </td>
   <td>
-    <h4><%= product.code %></h4>
+  <%= product.code %>
   </td>
   <td>
-    <h4><%= product.description.html_safe %></h4>
+  <%= product.description.html_safe %>
   </td>
   <td>
-    <h4><%= product.model %></h4>
+  <%= product.model %>
   </td>
   <td>
     <%= link_to fa_icon('edit'), edit_admin_product_path(product), class: 'btn btn-sm btn-primary' %>
