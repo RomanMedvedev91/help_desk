@@ -48,8 +48,8 @@
           <% else %>
             <%= form.hidden_field :technician_id, class: 'form-control' %>          
           <% end %>
+          <hr />
           
-
           <div class="new_ticket-select-products">
             <div class="new_ticket-selector col-2">
               <%= form.label :category_id %>
@@ -64,13 +64,28 @@
           </div>
         </div>
               <!-- <div></div> -->
+          <div class="form_current-user">
+            <% if @ticket.assigned_at %>
+              <h4> <span class="form_current-user-title"> Assigned At : </span> <%= @ticket.assigned_at %> </h4></hr>
+            <% end %>
+  
+            <% if @ticket.to_be_solved_at %>
+              <h4> <span class="form_current-user-title"> To Be Solved By :</span> <%= @ticket.to_be_solved_at %></h4> </hr>
+            <% end %>
+  
+            <% if @ticket.closed_at %>
+              <h4><span class="form_current-user-title">  Closed At : </span><%= @ticket.closed_at %></h4> </hr>
+            <% end %>
+          </div>
+    
+          <div class="new_ticket-select-products">
+            <%= form.label :model %>
+            <%= form.text_field :model, class: 'form-control' %>
 
-          <%= form.label :model %>
-          <%= form.text_field :model, class: 'form-control' %>
-
-          <%= form.label :serial_number %>
-          <%= form.text_field :serial_number, class: 'form-control' %>
-
+            <%= form.label :serial_number %>
+            <%= form.text_field :serial_number, class: 'form-control' %>
+          </div>
+<hr />
           <% if @userType != 'User' %>
           <div class="new_ticket-select-products">
             <div class="new_ticket-selector">
@@ -127,18 +142,6 @@
             <% end %>
             <%= form.hidden_field :solution_description, class: 'form-control' %>
             <hr />
-          <% end %>
-
-          <% if @ticket.assigned_at %>
-            <h4> Assigned At : <%= @ticket.assigned_at %> </h4></hr>
-          <% end %>
-
-          <% if @ticket.to_be_solved_at %>
-            <h4> To Be Solved By : <%= @ticket.to_be_solved_at %></h4> </hr>
-          <% end %>
-
-          <% if @ticket.closed_at %>
-            <h4> Closed At : <%= @ticket.closed_at %></h4> </hr>
           <% end %>
 
         </div>
