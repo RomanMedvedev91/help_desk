@@ -1,9 +1,9 @@
 <tr>
   <td>
-    <h4><%= user_type.code %></h4>
+    <%= user_type.code %>
   </td>
   <td>
-    <h4><%= user_type.description.html_safe %></h4>
+    <%= user_type.description.html_safe %>
   </td>
   <td>
     <%= link_to fa_icon('edit'), edit_admin_user_type_path(user_type), class: 'btn btn-sm btn-primary' %>

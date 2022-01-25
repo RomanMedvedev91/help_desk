@@ -25,18 +25,23 @@
 
         <div class="form-group">
 
+          <div class="new_ticket-selector col-2">
          <%= form.label :qa_category_id %>
           <% options = options_from_collection_for_select(@qa_categories, 'id', 'code') %>
-          <%= form.select :qa_category_id,  options %>
-          <div></div>
+          <%= form.select :qa_category_id,  options, {}, { class: 'form-control' } %>
+          <!--<div></div>-->
+          </div>
+          <div class="new_ticket-text-area">
+            <%= form.label :problem %>
+            <%= form.text_area :problem, :class => "tinymce", :rows => 15, :cols => 120 %>
+            <%= tinymce %>
+          </div>
 
-          <%= form.label :problem %>
-          <%= form.text_area :problem, :class => "tinymce", :rows => 15, :cols => 120 %>
-          <%= tinymce %>
-
-          <%= form.label :solution %>
-          <%= form.text_area :solution, :class => "tinymce", :rows => 15, :cols => 120 %>
-          <%= tinymce %>
+          <div class="new_ticket-text-area">
+            <%= form.label :solution %>
+            <%= form.text_area :solution, :class => "tinymce", :rows => 15, :cols => 120 %>
+            <%= tinymce %>
+          </div>
         </div>
 
         <%= form.submit 'Create Category', class: 'btn btn-primary' %>

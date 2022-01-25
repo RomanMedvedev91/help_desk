@@ -1,9 +1,9 @@
 <tr>
   <td>
-    <h4><%= ticket_type.code %></h4>
+    <%= ticket_type.code %>
   </td>
   <td>
-    <h4><%= ticket_type.description.html_safe %></h4>
+    <%= ticket_type.description.html_safe %>
   </td>
   <td>
     <%= link_to fa_icon('edit'), edit_admin_ticket_type_path(ticket_type), class: 'btn btn-sm btn-primary' %>

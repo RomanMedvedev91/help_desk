@@ -1,15 +1,15 @@
 <tr>
   <td>
-    <h4><%= service_level_agreement.code %></h4>
+  <%= service_level_agreement.code %>
   </td>
   <td>
-    <h4><%= service_level_agreement.description.html_safe %></h4>
+  <%= service_level_agreement.description.html_safe %>
   </td>
   <td>
-    <h4><%= service_level_agreement.business_days %></h4>
+  <%= service_level_agreement.business_days %>
   </td>
   <td>
-    <h4><%= service_level_agreement.business_hours %></h4>
+  <%= service_level_agreement.business_hours %>
   </td>
   <td>
     <%= link_to fa_icon('edit'), edit_admin_service_level_agreement_path(service_level_agreement), class: 'btn btn-sm btn-primary' %>

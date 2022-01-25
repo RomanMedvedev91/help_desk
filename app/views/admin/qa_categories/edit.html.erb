@@ -28,10 +28,11 @@
           <%= form.label :code %>
           <%= form.text_field :code, class: 'form-control' %>
 
+          <div class="new_ticket-text-area">
           <%= form.label :description %>
           <%= form.text_area :description, :class => "tinymce", :rows => 15, :cols => 120 %>
           <%= tinymce %>
-
+          </div>
         </div>
 
         <%= form.submit 'Update QA Category', class: 'btn btn-primary' %>

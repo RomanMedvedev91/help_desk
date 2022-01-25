@@ -1,9 +1,9 @@
 <tr>
   <td>
-    <h4><%= qa_category.code %></h4>
+  <%= qa_category.code %>
   </td>
   <td>
-    <h4><%= qa_category.description.html_safe %></h4>
+  <%= qa_category.description.html_safe %>
   </td>
   <td>
     <%= link_to fa_icon('edit'), edit_admin_qa_category_path(qa_category), class: 'btn btn-sm btn-primary' %>
