@@ -1,24 +1,87 @@
 <!-- app/views/users/new.html.erb -->
+<div class="login-form confirm">
 
-<h1>Signup!</h1>
-<%= form_for :user, url: '/users' do |f| %>
+<h1 class="login-form-header">Signup!</h1>
+
+<%= form_for :user, url: '/users', html: { class: "form-horizontal"} do |f| %>
   <% if @user && @user.errors.full_messages.any? %>
     <% @user.errors.full_messages.each do |error_message| %>
       <%= error_message %> <br />
     <% end %>
   <% end %>
 
-  <div>Name: </div><div><%= f.text_field :name %></div>
 
+<div class="form-group login">
+    <div class="form-login-label">
+      <label for="inputName3" class="control-label">Name</label>
+    </div>
 
-  <div>Mobile: </div><div><%= f.telephone_field :mobile %></div>
+    <div class="col-sm-10">
+      <%= f.text_field :name, placeholder: 'Jane Doe', class: "form-control" %>
+    </div>
+</div>
 
-  <div>Email: </div><div><%= f.email_field :email %></div>
+<div class="form-group login">
+    <div class="form-login-label">
+      <label for="inputName3" class="control-label">Mobile</label>
+    </div>
 
-  <div>Password: </div><div><%= f.password_field :password %></div>
+    <div class="col-sm-10">
+      <%= f.telephone_field :mobile, placeholder: '6474445500', class: "form-control" %>
+    </div>
+</div>
 
-  <div>Password Confirmation: </div><div><%= f.password_field :password_confirmation %></div>
+<div class="form-group login">
+    <div class="form-login-label">
+      <label for="inputName3" class="control-label">Email</label>
+    </div>
 
-  <div><%= f.submit "Submit" %> <%= link_to 'Back', tickets_path %></div>
+    <div class="col-sm-10">
+      <%= f.email_field :email, placeholder: 'jane.doe@example.com', class: "form-control" %>
+    </div>
+</div>
+
+<div class="form-group login">
+    <div class="form-login-label">
+      <label for="inputName3" class="control-label">Password</label>
+    </div>
+
+    <div class="col-sm-10">
+      <%= f.password_field :password, placeholder: 'password', class: "form-control" %>
+    </div>
+</div>
+
+<div class="form-group login">
+    <div class="form-login-label password-confirmation">
+      <label for="inputName3" class="control-label">Confirm Password</label>
+    </div>
+
+    <div class="col-sm-10">
+      <%= f.password_field :password_confirmation, placeholder: 'password', class: "form-control" %>
+    </div>
+</div>
+
+ <div class="form-group login">
+        <div class="form-login-lg-btn confirm">
+          <%= f.submit "Sign up", class: "btn btn-primary" %>
+        </div>
+        
+        <div class="form-login-sm-btn">
+          <%= link_to 'Back', tickets_path %>
+        </div>
+  </div>
 
 <% end %>
+</div>
+
+  <div class="home_blob-main-big login">
+    <%= image_tag("BlobsMainBig.svg", alt: " BlobsMainBig img", class: "home_blob-big-image") %>
+  </div>
+  <div class="home_dot-left-halfhidden login">
+  <%= image_tag("Dots.svg", alt: " DotsMainBig img", class: "home_dots-image") %>
+  </div>
+  <div class="home_dot-laptop-botton login confirm">
+    <%= image_tag("Dots.svg", alt: " DotsMainBig img", class: "home_dots-image") %>
+  </div>
+
+

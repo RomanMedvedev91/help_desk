@@ -11,6 +11,9 @@
   background-color: #ffffff;
   position: relative;
 
+  h1 {
+    font-weight: 700;
+  }
   .login-form-header {
     margin-bottom: 2rem;
   }
@@ -76,4 +79,17 @@
   position: absolute;
   top: 24rem;
   left: 56rem;
+}
+
+.form-login-lg-btn.confirm {
+  margin-left: 9.6rem !important;
+}
+
+.login-form.confirm {
+  margin: 6rem 18rem 0rem 18rem;
+}
+
+.home_dot-laptop-botton.login.confirm {
+  top: 36rem;
+  left: 58rem;
 }
