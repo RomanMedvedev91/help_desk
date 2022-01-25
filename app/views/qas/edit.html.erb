@@ -1,11 +1,11 @@
 <section class="ticket-new">
 
   <header class="page-header">
-    <h1>Edit QA</h1>
+    <h1>F.A.Q</h1>
   </header>
 
   <div class="well">
-    <%= link_to 'All QAs', [:qas], class: 'btn btn-info' %>
+    <%= link_to 'All F.A.Qs', [:qas], class: 'btn btn-info' %>
   </div>
 
   <div class="row">
@@ -13,10 +13,10 @@
         <div class="form-group">
 
           <h3> Problem </h3>
-          qa.problem.html_safe
+          <%= @qa.problem.html_safe %>
           <hr />
           <h3> Solution </h3>
-          qa.solution.html_safe
+          <%= @qa.solution.html_safe %>
           <hr />
 
         </div>

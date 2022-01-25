@@ -46,6 +46,7 @@ TicketType.destroy_all
 
 StatTechnician.destroy_all
 StatTicket.destroy_all
+UserNotification.destroy_all
 
 puts "End Deleting All Records From Database"
 
@@ -195,6 +196,44 @@ user6.user_type_id = user_type2.id
 user6.password = "123456"
 user6.password_confirmation = "123456"
 user6.save
+
+user6 = User.new
+user6.name = "Richie Blackmore"
+user6.mobile = "6130000001"
+user6.email = "rblackmore@email.com"
+user6.user_type_id = user_type2.id
+user6.password = "123456"
+user6.password_confirmation = "123456"
+user6.save
+
+user7 = User.new
+user7.name = "Jeff Beck"
+user7.mobile = "6130055001"
+user7.email = "jbeck@email.com"
+user7.user_type_id = user_type1.id
+user7.password = "123456"
+user7.password_confirmation = "123456"
+user7.save
+
+user8 = User.new
+user8.name = "Carlos Santana"
+user8.mobile = "6130888001"
+user8.email = "csantana@email.com"
+user8.user_type_id = user_type1.id
+user8.password = "123456"
+user8.password_confirmation = "123456"
+user8.save
+
+user9 = User.new
+user9.name = "Frank Zappa"
+user9.mobile = "6139999901"
+user9.email = "fzappa@email.com"
+user9.user_type_id = user_type1.id
+user9.password = "123456"
+user9.password_confirmation = "123456"
+user9.save
+
+
 
 #------------------------------------------------------------------
 ## QA Category
@@ -486,6 +525,63 @@ ticket4.model = 'AAA3'
 ticket4.serial_number = 'X0000Z29L'
 ticket4.save
 
+ticket5 = Ticket.new
+ticket5.user_id = user7.id
+ticket5.reference = "AX300"
+ticket5.technician_id = user6.id
+ticket5.contract_product_id = contract_product2.id
+ticket5.ticket_type_id = type1.id
+ticket5.ticket_status_code_id = status1.id
+ticket5.ticket_priority_id = priority1.id
+ticket5.problem_description = "Big Problem"
+ticket5.solution_description = ""
+ticket5.assigned_at = -1.days.from_now
+ticket5.closed_at = ''
+ticket5.to_be_solved_at = 2.days.from_now
+ticket5.category_id = cat1.id
+ticket5.product_id = product1.id
+ticket5.model = 'ALLA3'
+ticket5.serial_number = 'XAV987Z29L'
+ticket5.save
+
+ticket6 = Ticket.new
+ticket6.user_id = user8.id
+ticket6.reference = "AX300"
+ticket6.technician_id = user2.id
+ticket6.contract_product_id = contract_product2.id
+ticket6.ticket_type_id = type1.id
+ticket6.ticket_status_code_id = status1.id
+ticket6.ticket_priority_id = priority1.id
+ticket6.problem_description = "Medium Problem"
+ticket6.solution_description = ""
+ticket6.assigned_at = -1.days.from_now
+ticket6.closed_at = ''
+ticket6.to_be_solved_at = 2.days.from_now
+ticket6.category_id = cat1.id
+ticket6.product_id = product1.id
+ticket6.model = 'ACA3'
+ticket6.serial_number = 'X0330Z29L'
+ticket6.save
+
+ticket7 = Ticket.new
+ticket7.user_id = user9.id
+ticket7.reference = "AX300"
+ticket7.technician_id = user3.id
+ticket7.contract_product_id = contract_product2.id
+ticket7.ticket_type_id = type1.id
+ticket7.ticket_status_code_id = status1.id
+ticket7.ticket_priority_id = priority1.id
+ticket7.problem_description = "Small Problem"
+ticket7.solution_description = ""
+ticket7.assigned_at = -1.days.from_now
+ticket7.closed_at = ''
+ticket7.to_be_solved_at = 2.days.from_now
+ticket7.category_id = cat1.id
+ticket7.product_id = product1.id
+ticket7.model = 'BBB3'
+ticket7.serial_number = 'X0370Z29L'
+ticket7.save
+
 #-----------------------------------------------------------------
 ## stat_technicians
 
@@ -690,7 +786,7 @@ stat_technician.save
 #----------------
 
 stat_technician = StatTechnician.new
-stat_technician.name = user3.name
+stat_technician.name = user4.name
 stat_technician.this_date = Date.today
 stat_technician.assigned = 11
 stat_technician.solved = 8
@@ -698,7 +794,7 @@ stat_technician.transferred = 0
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user3.name
+stat_technician.name = user4.name
 stat_technician.this_date = Date.today - 1
 stat_technician.assigned = 12
 stat_technician.solved = 9
@@ -706,7 +802,7 @@ stat_technician.transferred = 4
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user3.name
+stat_technician.name = user4.name
 stat_technician.this_date = Date.today - 2
 stat_technician.assigned = 7
 stat_technician.solved = 7
@@ -714,7 +810,7 @@ stat_technician.transferred = 0
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user3.name
+stat_technician.name = user4.name
 stat_technician.this_date = Date.today - 3
 stat_technician.assigned = 7
 stat_technician.solved = 10
@@ -722,7 +818,7 @@ stat_technician.transferred = 0
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user3.name
+stat_technician.name = user4.name
 stat_technician.this_date = Date.today - 4
 stat_technician.assigned = 4
 stat_technician.solved = 10
@@ -730,7 +826,7 @@ stat_technician.transferred = 1
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user3.name
+stat_technician.name = user4.name
 stat_technician.this_date = Date.today - 5
 stat_technician.assigned = 11
 stat_technician.solved = 17
@@ -738,7 +834,7 @@ stat_technician.transferred = 3
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user3.name
+stat_technician.name = user4.name
 stat_technician.this_date = Date.today - 6
 stat_technician.assigned = 13
 stat_technician.solved = 8
@@ -746,7 +842,7 @@ stat_technician.transferred = 3
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user3.name
+stat_technician.name = user4.name
 stat_technician.this_date = Date.today - 7
 stat_technician.assigned = 8
 stat_technician.solved = 11
@@ -756,7 +852,7 @@ stat_technician.save
 #----------------
 
 stat_technician = StatTechnician.new
-stat_technician.name = user4.name
+stat_technician.name = user5.name
 stat_technician.this_date = Date.today
 stat_technician.assigned = 6
 stat_technician.solved = 7
@@ -764,7 +860,7 @@ stat_technician.transferred = 3
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user4.name
+stat_technician.name = user5.name
 stat_technician.this_date = Date.today - 1
 stat_technician.assigned = 9
 stat_technician.solved = 11
@@ -772,7 +868,7 @@ stat_technician.transferred = 0
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user4.name
+stat_technician.name = user5.name
 stat_technician.this_date = Date.today - 2
 stat_technician.assigned = 7
 stat_technician.solved = 6
@@ -780,7 +876,7 @@ stat_technician.transferred = 1
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user4.name
+stat_technician.name = user5.name
 stat_technician.this_date = Date.today - 3
 stat_technician.assigned = 5
 stat_technician.solved = 9
@@ -788,7 +884,7 @@ stat_technician.transferred = 1
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user4.name
+stat_technician.name = user5.name
 stat_technician.this_date = Date.today - 4
 stat_technician.assigned = 13
 stat_technician.solved = 7
@@ -796,7 +892,7 @@ stat_technician.transferred = 1
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user4.name
+stat_technician.name = user5.name
 stat_technician.this_date = Date.today - 5
 stat_technician.assigned = 11
 stat_technician.solved = 8
@@ -804,7 +900,7 @@ stat_technician.transferred = 1
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user4.name
+stat_technician.name = user5.name
 stat_technician.this_date = Date.today - 6
 stat_technician.assigned = 13
 stat_technician.solved = 4
@@ -812,7 +908,7 @@ stat_technician.transferred = 1
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user4.name
+stat_technician.name = user5.name
 stat_technician.this_date = Date.today - 7
 stat_technician.assigned = 6
 stat_technician.solved = 11
@@ -823,7 +919,7 @@ stat_technician.save
 #----------------
 
 stat_technician = StatTechnician.new
-stat_technician.name = user5.name
+stat_technician.name = user6.name
 stat_technician.this_date = Date.today
 stat_technician.assigned = 9
 stat_technician.solved = 9
@@ -831,7 +927,7 @@ stat_technician.transferred = 1
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user5.name
+stat_technician.name = user6.name
 stat_technician.this_date = Date.today - 1
 stat_technician.assigned = 7
 stat_technician.solved = 9
@@ -839,7 +935,7 @@ stat_technician.transferred = 3
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user5.name
+stat_technician.name = user6.name
 stat_technician.this_date = Date.today - 2
 stat_technician.assigned = 7
 stat_technician.solved = 3
@@ -847,7 +943,7 @@ stat_technician.transferred = 0
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user5.name
+stat_technician.name = user6.name
 stat_technician.this_date = Date.today - 3
 stat_technician.assigned = 8
 stat_technician.solved = 8
@@ -855,7 +951,7 @@ stat_technician.transferred = 1
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user5.name
+stat_technician.name = user6.name
 stat_technician.this_date = Date.today - 4
 stat_technician.assigned = 10
 stat_technician.solved = 6
@@ -863,7 +959,7 @@ stat_technician.transferred = 1
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user5.name
+stat_technician.name = user6.name
 stat_technician.this_date = Date.today - 5
 stat_technician.assigned = 5
 stat_technician.solved = 9
@@ -871,7 +967,7 @@ stat_technician.transferred = 2
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user5.name
+stat_technician.name = user6.name
 stat_technician.this_date = Date.today - 6
 stat_technician.assigned = 13
 stat_technician.solved = 2
@@ -879,7 +975,7 @@ stat_technician.transferred = 0
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user5.name
+stat_technician.name = user6.name
 stat_technician.this_date = Date.today - 7
 stat_technician.assigned = 7
 stat_technician.solved = 6

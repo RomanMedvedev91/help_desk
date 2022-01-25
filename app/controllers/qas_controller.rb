@@ -7,4 +7,8 @@ class QasController < ApplicationController
     @qa = Qa.find params[:id]
   end
 
+  def edit
+    @qa = Qa.find params[:id]
+  end
+
 end
