@@ -1,15 +1,15 @@
 <tr>
   <td>
-    <h4><%= ticket_priority.code %></h4>
+    <%= ticket_priority.code %>
   </td>
   <td>
-    <h4><%= ticket_priority.description.html_safe %></h4>
+    <%= ticket_priority.description.html_safe %>
   </td>
   <td>
-    <h4><%= ticket_priority.business_days %></h4>
+    <%= ticket_priority.business_days %>
   </td>
   <td>
-    <h4><%= ticket_priority.business_hours %></h4>
+    <%= ticket_priority.business_hours %>
   </td>
   <td>
     <%= link_to fa_icon('edit'), edit_admin_ticket_priority_path(ticket_priority), class: 'btn btn-sm btn-primary' %>

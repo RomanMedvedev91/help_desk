@@ -1,6 +1,6 @@
-.table_head {
+.table_head > tr > th {
   color: #333;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .table_head > tr > th > a {
@@ -14,30 +14,44 @@
 .col-sm-6.col-sm-offset-1.new_ticket-form-wraper {
   margin-left: 0;
   position: relative;
-}
-.form-group.new_ticket {
-  // position: relative;
-  input {
+  input,
+  select {
     margin-bottom: 1rem;
   }
-  .form_current-user {
-    position: absolute;
-    left: 58rem;
-    min-width: 14rem;
+}
 
-    .form_current-user-title {
-      font-weight: 700;
-    }
+// .form-group.new_ticket {
+//   // position: relative;
+//   // input {
+//   //   margin-bottom: 1rem;
+//   // }
+// }
+.form_current-user {
+  position: absolute;
+  left: 55rem;
+  // min-width: 14rem;
+  min-width: 100%;
+
+  .form_current-user-title {
+    font-weight: 700;
   }
-  .new_ticket-select-products {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1em;
-    .new_ticket-selector {
-      min-width: 10rem;
-    }
-    .new_ticket-selector.col-2 {
-      min-width: 16rem;
-    }
+}
+.new_ticket-select-products {
+  display: flex;
+  justify-content: space-between;
+  // margin-bottom: 1em;
+  .new_ticket-selector {
+    min-width: 10rem;
   }
+  .new_ticket-selector.col-2 {
+    min-width: 16rem;
+  }
+}
+// .tinymce.new_ticket-text-area {
+//   margin-bottom: 2rem;
+//   margin-top: 1rem;
+// }
+.new_ticket-text-area {
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 }

@@ -28,8 +28,10 @@
           <%= form.text_field :code, class: 'form-control' %>
 
           <%= form.label :description %>
+          <div class="new_ticket-text-area">
           <%= form.text_area :description, :class => "tinymce", :rows => 15, :cols => 120 %>
           <%= tinymce %>
+          </div>
 
           <%= form.label :business_days %>
           <%= form.text_field :business_days, class: 'form-control' %>

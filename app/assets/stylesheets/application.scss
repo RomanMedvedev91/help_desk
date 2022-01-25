@@ -19,6 +19,9 @@ body {
   padding-top: 70px;
   font-family: "Mulish", sans-serif;
 }
+input {
+  margin-bottom: 1rem;
+}
 
 // Bootstrap adjustments
 form.button_to {
@@ -35,7 +38,9 @@ form.button_to {
 .nav.navbar-nav.navbar-right {
   font-weight: 700;
 }
-
+tbody {
+  font-size: 1rem;
+}
 .btn-primary {
   background-color: #458ff6;
   border-color: #458ff6;

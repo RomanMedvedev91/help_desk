@@ -1,24 +1,24 @@
 <tr>
   <td>
-    <h4><%= ticket.reference %></h4>
+  <%= ticket.reference %>
   </td>
   <td>
-    <h4><%= ticket.user_id && User.find_by_id(ticket.user_id).name %></h4> 
+  <%= ticket.user_id && User.find_by_id(ticket.user_id).name %> 
   </td>
   <td>
-    <h4><%= ticket.technician_id && User.find_by_id(ticket.technician_id).name %></h4>
+  <%= ticket.technician_id && User.find_by_id(ticket.technician_id).name %>
   </td>
   <td>
-    <h4><%= ticket.problem_description.html_safe %></h4>
+  <%= ticket.problem_description.html_safe %>
   </td>
   <td>
-    <h4><%= TicketPriority.find_by_id(ticket.ticket_priority_id).code %></h4>
+  <%= TicketPriority.find_by_id(ticket.ticket_priority_id).code %>
   </td>
   <td>
-    <h4><%= TicketStatusCode.find_by_id(ticket.ticket_status_code_id).code %></h4>
+  <%= TicketStatusCode.find_by_id(ticket.ticket_status_code_id).code %>
   </td>
   <td>
-    <h4><%= TicketType.find_by_id(ticket.ticket_type_id).code %></h4>
+  <%= TicketType.find_by_id(ticket.ticket_type_id).code %>
   </td>
   <td>
     <%= link_to fa_icon('edit'), edit_ticket_path(ticket), class: 'btn btn-sm btn-primary' %>
