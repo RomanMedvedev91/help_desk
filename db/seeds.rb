@@ -149,7 +149,12 @@ user1.email = "bdylan@email.com"
 user1.user_type_id = user_type3.id
 user1.password = "123456"
 user1.password_confirmation = "123456"
-# user1.password_digest = "$2a$12$Fzzaxc57hstat_technician.name = "Justin J"
+# user1.password_digest = "$2a$12$Fzzaxc57hUCpmPkYyK54KeShZujLX3LJfACeJIhm4/H0zY1/USb.i"
+user1.save
+
+user2 = User.new
+user2.name = "Eric Clapton"
+user2.mobile = "6137777777"
 user2.email = "eclapton@email.com"
 user2.user_type_id = user_type2.id
 user2.password = "123456"
@@ -186,7 +191,14 @@ user5.save
 user6 = User.new
 user6.name = "Richie Blackmore"
 user6.mobile = "6130000001"
-user6.email = "rblackmore@email.com"stat_technician.name = "Justin J"
+user6.email = "rblackmore@email.com"
+user6.user_type_id = user_type2.id
+user6.password = "123456"
+user6.password_confirmation = "123456"
+user6.save
+
+user7 = User.new
+user7.name = "Jeff Beck"
 user7.mobile = "6130055001"
 user7.email = "jbeck@email.com"
 user7.user_type_id = user_type1.id
@@ -565,73 +577,6 @@ ticket7.save
 ## stat_technicians
 
 puts "Technician Statistics ..."
-stat_technician = StatTechnician.new
-stat_technician.name = "Justin J"
-stat_technician.this_date = Date.today - 1
-stat_technician.assigned = 4
-stat_technician.solved = 9
-stat_technician.transferred = 1
-stat_technician.save  
-
-
-stat_technician = StatTechnician.new
-stat_technician.name = user1.name
-stat_technician.this_date = Date.today - 2
-stat_technician.assigned = 7
-stat_technician.solved = 5
-stat_technician.transferred = 0
-stat_technician.save
-
-stat_technician = StatTechnician.new
-stat_technician.name = user2.name
-stat_technician.this_date = Date.today - 4
-stat_technician.assigned = 12
-stat_technician.solved = 5
-stat_technician.transferred = 1
-stat_technician.save
-
-stat_technician = StatTechnician.new
-stat_technician.name = user3.name
-stat_technician.this_date = Date.today - 6
-stat_technician.assigned = 13
-stat_technician.solved = 8
-stat_technician.transferred = 3
-stat_technician.save
-puts "Technician Statistics ..."
-stat_technician = StatTechnician.new
-stat_technician.name = "Justin J"
-stat_technician.this_date = Date.today - 1
-stat_technician.assigned = 4
-stat_technician.solved = 9
-stat_technician.transferred = 1
-stat_technician.save  
-stat_technician.this_date = Date.today - 2
-stat_technician.assigned = 7
-stat_technician.solved = 6
-stat_technician.transferred = 1
-stat_technician.save
-
-
-stat_technician = StatTechnician.new
-stat_technician.name = user5.name
-stat_technician.this_date = Date.today - 3
-stat_technician.assigned = 8
-stat_technician.solved = 8
-stat_technician.transferred = 1puts "Technician Statistics ..."
-stat_technician = StatTechnician.new
-stat_technician.name = "Justin J"
-stat_technician.this_date = Date.today - 1
-stat_technician.assigned = 4
-stat_technician.solved = 9
-stat_technician.transferred = 1
-stat_technician.save  
-stat_technician.name = user2.name
-stat_technician.this_date = Date.today - 7
-stat_technician.assigned = 8
-stat_technician.solved = 8
-stat_technician.transferred = 0
-stat_technician.save
-
 
 stat_technician = StatTechnician.new
 stat_technician.name = user1.name
@@ -641,7 +586,22 @@ stat_technician.solved = 7
 stat_technician.transferred = 1
 stat_technician.save
 
- 
+stat_technician = StatTechnician.new
+stat_technician.name = user1.name
+stat_technician.this_date = Date.today - 1
+stat_technician.assigned = 4
+stat_technician.solved = 9
+stat_technician.transferred = 1
+stat_technician.save
+
+stat_technician = StatTechnician.new
+stat_technician.name = user1.name
+stat_technician.this_date = Date.today - 2
+stat_technician.assigned = 7
+stat_technician.solved = 5
+stat_technician.transferred = 0
+stat_technician.save
+
 stat_technician = StatTechnician.new
 stat_technician.name = user1.name
 stat_technician.this_date = Date.today - 3
@@ -655,14 +615,9 @@ stat_technician.name = user1.name
 stat_technician.this_date = Date.today - 4
 stat_technician.assigned = 10
 stat_technician.solved = 3
-stat_technician.transferred = 0puts "Technician Statistics ..."
-stat_technician = StatTechnician.new
-stat_technician.name = "Justin J"
-stat_technician.this_date = Date.today - 1
-stat_technician.assigned = 4
-stat_technician.solved = 9
-stat_technician.transferred = 1
-stat_technician.save  
+stat_technician.transferred = 0
+stat_technician.save
+
 stat_technician = StatTechnician.new
 stat_technician.name = user1.name
 stat_technician.this_date = Date.today - 5
@@ -674,14 +629,8 @@ stat_technician.save
 stat_technician = StatTechnician.new
 stat_technician.name = user1.name
 stat_technician.this_date = Date.today - 6
-stat_technician.assigned = 8puts "Technician Statistics ..."
-stat_technician = StatTechnician.new
-stat_technician.name = "Justin J"
-stat_technician.this_date = Date.today - 1
-stat_technician.assigned = 4
-stat_technician.solved = 9
-stat_technician.transferred = 1
-stat_technician.save  
+stat_technician.assigned = 8
+stat_technician.solved = 1
 stat_technician.transferred = 1
 stat_technician.save
 
@@ -692,14 +641,12 @@ stat_technician.assigned = 3
 stat_technician.solved = 12
 stat_technician.transferred = 0
 stat_technician.save
-puts "Technician Statistics ..."
+
+#----------------
+
 stat_technician = StatTechnician.new
-stat_technician.name = "Justin J"
-stat_technician.this_date = Date.today - 1
-stat_technician.assigned = 4
-stat_technician.solved = 9
-stat_technician.transferred = 1
-stat_technician.save  
+stat_technician.name = user2.name
+stat_technician.this_date = Date.today
 stat_technician.assigned = 4
 stat_technician.solved = 9
 stat_technician.transferred = 0
@@ -713,14 +660,10 @@ stat_technician.solved = 1
 stat_technician.transferred = 4
 stat_technician.save
 
-stat_technician = StatTechnician.newputs "Technician Statistics ..."
 stat_technician = StatTechnician.new
-stat_technician.name = "Justin J"
-stat_technician.this_date = Date.today - 1
-stat_technician.assigned = 4
-stat_technician.solved = 9
-stat_technician.transferred = 1
-stat_technician.save  
+stat_technician.name = user2.name
+stat_technician.this_date = Date.today - 2
+stat_technician.assigned = 3
 stat_technician.solved = 2
 stat_technician.transferred = 0
 stat_technician.save
@@ -733,14 +676,15 @@ stat_technician.solved = 8
 stat_technician.transferred = 0
 stat_technician.save
 
-puts "Technician Statistics ..."
 stat_technician = StatTechnician.new
-stat_technician.name = "Justin J"
-stat_technician.this_date = Date.today - 1
-stat_technician.assigned = 4
-stat_technician.solved = 9
+stat_technician.name = user2.name
+stat_technician.this_date = Date.today - 4
+stat_technician.assigned = 12
+stat_technician.solved = 5
 stat_technician.transferred = 1
-stat_technician.save  
+stat_technician.save
+
+stat_technician = StatTechnician.new
 stat_technician.name = user2.name
 stat_technician.this_date = Date.today - 5
 stat_technician.assigned = 4
@@ -751,16 +695,18 @@ stat_technician.save
 stat_technician = StatTechnician.new
 stat_technician.name = user2.name
 stat_technician.this_date = Date.today - 6
-stat_technician.assigned = 13puts "Technician Statistics ..."
+stat_technician.assigned = 13
+stat_technician.solved = 5
+stat_technician.transferred = 3
+stat_technician.save
+
 stat_technician = StatTechnician.new
-stat_technician.name = "Justin J"
-stat_technician.this_date = Date.today - 1
-stat_technician.assigned = 4
-stat_technician.solved = 9
-stat_technician.transferred = 1
-stat_technician.save  
-
-
+stat_technician.name = user2.name
+stat_technician.this_date = Date.today - 7
+stat_technician.assigned = 8
+stat_technician.solved = 8
+stat_technician.transferred = 0
+stat_technician.save
 
 #----------------
 
@@ -771,14 +717,11 @@ stat_technician.assigned = 3
 stat_technician.solved = 7
 stat_technician.transferred = 1
 stat_technician.save
-puts "Technician Statistics ..."
+
 stat_technician = StatTechnician.new
-stat_technician.name = "Justin J"
+stat_technician.name = user3.name
 stat_technician.this_date = Date.today - 1
-stat_technician.assigned = 4
-stat_technician.solved = 9
-stat_technician.transferred = 1
-stat_technician.save  
+stat_technician.assigned = 2
 stat_technician.solved = 1
 stat_technician.transferred = 7
 stat_technician.save
@@ -792,14 +735,10 @@ stat_technician.transferred = 0
 stat_technician.save
 
 stat_technician = StatTechnician.new
-stat_technician.name = user3.nameputs "Technician Statistics ..."
-stat_technician = StatTechnician.new
-stat_technician.name = "Justin J"
-stat_technician.this_date = Date.today - 1
-stat_technician.assigned = 4
-stat_technician.solved = 9
-stat_technician.transferred = 1
-stat_technician.save  
+stat_technician.name = user3.name
+stat_technician.this_date = Date.today - 3
+stat_technician.assigned = 11
+stat_technician.solved = 4
 stat_technician.transferred = 0
 stat_technician.save
 
@@ -853,14 +792,11 @@ stat_technician.solved = 9
 stat_technician.transferred = 4
 stat_technician.save
 
-stat_technician = StatTechnician.newputs "Technician Statistics ..."
 stat_technician = StatTechnician.new
-stat_technician.name = "Justin J"
-stat_technician.this_date = Date.today - 1
-stat_technician.assigned = 4
-stat_technician.solved = 9
-stat_technician.transferred = 1
-stat_technician.save  
+stat_technician.name = user4.name
+stat_technician.this_date = Date.today - 2
+stat_technician.assigned = 7
+stat_technician.solved = 7
 stat_technician.transferred = 0
 stat_technician.save
 
@@ -922,7 +858,6 @@ stat_technician.solved = 11
 stat_technician.transferred = 0
 stat_technician.save
 
-
 stat_technician = StatTechnician.new
 stat_technician.name = user5.name
 stat_technician.this_date = Date.today - 2
@@ -997,7 +932,6 @@ stat_technician.assigned = 7
 stat_technician.solved = 3
 stat_technician.transferred = 0
 stat_technician.save
-
 
 stat_technician = StatTechnician.new
 stat_technician.name = user6.name
@@ -1367,10 +1301,11 @@ stat_ticket = StatTicket.new
 stat_ticket.code = status1.code
 stat_ticket.this_date = Date.today -4
 stat_ticket.no_of_tickets = 22
-stat_ticket.record_type = 2ssigned = 7
-stat_technician.solved = 10
-stat_technician.transferred = 0
-stat_technician.
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status1.code
 stat_ticket.this_date = Date.today -5
 stat_ticket.no_of_tickets = 24
 stat_ticket.record_type = 2
@@ -1404,7 +1339,17 @@ stat_ticket.code = status2.code
 stat_ticket.this_date = Date.today -1
 stat_ticket.no_of_tickets = 17
 stat_ticket.record_type = 2
-stat_ticket.save<<<<<<<
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status2.code
+stat_ticket.this_date = Date.today -2
+stat_ticket.no_of_tickets = 13
+stat_ticket.record_type = 2
+stat_ticket.save
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status2.code
 stat_ticket.this_date = Date.today -3
 stat_ticket.no_of_tickets = 28
 stat_ticket.record_type = 2
@@ -1436,10 +1381,14 @@ stat_ticket.code = status2.code
 stat_ticket.this_date = Date.today -7
 stat_ticket.no_of_tickets = 25
 stat_ticket.record_type = 2
-stat_ticket.savessigned = 7
-stat_technician.solved = 10
-stat_technician.transferred = 0
-stat_technician.
+stat_ticket.save
+
+#------
+
+
+stat_ticket = StatTicket.new
+stat_ticket.code = status3.code
+stat_ticket.this_date = Date.today
 stat_ticket.no_of_tickets = 25
 stat_ticket.record_type = 2
 stat_ticket.save
