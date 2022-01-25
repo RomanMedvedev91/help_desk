@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  root to: 'tickets#index'
+  root to: 'home#index'
+  # root to: 'tickets#index'
 
   resources :about, only: [:index]
 

@@ -3,15 +3,34 @@
 @import "bootstrap";
 @import "font-awesome";
 
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Mulish:wght@300;700&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap");
 // App
 @import "products";
+@import "home_page";
+@import "footer";
+@import "about";
 
 // Global
+html {
+  font-size: 16px;
+}
 body {
   padding-top: 70px;
+  font-family: "Mulish", sans-serif;
 }
 
 // Bootstrap adjustments
 form.button_to {
   display: inline;
+}
+
+.nav.navbar-nav {
+  font-weight: 400;
+}
+.nav.navbar-nav > li:hover {
+  font-weight: 700;
+}
+
+.nav.navbar-nav.navbar-right {
+  font-weight: 700;
 }
