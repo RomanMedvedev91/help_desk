@@ -36,8 +36,7 @@
 
   <br>
   <br>
-  <br>
-
+  
   <h2>HelpDesk Statistics</h2>
 
   <div style=" width: 100%;  overflow: hidden; display: flex; flex-direction=row">
@@ -52,6 +51,8 @@
     <%= pie_chart StatTicket.group(:code).where(record_type: [3]).sum(:no_of_tickets)  , title: "Number of tickets per type", library: {hAxis: {title: "Ticket Type"}, vAxis: {title: "Number of tickets"}} , label: "id"%>
   </div>
 
+  <hr />
+  <%= column_chart StatTechnician.group(:name).sum(:transferred)  , title: "Transferred tickets per technicians" , library: {hAxis: {title: "Technicians"}, vAxis: {title: "Number of tickets Transferred"}} , label: "id" %>
   <hr />
 
   <div class="panel panel-default user_types">
@@ -83,11 +84,9 @@
     </table>
   </div>
 
-  <br />  <hr /> <br /> <br /
+  <br /> <br /> <br /
 
 
-  <%= column_chart StatTechnician.group(:name).sum(:transferred)  , title: "Transferred tickets per technicians" , library: {hAxis: {title: "Technicians"}, vAxis: {title: "Number of tickets Transferred"}} , label: "id" %>
 
-  <br> <br> <br>
 
 </body>
