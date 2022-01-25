@@ -114,14 +114,6 @@ ActiveRecord::Schema.define(version: 20220123152201) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "technecians", force: :cascade do |t|
-    t.string  "name",           null: false
-    t.text    "description"
-    t.integer "tickets_closed"
-    t.integer "all_tickets"
-    t.integer "tickets_overdo"
-  end
-
   create_table "ticket_priorities", force: :cascade do |t|
     t.string   "code",           null: false
     t.text     "description"
