@@ -9,17 +9,17 @@ class TicketsController < ApplicationController
     
     if @userType == 'Admin'
       if sort_by == 'user_id'
-        @tickets = Ticket.joins(:user).includes(:user).select("tickets.*, users.name").order("users.name")
+        @tickets = Ticket.joins(:user).includes(:user).select("tickets.*, users.name").order("users.name").paginate(:page => params[:page], :per_page => 5)
       elsif sort_by == 'ticket_priority_id'  
-        @tickets = Ticket.joins(:ticket_priority).includes(:ticket_priority).select("tickets.*, ticket_priorities.code").order("ticket_priorities.code")
+        @tickets = Ticket.joins(:ticket_priority).includes(:ticket_priority).select("tickets.*, ticket_priorities.code").order("ticket_priorities.code").paginate(:page => params[:page], :per_page => 5)
       elsif sort_by == 'technician_id'
-        @tickets = Ticket.all.order(technician_id: :desc)
+        @tickets = Ticket.all.order(technician_id: :desc).paginate(:page => params[:page], :per_page => 5)
       elsif sort_by == 'status_code_id'
-        @tickets = Ticket.joins(:ticket_status_code).includes(:ticket_status_code).select("tickets.*, ticket_status_codes.code").order("ticket_status_codes.code")
+        @tickets = Ticket.joins(:ticket_status_code).includes(:ticket_status_code).select("tickets.*, ticket_status_codes.code").order("ticket_status_codes.code").paginate(:page => params[:page], :per_page => 5)
       elsif sort_by == 'ticket_type_id'
-        @tickets = Ticket.joins(:ticket_type).includes(:ticket_type).select("tickets.*, ticket_types.code").order("ticket_types.code")
+        @tickets = Ticket.joins(:ticket_type).includes(:ticket_type).select("tickets.*, ticket_types.code").order("ticket_types.code").paginate(:page => params[:page], :per_page => 5)
       else
-        @tickets = Ticket.all.order(created_at: :desc)
+        @tickets = Ticket.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 5)
       end
     end
     if @userType == 'Technician'
@@ -39,9 +39,6 @@ class TicketsController < ApplicationController
     @type = UserType.find_by_code('Technician')
     @technicians = @type.users
 
-    # @contracts = Contract.find_by_user_id(current_user.id)
-    # @contracts && @contract_products = @contracts.contract_products 
-    # @products = @contract_products.products
     @categories = Category.all
     @products = Product.all
     @default_products = @products.select{|p| p.category_id == @categories.first.id}
