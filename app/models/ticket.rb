@@ -1,4 +1,5 @@
 class Ticket < ActiveRecord::Base
+  self.per_page = 5
   belongs_to :ticket_priority
   belongs_to :ticket_status_code
   belongs_to :ticket_type

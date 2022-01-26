@@ -38,9 +38,10 @@ gem 'chartkick', '~> 2.2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'tinymce-rails'
+gem 'will_paginate-bootstrap'
 
 gem 'whenever', require: false
-
+gem 'will_paginate', '~> 3.1.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'rspec-rails', '~> 3.5'
