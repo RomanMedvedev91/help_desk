@@ -36,23 +36,24 @@
 
   <br>
   <br>
-  
+  <br>
+
   <h2>HelpDesk Statistics</h2>
 
   <div style=" width: 100%;  overflow: hidden; display: flex; flex-direction=row">
-    <%= bar_chart StatTechnician.group(:name).sum(:solved)  , title: "Number of tickets per technecian", library: {hAxis: {title: "Technecian name"}, vAxis: {title: "Number of tickets assigned"}} , label: "id"%>
+    <%= bar_chart StatTechnician.group(:name).sum(:solved)  , title: "# tickets solved by technecians", library: {hAxis: {title: "Technecian name"}, vAxis: {title: "Number of solved tickets"}} , label: "Tickets"%>
   </div>
 
   <hr />
 
   <div style=" width: 100%;  overflow: hidden; display: flex; flex-direction=row">
-    <%= pie_chart StatTicket.group(:code).where(record_type: [1]).sum(:no_of_tickets)  , title: "Number of tickets per priority", library: {hAxis: {title: "Priority"}, vAxis: {title: "Number of tickets"}} , label: "id"%>
-    <%= pie_chart StatTicket.group(:code).where(record_type: [2]).sum(:no_of_tickets)  , title: "Number of tickets per status", library: {hAxis: {title: "Status"}, vAxis: {title: "Number of tickets"}} , label: "id"%>
-    <%= pie_chart StatTicket.group(:code).where(record_type: [3]).sum(:no_of_tickets)  , title: "Number of tickets per type", library: {hAxis: {title: "Ticket Type"}, vAxis: {title: "Number of tickets"}} , label: "id"%>
+    <%= pie_chart StatTicket.group(:code).where(record_type: [1]).sum(:no_of_tickets)  , title: "Number of tickets per priority", library: {hAxis: {title: "Priority"}, vAxis: {title: "Number of tickets"}} , label: "Tickets"%>
+    <%= pie_chart StatTicket.group(:code).where(record_type: [2]).sum(:no_of_tickets)  , title: "Number of tickets per status", library: {hAxis: {title: "Status"}, vAxis: {title: "Number of tickets"}} , label: "Tickets"%>
+    <%= pie_chart StatTicket.group(:code).where(record_type: [3]).sum(:no_of_tickets)  , title: "Number of tickets per type", library: {hAxis: {title: "Ticket Type"}, vAxis: {title: "Number of tickets"}} , label: "Tickets"%>
   </div>
 
   <hr />
-  <%= column_chart StatTechnician.group(:name).sum(:transferred)  , title: "Transferred tickets per technicians" , library: {hAxis: {title: "Technicians"}, vAxis: {title: "Number of tickets Transferred"}} , label: "id" %>
+  <%= column_chart StatTechnician.group(:name).sum(:transferred)  , title: "Transferred tickets per technicians" , library: {hAxis: {title: "Technicians"}, vAxis: {title: "Number of tickets Transferred"}} , label: "Tickets" %>
   <hr />
 
   <div class="panel panel-default user_types">
@@ -76,7 +77,7 @@
               <td><%= User.find_by_id(ticket.technician_id).name %></td>
               <td><%= TicketPriority.find_by_id(ticket.ticket_priority_id).code %></td>
               <td><%= ticket.problem_description.html_safe %></td>
-              <td><%= ticket.to_be_solved_at %></td>
+              <td><%= ticket.to_be_solved_at.strftime "%d-%m-%y %H:%M" %></td>
             </tr>
           <% end %>
         <% end %>
@@ -84,9 +85,6 @@
     </table>
   </div>
 
-  <br /> <br /> <br /
-
-
-
+  <br />  <hr /> <br /> <br /
 
 </body>

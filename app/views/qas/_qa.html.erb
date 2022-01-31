@@ -1,14 +1,14 @@
 <tr>
-  <td>
+
+  <td  width="20%">
     <%= QaCategory.find(qa.qa_category_id).code %>
   </td>
-  <td>
+
+  <td  width="70%">
     <%= qa.problem.html_safe %>
   </td>
-  <td>
-    <%= qa.solution.html_safe %>
-  </td>
-  <td>
+
+  <td  width="10%">
     <%= link_to fa_icon('edit'), edit_qa_path(qa), class: 'btn btn-sm btn-primary' %>
   </td>
 
