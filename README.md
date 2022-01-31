@@ -4,19 +4,19 @@ This app is for managing the tickets and their status assigned to the team.
 
 - screenshoot #1
 
-!["screenshoot#1 of scheduler project"]()
+!["screenshoot#1 of help_desk project"](https://github.com/RomanMedvedev91/help_desk/blob/master/app/assets/images/screenshoots/screen1.gif?raw=true)
 
 - screenshoot #2
 
-!["screenshoot#2 of scheduler project"]()
+!["screenshoot#2 of help_desk project"](https://github.com/RomanMedvedev91/help_desk/blob/master/app/assets/images/screenshoots/screen2.gif?raw=true)
 
 - screenshoot #3
 
-!["screenshoot#3 of scheduler project"]()
+!["screenshoot#3 of help_desk project"](https://github.com/RomanMedvedev91/help_desk/blob/master/app/assets/images/screenshoots/screen3.gif?raw=true)
 
 - screenshoot #4
 
-!["screenshoot#4 of scheduler project"]()
+!["screenshoot#4 of scheduler project"](https://github.com/RomanMedvedev91/help_desk/blob/master/app/assets/images/screenshoots/Screenshot4.png?raw=true)
 
 To run the application, follow the following steps
 
