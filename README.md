@@ -1,4 +1,4 @@
-# help_desk
+# Help Desk
 
 This app is for managing the tickets and their status assigned to the team.
 
@@ -40,7 +40,7 @@ To run the application, follow the following steps
 
         bin/rails s -b 0.0.0.0
 
-# tests
+## tests
 
 1.  Generate rspec
 
@@ -54,11 +54,11 @@ To run the application, follow the following steps
 
         bin/rake db:setup RAILS_ENV=test
 
-# running test
+## running test
 
         bin/rspec
 
-# cron setup
+## cron setup
 
 1.  create a new log file inside log directory
 
@@ -78,10 +78,22 @@ To run the application, follow the following steps
 
 the config/scheduler.rb will run every 1 minute
 
-# for the tigger
+## for the tigger
 
 1. copy the text from trigger.sql
 2. login to postgres to helpdesk_development
 3. paste the whole text
 4. check if any error You should see
 5. time trigger created and 2 time function created
+
+## Dependencies
+
+- Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
+- PostgreSQL
+- Stripe
+- bcrypt
+- rspec-rails
+- twilio-ruby
+- will_paginate
+- tinymce-rails
+- popper_js
