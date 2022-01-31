@@ -78,14 +78,12 @@
             <% end %>
           </div>
     
-          <div class="new_ticket-select-products">
             <%= form.label :model %>
             <%= form.text_field :model, class: 'form-control' %>
 
             <%= form.label :serial_number %>
             <%= form.text_field :serial_number, class: 'form-control' %>
-          </div>
-<hr />
+
           <% if @userType != 'User' %>
           <div class="new_ticket-select-products">
             <div class="new_ticket-selector">

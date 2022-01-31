@@ -2,6 +2,22 @@
 
 This app is for managing the tickets and their status assigned to the team.
 
+- screenshoot #1
+
+!["screenshoot#1 of scheduler project"]()
+
+- screenshoot #2
+
+!["screenshoot#2 of scheduler project"]()
+
+- screenshoot #3
+
+!["screenshoot#3 of scheduler project"]()
+
+- screenshoot #4
+
+!["screenshoot#4 of scheduler project"]()
+
 To run the application, follow the following steps
 
 1.  Create a database
@@ -41,3 +57,31 @@ To run the application, follow the following steps
 # running test
 
         bin/rspec
+
+# cron setup
+
+1.  create a new log file inside log directory
+
+        cron_log.log
+
+2.  start the scheduler
+
+        whenever –update-crontab –set environment=’development’
+
+3.  stop the scheduler
+
+        whenever -c
+
+4.  see what in the crontab
+
+        crontab -l
+
+the config/scheduler.rb will run every 1 minute
+
+# for the tigger
+
+1. copy the text from trigger.sql
+2. login to postgres to helpdesk_development
+3. paste the whole text
+4. check if any error You should see
+5. time trigger created and 2 time function created
